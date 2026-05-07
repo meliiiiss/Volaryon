@@ -57,13 +57,16 @@ nav a:hover {
 }
 
 /* HERO */
-
 .hero {
   height: 100vh;
 
   background:
-    url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=1920')
-    center/cover no-repeat;
+  linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+  url('https://i.imgur.com/8Km9tLL.jpeg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   display: flex;
   justify-content: center;
@@ -71,7 +74,6 @@ nav a:hover {
 
   position: relative;
 }
-
 .overlay {
   position: absolute;
 

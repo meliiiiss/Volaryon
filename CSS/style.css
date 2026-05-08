@@ -5,31 +5,22 @@
 }
 
 /* BODY */
-
 body {
-  background: red;
   color: #f5e6c8;
-
   font-family: 'Cinzel', serif;
+  background: #000;
 }
 
 /* MENU */
-
 nav {
   position: fixed;
-
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 20px 50px;
-
   background: rgba(0,0,0,0.7);
-
   backdrop-filter: blur(10px);
-
   z-index: 1000;
 }
 
@@ -40,15 +31,12 @@ nav h2 {
 nav ul {
   display: flex;
   gap: 30px;
-
   list-style: none;
 }
 
 nav a {
   text-decoration: none;
-
   color: white;
-
   transition: 0.3s;
 }
 
@@ -58,13 +46,10 @@ nav a:hover {
 
 /* HERO */
 .hero {
-  padding: 0 15px;
-  text-align: center;
-}
-
+  height: 100vh;
   background:
-  linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
-  url('../assets/imagens/fundo1.jpg');
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+    url('../assets/imagens/fundo1.jpg');
 
   background-size: cover;
   background-position: center;
@@ -75,42 +60,36 @@ nav a:hover {
   align-items: center;
 
   position: relative;
+  padding: 0 15px;
+  text-align: center;
 }
 
 .overlay {
   position: absolute;
-
   width: 100%;
   height: 100%;
-
   background: rgba(0,0,0,0.6);
 }
 
 .hero-content {
   position: relative;
-
   text-align: center;
-
   z-index: 2;
 }
 
 .hero h1 {
   font-size: 100px;
-
   text-shadow: 0 0 30px crimson;
 }
 
 .hero p {
   font-size: 24px;
-
   margin-top: 20px;
-
   font-family: 'Libre Baskerville', serif;
 }
 
 .buttons {
   margin-top: 40px;
-
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -118,56 +97,44 @@ nav a:hover {
 
 button {
   padding: 15px 35px;
-
   border: none;
   border-radius: 10px;
-
   background: crimson;
   color: white;
-
   font-size: 18px;
-
   cursor: pointer;
-
   transition: 0.3s;
 }
 
 button:hover {
   transform: scale(1.1);
-
   background: darkred;
 }
 
 /* SOBRE */
-
 .sobre {
   padding: 100px 20px;
-
   text-align: center;
-
   background: #090909;
 }
 
 .sobre h2 {
   font-size: 50px;
-
   margin-bottom: 30px;
-
   color: crimson;
 }
 
 .sobre p {
   max-width: 900px;
-
   margin: 20px auto;
-
   line-height: 1.8;
-
   font-size: 20px;
-
   font-family: 'Libre Baskerville', serif;
 }
-/* RESPONSIVO BASE */
+
+/* ===================== */
+/* RESPONSIVO TABLET */
+/* ===================== */
 @media (max-width: 1024px) {
 
   nav {
@@ -191,9 +158,13 @@ button:hover {
   .buttons {
     flex-direction: column;
     gap: 15px;
+    align-items: center;
   }
-
 }
+
+/* ===================== */
+/* RESPONSIVO CELULAR */
+/* ===================== */
 @media (max-width: 600px) {
 
   nav {
@@ -226,5 +197,4 @@ button:hover {
   .sobre p {
     font-size: 16px;
   }
-
 }

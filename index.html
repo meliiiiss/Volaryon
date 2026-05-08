@@ -30,9 +30,35 @@
 </section>
 
   <!-- ÁUDIO -->
-  <audio id="bgMusic" loop>
-    <source src="assets/audio/musica.mp3" type="audio/mpeg">
-  </audio>
+  <!-- seu HTML todo aqui -->
+
+<audio id="bgMusic" loop>
+  <source src="assets/audio/musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let musicaIniciada = false;
+
+window.addEventListener("DOMContentLoaded", () => {
+  const music = document.getElementById("bgMusic");
+
+  if (!music) return;
+
+  music.volume = 0.4;
+  music.loop = true;
+
+  function iniciarMusica() {
+    if (musicaIniciada) return;
+
+    music.play().catch(() => {});
+    musicaIniciada = true;
+
+    document.removeEventListener("click", iniciarMusica);
+  }
+
+  document.addEventListener("click", iniciarMusica);
+});
+</script>
 
   <!-- SCRIPT (UMA VEZ SÓ) -->
   <script src="js/script.js"></script>

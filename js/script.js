@@ -1,6 +1,5 @@
-window.onload = function () {
-
-  const titulo = "VOLARYON";
+window.onload = function () 
+{
 
   const texto =
     "O mundo não acabou… ele apenas foi reescrito. " +

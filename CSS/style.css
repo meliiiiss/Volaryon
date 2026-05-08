@@ -381,3 +381,29 @@ button:hover {
   line-height: 1.6 !important;
   white-space: normal !important;
 }
+.senha-box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.senha-box input {
+  width: 100%;
+  padding: 12px;
+  padding-right: 40px;
+}
+
+.olho {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  font-size: 18px;
+  color: #f5e6c8;
+}
+
+.olho:hover {
+  color: crimson;
+}

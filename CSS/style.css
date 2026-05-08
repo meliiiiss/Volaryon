@@ -15,7 +15,14 @@
 body {
   color: #f5e6c8;
   font-family: 'Cinzel', serif;
-  background: #000;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)),
+    url("../assets/imagens/fundo1.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* ===================== */

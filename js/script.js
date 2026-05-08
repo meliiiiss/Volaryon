@@ -52,7 +52,7 @@ window.onload = function () {
     } else {
       setTimeout(() => {
         if (btn) btn.classList.add("show");
-      }, 800);
+      }, 1800);
     }
   }
 

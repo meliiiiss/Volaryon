@@ -5,35 +5,28 @@ let tocou = false;
 /* ===================== */
 
 window.addEventListener("click", () => {
-  if (!tocou) {
-    const music = document.getElementById("bgMusic");
+  if (tocou) return;
 
-    if (music) {
-      music.volume = 0.4;
+  const music = document.getElementById("bgMusic");
 
-      const playPromise = music.play();
-
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // sem log, silencioso
-        });
-      }
-    }
-
-    tocou = true;
+  if (music) {
+    music.volume = 0.4;
+    music.play().catch(() => {});
   }
+
+  tocou = true;
 });
 
 /* ===================== */
-/* NARRAÇÃO */
+/* NARRAÇÃO (SÓ NO INDEX) */
 /* ===================== */
 
-window.onload = function () {
+window.addEventListener("DOMContentLoaded", () => {
 
   const story = document.getElementById("story");
   const btn = document.getElementById("enterBtn");
 
-  // ✔ ADIÇÃO (evita erro em páginas sem story)
+  // só roda no index
   if (!story) return;
 
   const texto =
@@ -47,7 +40,6 @@ window.onload = function () {
   let i = 0;
 
   function escrever() {
-
     if (i < palavras.length) {
       story.innerHTML += palavras[i] + " ";
       i++;
@@ -60,4 +52,4 @@ window.onload = function () {
   }
 
   escrever();
-};
+});

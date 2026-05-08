@@ -55,68 +55,60 @@
   </section>
 
   <!-- 🔥 FIREBASE -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword } 
-    from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } 
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 
-    const firebaseConfig = {
-      apiKey: "SUA_API_KEY",
-      authDomain: "volaryon-3a9c6.firebaseapp.com",
-      projectId: "volaryon-3a9c6",
-      storageBucket: "volaryon-3a9c6.firebasestorage.app",
-      messagingSenderId: "1039618171619",
-      appId: "SEU_APP_ID"
-    };
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "volaryon-3a9c6.firebaseapp.com",
+  projectId: "volaryon-3a9c6",
+  storageBucket: "volaryon-3a9c6.firebasestorage.app",
+  messagingSenderId: "1039618171619",
+  appId: "SEU_APP_ID"
+};
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-    // 🔥 CRIAR CONTA
-    window.criarConta = function () {
+// 🔥 CADASTRO
+window.criarConta = function () {
 
-      const usuario = document.getElementById("usuario").value;
-      const email = document.getElementById("email").value;
-      const senha = document.getElementById("senha").value;
-      const confirmar = document.getElementById("confirmarSenha").value;
+  const usuario = document.getElementById("usuario").value;
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+  const confirmar = document.getElementById("confirmarSenha").value;
 
-      if (!usuario || !email || !senha) {
-        alert("Preencha todos os campos!");
-        return;
-      }
+  // validações
+  if (!usuario || !email || !senha || !confirmar) {
+    alert("Preencha todos os campos!");
+    return;
+  }
 
-      if (senha !== confirmar) {
-        alert("As senhas não coincidem!");
-        return;
-      }
+  if (senha !== confirmar) {
+    alert("As senhas não coincidem!");
+    return;
+  }
 
-      if (senha.length < 6) {
-        alert("Senha precisa ter pelo menos 6 caracteres!");
-        return;
-      }
+  if (senha.length < 6) {
+    alert("A senha precisa ter pelo menos 6 caracteres!");
+    return;
+  }
 
-      createUserWithEmailAndPassword(auth, email, senha)
-        .then(() => {
-          alert("Conta criada com sucesso!");
-          window.location.href = "login.html";
-        })
-        .catch((error) => {
-          alert("Erro: " + error.message);
-        });
-    }
+  // cria conta
+  createUserWithEmailAndPassword(auth, email, senha)
+    .then((userCredential) => {
 
-    // 👁 OLHO DA SENHA
-    window.toggleSenha = function (id) {
-      const input = document.getElementById(id);
-      input.type = input.type === "password" ? "text" : "password";
-    }
+      alert("Conta criada com sucesso!");
 
-    // 🔙 VOLTAR LOGIN
-    window.voltarLogin = function () {
+      // volta pro login
       window.location.href = "login.html";
-    }
-
-  </script>
-
+    })
+    .catch((error) => {
+      alert("Erro: " + error.message);
+    });
+}
+</script>
 </body>
 </html>

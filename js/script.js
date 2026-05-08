@@ -1,11 +1,10 @@
-window.onload = function () 
-{
+window.onload = function () {
 
   const texto =
-    "O mundo não acabou… ele apenas foi reescrito. " +
-    "Após o despertar dos Núcleos Primordiais, a realidade se fragmentou. " +
-    "Criaturas surgiram das sombras entre dimensões esquecidas. " +
-    "Deuses antigos observam em silêncio… esperando. " +
+    "O mundo não acabou… ele apenas foi reescrito.\n\n" +
+    "Após o despertar dos Núcleos Primordiais, a realidade se fragmentou.\n\n" +
+    "Criaturas surgiram das sombras entre dimensões esquecidas.\n\n" +
+    "Deuses antigos observam em silêncio… esperando.\n\n" +
     "Apenas os Despertos podem atravessar o Véu.";
 
   const story = document.getElementById("story");
@@ -13,32 +12,20 @@ window.onload = function ()
 
   let i = 0;
 
-  // limpa tudo no começo
-  story.innerHTML = "";
-
-  function escreverTitulo() {
-    if (i < titulo.length) {
-      story.innerHTML += titulo.charAt(i);
-      i++;
-      setTimeout(escreverTitulo, 200); // lento
-    } else {
-      story.innerHTML += "<br><br>";
-      i = 0;
-      setTimeout(escreverTexto, 800);
-    }
-  }
-
-  function escreverTexto() {
+  function escrever() {
     if (i < texto.length) {
+
       story.innerHTML += texto.charAt(i);
+
       i++;
-      setTimeout(escreverTexto, 60); // MAIS LENTO (ajusta aqui)
+
+      setTimeout(escrever, 45); // velocidade (mais lento = maior número)
     } else {
       setTimeout(() => {
         btn.classList.remove("hidden");
-      }, 1200);
+      }, 1000);
     }
   }
 
-  escreverTitulo();
+  escrever();
 };

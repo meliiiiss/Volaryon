@@ -30,8 +30,15 @@
           <input type="text" id="usuario" placeholder="Nome de usuário">
           <input type="email" id="email" placeholder="E-mail">
 
-          <input type="password" id="senha" placeholder="Senha">
-          <input type="password" id="confirmarSenha" placeholder="Confirmar senha">
+          <div class="senha-box">
+            <input type="password" id="senha" placeholder="Senha">
+            <span class="olho" onclick="toggleSenha('senha')">👁</span>
+          </div>
+
+          <div class="senha-box">
+            <input type="password" id="confirmarSenha" placeholder="Confirmar senha">
+            <span class="olho" onclick="toggleSenha('confirmarSenha')">👁</span>
+          </div>
 
         </div>
 
@@ -47,12 +54,27 @@
 
   </section>
 
-  <script>
-    function voltarLogin() {
-      window.location.href = "login.html";
-    }
+  <!-- 🔥 FIREBASE -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } 
+    from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 
-    function criarConta() {
+    const firebaseConfig = {
+      apiKey: "SUA_API_KEY",
+      authDomain: "volaryon-3a9c6.firebaseapp.com",
+      projectId: "volaryon-3a9c6",
+      storageBucket: "volaryon-3a9c6.firebasestorage.app",
+      messagingSenderId: "1039618171619",
+      appId: "SEU_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // 🔥 CRIAR CONTA
+    window.criarConta = function () {
+
       const usuario = document.getElementById("usuario").value;
       const email = document.getElementById("email").value;
       const senha = document.getElementById("senha").value;
@@ -73,8 +95,27 @@
         return;
       }
 
-      alert("Cadastro pronto! (ainda sem Firebase ligado)");
+      createUserWithEmailAndPassword(auth, email, senha)
+        .then(() => {
+          alert("Conta criada com sucesso!");
+          window.location.href = "login.html";
+        })
+        .catch((error) => {
+          alert("Erro: " + error.message);
+        });
     }
+
+    // 👁 OLHO DA SENHA
+    window.toggleSenha = function (id) {
+      const input = document.getElementById(id);
+      input.type = input.type === "password" ? "text" : "password";
+    }
+
+    // 🔙 VOLTAR LOGIN
+    window.voltarLogin = function () {
+      window.location.href = "login.html";
+    }
+
   </script>
 
 </body>

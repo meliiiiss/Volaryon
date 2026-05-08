@@ -38,22 +38,50 @@
 
         <button onclick="entrar()">Entrar</button>
 
+        <!-- NOVO USUÁRIO -->
+        <button class="novo-user" onclick="novoUsuario()">
+          Criar novo usuário
+        </button>
+
       </div>
 
     </div>
 
   </section>
 
-  <!-- SCRIPT -->
+  <!-- 🎧 ÁUDIO -->
+  <audio id="bgMusic" loop>
+    <source src="assets/audio/musica.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
+    let tocou = false;
+
+    // música ao clicar
+    window.addEventListener("click", () => {
+      if (!tocou) {
+        const music = document.getElementById("bgMusic");
+
+        if (music) {
+          music.volume = 0.4;
+          music.play().catch(() => {});
+        }
+
+        tocou = true;
+      }
+    });
+
     function toggleSenha() {
       const senha = document.getElementById("senha");
-
       senha.type = senha.type === "password" ? "text" : "password";
     }
 
     function entrar() {
-      alert("Login ainda não conectado ao sistema (Firebase ou backend)");
+      alert("Login ainda não conectado ao sistema");
+    }
+
+    function novoUsuario() {
+      alert("Sistema de criação de conta ainda não ativado");
     }
   </script>
 

@@ -1,3 +1,15 @@
+let tocou = false;
+
+window.addEventListener("click", () => {
+  if (!tocou) {
+    const music = document.getElementById("bgMusic");
+
+    music.volume = 0.4; // volume equilibrado RPG
+    music.play();
+
+    tocou = true;
+  }
+});
 window.onload = function () {
 
   const texto =

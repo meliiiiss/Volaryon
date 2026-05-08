@@ -58,12 +58,13 @@ body {
 /* ===================== */
 
 .story {
-  margin-top: 25px;
+  margin-top: 15px;
+  margin-bottom: 10px;
 
   font-family: 'Libre Baskerville', serif;
   font-size: 18px;
   color: #e6d3b3;
-  line-height: 1.7;
+  line-height: 1.4; /* 👈 reduz espaço entre linhas */
 
   max-width: 750px;
   margin-left: auto;
@@ -71,11 +72,6 @@ body {
 
   text-align: center;
   white-space: pre-line;
-}
-
-/* cursor piscando */
-.story::after {
-  content: "";
 }
 
 /* ===================== */

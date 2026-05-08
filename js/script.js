@@ -1,17 +1,23 @@
-let tocou = false;
-
-window.addEventListener("click", () => {
-  if (!tocou) {
-    const music = document.getElementById("bgMusic");
-
-    music.volume = 0.4;
-    music.play();
-
-    tocou = true;
-  }
-});
-
 window.onload = function () {
+
+  /* ===================== */
+  /* MÚSICA */
+  /* ===================== */
+
+  const music = document.getElementById("bgMusic");
+
+  if (music) {
+    music.volume = 0.4;
+
+    // tenta tocar automaticamente
+    music.play().catch(() => {
+      console.log("Autoplay bloqueado pelo navegador");
+    });
+  }
+
+  /* ===================== */
+  /* TEXTO NARRADO */
+  /* ===================== */
 
   const texto =
     "O mundo não acabou… ele apenas foi reescrito.\n\n" +
@@ -29,13 +35,19 @@ window.onload = function () {
   function escrever() {
 
     if (i < palavras.length) {
+
       story.innerHTML += palavras[i] + " ";
       i++;
-      setTimeout(escrever, 160); // velocidade
+
+      // 🐌 MAIS LENTO (narrador)
+      setTimeout(escrever, 320);
+
     } else {
+
       setTimeout(() => {
-        btn.classList.add("show"); // 👈 PADRONIZADO
-      }, 800);
+        btn.classList.add("show");
+      }, 1200);
+
     }
   }
 

@@ -25,3 +25,5 @@ window.onload = function () {
 
   mostrarFrase();
 };
+console.log("JS carregou");
+console.log(document.getElementById("story"));

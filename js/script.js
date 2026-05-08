@@ -1,16 +1,23 @@
-window.onload = function () {
+let tocou = false;
 
-  /* ===================== */
-  /* MÚSICA */
-  /* ===================== */
+window.addEventListener("click", () => {
+  if (!tocou) {
+    const music = document.getElementById("bgMusic");
 
-  const music = document.getElementById("bgMusic");
-
-  if (music) {
     music.volume = 0.4;
 
-    // tenta tocar automaticamente
-    music.play().catch(() => {
+    const playPromise = music.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        console.log("Autoplay bloqueado - esperando interação válida");
+      });
+    }
+
+    tocou = true;
+  }
+});
+
       console.log("Autoplay bloqueado pelo navegador");
     });
   }

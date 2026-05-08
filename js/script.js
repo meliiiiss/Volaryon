@@ -4,12 +4,13 @@ window.addEventListener("click", () => {
   if (!tocou) {
     const music = document.getElementById("bgMusic");
 
-    music.volume = 0.4; // volume equilibrado RPG
+    music.volume = 0.4;
     music.play();
 
     tocou = true;
   }
 });
+
 window.onload = function () {
 
   const texto =
@@ -26,16 +27,15 @@ window.onload = function () {
   let i = 0;
 
   function escrever() {
-    if (i < palavras.length) {
 
+    if (i < palavras.length) {
       story.innerHTML += palavras[i] + " ";
       i++;
-
-      setTimeout(escrever, 180); // velocidade entre palavras
+      setTimeout(escrever, 160); // velocidade
     } else {
       setTimeout(() => {
-        btn.classList.remove("hidden");
-      }, 1000);
+        btn.classList.add("show"); // 👈 PADRONIZADO
+      }, 800);
     }
   }
 

@@ -22,16 +22,16 @@ window.onload = function () {
   const story = document.getElementById("story");
   const btn = document.getElementById("enterBtn");
 
+  const palavras = texto.split(" ");
   let i = 0;
 
   function escrever() {
-    if (i < texto.length) {
+    if (i < palavras.length) {
 
-      story.innerHTML += texto.charAt(i);
-
+      story.innerHTML += palavras[i] + " ";
       i++;
 
-      setTimeout(escrever, 45); // velocidade (mais lento = maior número)
+      setTimeout(escrever, 180); // velocidade entre palavras
     } else {
       setTimeout(() => {
         btn.classList.remove("hidden");

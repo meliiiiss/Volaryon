@@ -27,27 +27,45 @@
 
         <input type="text" placeholder="Nome do Desperto">
 
-        <div class="login-box">
+        <!-- SENHA COM OLHO -->
+        <div class="senha-box">
 
-  <div class="senha-box">
-    <input type="password" id="senha" placeholder="Código do Véu">
-    <span class="olho" onclick="toggleSenha()">👁️</span>
-  </div>
+          <input type="password" id="senha" placeholder="Código do Véu">
 
-  <div class="buttons">
-
-    <button>
-      ⚔️ Entrar no Volaryon
-    </button>
-
-    <button class="novo-user" onclick="location.href='login.html'">
-      🩸 Novo Usuário
-    </button>
-
-  </div>
+          <span class="olho" onclick="toggleSenha()">👁️</span>
 
         </div>
+
+        <div class="buttons">
+
+          <button>
+            ⚔️ Entrar no Volaryon
+          </button>
+
+          <button class="novo-user" onclick="location.href='login.html'">
+            🩸 Novo Usuário
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </section>
+
+  <!-- JS DO OLHO -->
+  <script>
+    function toggleSenha() {
+      const senha = document.getElementById("senha");
+
+      if (senha.type === "password") {
+        senha.type = "text";
+      } else {
+        senha.type = "password";
+      }
+    }
+  </script>
 
 </body>
 </html>

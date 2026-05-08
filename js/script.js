@@ -1,41 +1,45 @@
 window.onload = function () {
 
-  const frases = [
-    "O mundo não acabou… ele apenas foi reescrito.",
-    "Após o despertar dos Núcleos Primordiais, a realidade se fragmentou.",
-    "Criaturas surgiram das sombras entre dimensões esquecidas.",
-    "Deuses antigos observam em silêncio… esperando.",
-    "Apenas os Despertos podem atravessar o Véu."
-  ];
+  const titulo = "VOLARYON";
 
-  let i = 0;
-  let charIndex = 0;
+  const texto =
+    "O mundo não acabou… ele apenas foi reescrito. " +
+    "Após o despertar dos Núcleos Primordiais, a realidade se fragmentou. " +
+    "Criaturas surgiram das sombras entre dimensões esquecidas. " +
+    "Deuses antigos observam em silêncio… esperando. " +
+    "Apenas os Despertos podem atravessar o Véu.";
 
   const story = document.getElementById("story");
   const btn = document.getElementById("enterBtn");
 
-  function digitar() {
-    const texto = frases[i];
+  let i = 0;
 
-    if (charIndex < texto.length) {
-      story.innerHTML += texto.charAt(charIndex);
-      charIndex++;
-      setTimeout(digitar, 40); // velocidade da digitação
+  // limpa tudo no começo
+  story.innerHTML = "";
+
+  function escreverTitulo() {
+    if (i < titulo.length) {
+      story.innerHTML += titulo.charAt(i);
+      i++;
+      setTimeout(escreverTitulo, 200); // lento
     } else {
-      setTimeout(proximaFrase, 1200); // pausa entre frases
+      story.innerHTML += "<br><br>";
+      i = 0;
+      setTimeout(escreverTexto, 800);
     }
   }
 
-  function proximaFrase() {
-    i++;
-    if (i < frases.length) {
-      story.innerHTML = "";
-      charIndex = 0;
-      digitar();
+  function escreverTexto() {
+    if (i < texto.length) {
+      story.innerHTML += texto.charAt(i);
+      i++;
+      setTimeout(escreverTexto, 60); // MAIS LENTO (ajusta aqui)
     } else {
-      btn.classList.remove("hidden");
+      setTimeout(() => {
+        btn.classList.remove("hidden");
+      }, 1200);
     }
   }
 
-  digitar();
+  escreverTitulo();
 };

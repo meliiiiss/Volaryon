@@ -320,3 +320,16 @@ button:hover {
 
   white-space: pre-line;
 }
+@media (min-width: 1025px) {
+
+  .story {
+    font-size: 22px;
+    max-width: 900px;
+    line-height: 2.2;
+  }
+
+  .hero h1 {
+    font-size: 120px;
+  }
+
+}

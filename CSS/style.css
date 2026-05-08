@@ -26,42 +26,6 @@ body {
 }
 
 /* ===================== */
-/* MENU */
-/* ===================== */
-
-nav {
-  position: fixed;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 50px;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-}
-
-nav h2 {
-  color: crimson;
-}
-
-nav ul {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-}
-
-nav a {
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  color: crimson;
-}
-
-/* ===================== */
 /* HERO */
 /* ===================== */
 
@@ -80,14 +44,8 @@ nav a:hover {
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(1.1);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(1.1); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .hero h1 {
@@ -95,19 +53,12 @@ nav a:hover {
   text-shadow: 0 0 30px crimson;
 }
 
-.hero p {
-  font-size: 24px;
-  margin-top: 20px;
-  font-family: 'Libre Baskerville', serif;
-}
-
 /* ===================== */
-/* STORY (TEXTO ANIMAÇÃO) */
+/* STORY */
 /* ===================== */
 
 .story {
   margin-top: 25px;
-  margin-bottom: 10px;
 
   font-family: 'Libre Baskerville', serif;
   font-size: 18px;
@@ -124,19 +75,11 @@ nav a:hover {
 
 /* cursor piscando */
 .story::after {
-  content: "|";
-  animation: blink 0.8s infinite;
-  color: crimson;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
+  content: "";
 }
 
 /* ===================== */
-/* BOTÕES PADRÃO */
+/* BOTÕES */
 /* ===================== */
 
 button {
@@ -149,10 +92,8 @@ button {
 
   font-size: 18px;
   font-family: 'Cinzel', serif;
-  letter-spacing: 1px;
 
   cursor: pointer;
-
   transition: 0.3s ease;
 
   box-shadow:
@@ -220,6 +161,7 @@ button:hover {
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
+
   cursor: pointer;
   color: #f5e6c8;
 }
@@ -229,27 +171,21 @@ button:hover {
 }
 
 /* ===================== */
-/* SOBRE */
+/* BOTÃO ENTER (CORRETO E GARANTIDO) */
 /* ===================== */
 
-.sobre {
-  padding: 100px 20px;
-  text-align: center;
-  background: #090909;
+#enterBtn {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: 0.6s ease;
+  margin-top: 30px;
 }
 
-.sobre h2 {
-  font-size: 50px;
-  margin-bottom: 30px;
-  color: crimson;
-}
-
-.sobre p {
-  max-width: 900px;
-  margin: 20px auto;
-  line-height: 1.8;
-  font-size: 20px;
-  font-family: 'Libre Baskerville', serif;
+#enterBtn.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 /* ===================== */
@@ -257,34 +193,11 @@ button:hover {
 /* ===================== */
 
 @media (max-width: 1024px) {
-
-  .hero h1 {
-    font-size: 60px;
-  }
-
-  .hero p {
-    font-size: 18px;
-  }
-
-  nav {
-    padding: 15px 20px;
-  }
+  .hero h1 { font-size: 60px; }
 }
 
 @media (max-width: 600px) {
-
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .hero h1 {
-    font-size: 40px;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
+  .hero h1 { font-size: 40px; }
 
   button {
     width: 90%;
@@ -293,16 +206,4 @@ button:hover {
   .login-inputs {
     flex-direction: column;
   }
-}
-#enterBtn {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: 0.6s ease;
-}
-
-#enterBtn.show {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
 }

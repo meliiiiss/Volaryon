@@ -1,30 +1,34 @@
 let tocou = false;
 
+/* ===================== */
+/* MÚSICA AO CLICAR */
+/* ===================== */
+
 window.addEventListener("click", () => {
   if (!tocou) {
     const music = document.getElementById("bgMusic");
 
-    music.volume = 0.4;
+    if (music) {
+      music.volume = 0.4;
 
-    const playPromise = music.play();
+      const playPromise = music.play();
 
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        console.log("Autoplay bloqueado - esperando interação válida");
-      });
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // sem log, silencioso
+        });
+      }
     }
 
     tocou = true;
   }
 });
 
-      console.log("Autoplay bloqueado pelo navegador");
-    });
-  }
+/* ===================== */
+/* NARRAÇÃO */
+/* ===================== */
 
-  /* ===================== */
-  /* TEXTO NARRADO */
-  /* ===================== */
+window.onload = function () {
 
   const texto =
     "O mundo não acabou… ele apenas foi reescrito.\n\n" +
@@ -42,19 +46,13 @@ window.addEventListener("click", () => {
   function escrever() {
 
     if (i < palavras.length) {
-
       story.innerHTML += palavras[i] + " ";
       i++;
-
-      // 🐌 MAIS LENTO (narrador)
-      setTimeout(escrever, 320);
-
+      setTimeout(escrever, 160);
     } else {
-
       setTimeout(() => {
-        btn.classList.add("show");
-      }, 1200);
-
+        if (btn) btn.classList.add("show");
+      }, 800);
     }
   }
 

@@ -104,7 +104,7 @@ const auth = getAuth(app);
 // 🔥 LOGIN REAL
 window.entrar = function () {
 
-  const email = document.querySelector("input[type='text']").value;
+  const email = document.getElementById("email").value;
   const senha = document.getElementById("senha").value;
 
   signInWithEmailAndPassword(auth, email, senha)
@@ -115,6 +115,13 @@ window.entrar = function () {
     .catch((error) => {
       alert("Erro: " + error.message);
     });
+}
+
+// 👁 olho senha
+window.toggleSenha = function () {
+  const senha = document.getElementById("senha");
+
+  senha.type = senha.type === "password" ? "text" : "password";
 }
 </script>
 </body>

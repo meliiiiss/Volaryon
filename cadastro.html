@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - Volaryon</title>
+
+  <link rel="stylesheet" href="CSS/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>DESPERTAR</h1>
+
+      <p class="story">
+        Crie sua existência no mundo de Volaryon.
+      </p>
+
+      <!-- CADASTRO -->
+      <div class="login-box">
+
+        <div class="login-inputs">
+
+          <input type="text" id="usuario" placeholder="Nome de usuário">
+          <input type="email" id="email" placeholder="E-mail">
+
+          <input type="password" id="senha" placeholder="Senha">
+          <input type="password" id="confirmarSenha" placeholder="Confirmar senha">
+
+        </div>
+
+        <button onclick="criarConta()">Criar conta</button>
+
+        <button class="novo-user" onclick="voltarLogin()">
+          Já tenho conta
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+    function voltarLogin() {
+      window.location.href = "login.html";
+    }
+
+    function criarConta() {
+      const usuario = document.getElementById("usuario").value;
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+      const confirmar = document.getElementById("confirmarSenha").value;
+
+      if (!usuario || !email || !senha) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      if (senha !== confirmar) {
+        alert("As senhas não coincidem!");
+        return;
+      }
+
+      if (senha.length < 6) {
+        alert("Senha precisa ter pelo menos 6 caracteres!");
+        return;
+      }
+
+      alert("Cadastro pronto! (ainda sem Firebase ligado)");
+    }
+  </script>
+
+</body>
+</html>

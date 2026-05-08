@@ -23,34 +23,35 @@
         Apenas aqueles tocados pelo Véu podem retornar ao mundo.
       </p>
 
-      <div class="login-box">
+      .login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
 
-        <input type="text" placeholder="Nome do Desperto">
+/* inputs lado a lado */
+.login-inputs {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-        <!-- SENHA COM OLHO -->
-        <div class="senha-box">
+/* cada campo */
+.login-inputs input,
+.senha-box {
+  width: 250px;
+}
 
-          <input type="password" id="senha" placeholder="Código do Véu">
+/* senha continua funcionando com olho */
+.senha-box {
+  position: relative;
+}
 
-          <span class="olho" onclick="toggleSenha()">👁️</span>
-
-        </div>
-
-        <div class="buttons">
-
-          <button>
-            ⚔️ Entrar no Volaryon
-          </button>
-
-          <button class="novo-user" onclick="location.href='login.html'">
-            🩸 Novo Usuário
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
+.senha-box input {
+  width: 100%;
+}
 
   </section>
 

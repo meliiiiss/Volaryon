@@ -203,3 +203,10 @@ button:hover {
     flex-direction: column;
   }
 }
+
+.novo-user {
+  margin-top: 10px;
+  padding: 6px 16px;
+  font-size: 12px;
+  opacity: 0.85;
+}

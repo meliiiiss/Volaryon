@@ -1,17 +1,27 @@
+/* ===================== */
+/* RESET */
+/* ===================== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BODY */
+/* ===================== */
+/* BASE */
+/* ===================== */
+
 body {
   color: #f5e6c8;
   font-family: 'Cinzel', serif;
   background: #000;
 }
 
+/* ===================== */
 /* MENU */
+/* ===================== */
+
 nav {
   position: fixed;
   width: 100%;
@@ -44,7 +54,10 @@ nav a:hover {
   color: crimson;
 }
 
+/* ===================== */
 /* HERO */
+/* ===================== */
+
 .hero {
   height: 100vh;
   display: flex;
@@ -55,6 +68,8 @@ nav a:hover {
 
 .hero-content {
   animation: fadeIn 2s ease-in-out;
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes fadeIn {
@@ -67,18 +82,6 @@ nav a:hover {
     transform: scale(1);
   }
 }
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-}
-
-.hero-content {
-  position: relative;
-  text-align: center;
-  z-index: 2;
-}
 
 .hero h1 {
   font-size: 100px;
@@ -90,6 +93,42 @@ nav a:hover {
   margin-top: 20px;
   font-family: 'Libre Baskerville', serif;
 }
+
+/* ===================== */
+/* STORY (TEXTO ANIMAÇÃO) */
+/* ===================== */
+
+.story {
+  margin-top: 30px;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 18px;
+  color: #e6d3b3;
+  line-height: 1.6;
+
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+
+  text-align: center;
+  white-space: pre-line;
+}
+
+/* cursor piscando */
+.story::after {
+  content: "|";
+  animation: blink 0.8s infinite;
+  color: crimson;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ===================== */
+/* BOTÕES PADRÃO */
+/* ===================== */
 
 button {
   padding: 15px 40px;
@@ -105,9 +144,6 @@ button {
 
   cursor: pointer;
 
-  position: relative;
-  overflow: hidden;
-
   transition: 0.3s ease;
 
   box-shadow:
@@ -117,43 +153,76 @@ button {
   text-transform: uppercase;
 }
 
-/* brilho interno infernal */
-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 0, 0, 0.2),
-    transparent
-  );
-
-  transition: 0.5s;
-}
-
-button:hover::before {
-  left: 100%;
-}
-
-/* hover estilo "energia demoníaca" */
 button:hover {
   transform: scale(1.05);
-
   border-color: crimson;
-
   box-shadow:
     0 0 15px crimson,
     0 0 30px rgba(255, 0, 0, 0.4),
     inset 0 0 15px rgba(255, 0, 0, 0.3);
-
   color: white;
 }
+
+/* botão novo usuário */
+.novo-user {
+  margin-top: 15px;
+  border: 2px solid #8b0000;
+}
+
+/* ===================== */
+/* LOGIN */
+/* ===================== */
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-inputs {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.login-inputs input {
+  width: 250px;
+  padding: 12px;
+
+  border: 1px solid #5a0000;
+  background: rgba(0,0,0,0.7);
+  color: #f5e6c8;
+}
+
+/* senha */
+.senha-box {
+  position: relative;
+  width: 250px;
+}
+
+.senha-box input {
+  width: 100%;
+}
+
+.olho {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #f5e6c8;
+}
+
+.olho:hover {
+  color: crimson;
+}
+
+/* ===================== */
 /* SOBRE */
+/* ===================== */
+
 .sobre {
   padding: 100px 20px;
   text-align: center;
@@ -175,18 +244,10 @@ button:hover {
 }
 
 /* ===================== */
-/* RESPONSIVO TABLET */
+/* RESPONSIVO */
 /* ===================== */
+
 @media (max-width: 1024px) {
-
-  nav {
-    padding: 15px 20px;
-  }
-
-  nav ul {
-    gap: 15px;
-    flex-wrap: wrap;
-  }
 
   .hero h1 {
     font-size: 60px;
@@ -194,26 +255,14 @@ button:hover {
 
   .hero p {
     font-size: 18px;
-    padding: 0 10px;
   }
 
-  .buttons {
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
+  nav {
+    padding: 15px 20px;
   }
 }
 
-/* ===================== */
-/* RESPONSIVO CELULAR */
-/* ===================== */
 @media (max-width: 600px) {
-
-  nav {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
 
   nav ul {
     flex-direction: column;
@@ -232,235 +281,7 @@ button:hover {
     width: 90%;
   }
 
-  .sobre h2 {
-    font-size: 32px;
+  .login-inputs {
+    flex-direction: column;
   }
-
-  .sobre p {
-    font-size: 16px;
-  }
-}
-.story {
-  margin-top: 30px;
-  font-family: 'Libre Baskerville', serif;
-  font-size: 18px;
-  color: #e6d3b3;
-  line-height: 1.8;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 120px;
-}
-
-.hidden {
-  display: none;
-}
-.story {
-  margin-top: 30px;
-  font-family: 'Libre Baskerville', serif;
-  font-size: 18px;
-  color: #e6d3b3;
-  line-height: 1.8;
-  max-width: 800px;
-  margin: 0 auto;
-  min-height: 120px;
-
-  border-right: 2px solid crimson;
-  white-space: pre-wrap;
-}
-.story {
-  margin-top: 30px;
-  font-family: 'Libre Baskerville', serif;
-  font-size: 18px;
-  color: #e6d3b3;
-  line-height: 1.8;
-  max-width: 800px;
-  margin: 0 auto;
-  min-height: 150px;
-  white-space: pre-wrap;
-}
-
-.story::after {
-  content: "|";
-  animation: blink 0.8s infinite;
-  color: crimson;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-#enterBtn {
-  margin-top: 50px;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: aparecerBotao 1s forwards;
-  animation-delay: 0.5s;
-}
-
-@keyframes aparecerBotao {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.story {
-  margin-top: 30px;
-  font-family: 'Libre Baskerville', serif;
-  font-size: 18px;
-  color: #e6d3b3;
-  line-height: 2;
-
-  max-width: 750px;
-  margin-left: auto;
-  margin-right: auto;
-
-  text-align: center;
-
-  white-space: pre-line;
-}
-@media (min-width: 1025px) {
-
-  .story {
-    font-size: 22px;
-    max-width: 900px;
-    line-height: 2.2;
-  }
-
-  .hero h1 {
-    font-size: 120px;
-  }
-
-}
-.novo-user {
-  margin-top: 15px;
-
-  background: linear-gradient(145deg, #2b0000, #000000);
-  border: 2px solid #8b0000;
-
-  color: #f5e6c8;
-
-  font-family: 'Cinzel', serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  padding: 15px 35px;
-
-  cursor: pointer;
-
-  box-shadow:
-    inset 0 0 10px rgba(255, 0, 0, 0.2),
-    0 0 15px rgba(0, 0, 0, 0.8);
-
-  transition: 0.3s ease;
-
-  opacity: 0;
-  transform: translateY(15px);
-  animation: aparecerBotao 1s forwards;
-  animation-delay: 0.6s;
-}
-
-.novo-user:hover {
-  transform: scale(1.07);
-
-  border-color: crimson;
-
-  box-shadow:
-    0 0 25px crimson,
-    inset 0 0 15px rgba(255, 0, 0, 0.3);
-}
-
-@keyframes aparecerBotao {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.story {
-  line-height: 1.6 !important;
-  white-space: normal !important;
-}
-.senha-box {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-}
-
-.senha-box input {
-  width: 100%;
-  padding: 12px;
-  padding-right: 40px;
-}
-
-.olho {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  user-select: none;
-  font-size: 18px;
-  color: #f5e6c8;
-}
-
-.olho:hover {
-  color: crimson;
-}
-.login-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-
-/* inputs lado a lado */
-.login-inputs {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* cada campo */
-.login-inputs input,
-.senha-box {
-  width: 250px;
-}
-
-/* senha continua funcionando com olho */
-.senha-box {
-  position: relative;
-}
-
-.senha-box input {
-  width: 100%;
-}.login-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-
-/* inputs lado a lado */
-.login-inputs {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* cada campo */
-.login-inputs input,
-.senha-box {
-  width: 250px;
-}
-
-/* senha continua funcionando com olho */
-.senha-box {
-  position: relative;
-}
-
-.senha-box input {
-  width: 100%;
 }

@@ -30,15 +30,18 @@ window.addEventListener("click", () => {
 
 window.onload = function () {
 
+  const story = document.getElementById("story");
+  const btn = document.getElementById("enterBtn");
+
+  // ✔ ADIÇÃO (evita erro em páginas sem story)
+  if (!story) return;
+
   const texto =
     "O mundo não acabou… ele apenas foi reescrito.\n\n" +
     "Após o despertar dos Núcleos Primordiais, a realidade se fragmentou.\n\n" +
     "Criaturas surgiram das sombras entre dimensões esquecidas.\n\n" +
     "Deuses antigos observam em silêncio… esperando.\n\n" +
     "Apenas os Despertos podem atravessar o Véu.";
-
-  const story = document.getElementById("story");
-  const btn = document.getElementById("enterBtn");
 
   const palavras = texto.split(" ");
   let i = 0;

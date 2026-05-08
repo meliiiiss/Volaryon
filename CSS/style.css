@@ -216,3 +216,16 @@ button:hover {
 .hidden {
   display: none;
 }
+.story {
+  margin-top: 30px;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 18px;
+  color: #e6d3b3;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 120px;
+
+  border-right: 2px solid crimson;
+  white-space: pre-wrap;
+}

@@ -9,21 +9,33 @@ window.onload = function () {
   ];
 
   let i = 0;
+  let charIndex = 0;
 
   const story = document.getElementById("story");
   const btn = document.getElementById("enterBtn");
 
-  function mostrarFrase() {
+  function digitar() {
+    const texto = frases[i];
+
+    if (charIndex < texto.length) {
+      story.innerHTML += texto.charAt(charIndex);
+      charIndex++;
+      setTimeout(digitar, 40); // velocidade da digitação
+    } else {
+      setTimeout(proximaFrase, 1200); // pausa entre frases
+    }
+  }
+
+  function proximaFrase() {
+    i++;
     if (i < frases.length) {
-      story.innerHTML = frases[i];
-      i++;
-      setTimeout(mostrarFrase, 3000);
+      story.innerHTML = "";
+      charIndex = 0;
+      digitar();
     } else {
       btn.classList.remove("hidden");
     }
   }
 
-  mostrarFrase();
+  digitar();
 };
-console.log("JS carregou");
-console.log(document.getElementById("story"));

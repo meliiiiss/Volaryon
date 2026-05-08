@@ -291,3 +291,17 @@ button:hover {
     opacity: 0;
   }
 }
+#enterBtn {
+  margin-top: 50px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: aparecerBotao 1s forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes aparecerBotao {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

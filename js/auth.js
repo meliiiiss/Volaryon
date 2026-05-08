@@ -6,12 +6,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
+  apiKey: "AIzaSyBhAbXAIDT-W3tmBBSoAMW3aijvbOXUIgk",
   authDomain: "volaryon-3a9c6.firebaseapp.com",
   projectId: "volaryon-3a9c6",
   storageBucket: "volaryon-3a9c6.firebasestorage.app",
   messagingSenderId: "1039618171619",
-  appId: "SEU_APP_ID"
+  appId: "1:1039618171619:web:c5924e26a940b2e1a9dbd6"
 };
 
 const app = initializeApp(firebaseConfig);

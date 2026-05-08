@@ -61,18 +61,18 @@ import { getAuth, createUserWithEmailAndPassword }
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
+  apiKey: "AIzaSyBhAbXAIDT-W3tmBBSoAMW3aijvbOXUIgk",
   authDomain: "volaryon-3a9c6.firebaseapp.com",
   projectId: "volaryon-3a9c6",
   storageBucket: "volaryon-3a9c6.firebasestorage.app",
   messagingSenderId: "1039618171619",
-  appId: "SEU_APP_ID"
+  appId: "1:1039618171619:web:c5924e26a940b2e1a9dbd6"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// 🔥 CADASTRO
+// 🔥 CADASTRO REAL
 window.criarConta = function () {
 
   const usuario = document.getElementById("usuario").value;
@@ -80,7 +80,6 @@ window.criarConta = function () {
   const senha = document.getElementById("senha").value;
   const confirmar = document.getElementById("confirmarSenha").value;
 
-  // validações
   if (!usuario || !email || !senha || !confirmar) {
     alert("Preencha todos os campos!");
     return;
@@ -92,22 +91,29 @@ window.criarConta = function () {
   }
 
   if (senha.length < 6) {
-    alert("A senha precisa ter pelo menos 6 caracteres!");
+    alert("Senha precisa ter pelo menos 6 caracteres!");
     return;
   }
 
-  // cria conta
   createUserWithEmailAndPassword(auth, email, senha)
-    .then((userCredential) => {
-
+    .then(() => {
       alert("Conta criada com sucesso!");
-
-      // volta pro login
       window.location.href = "login.html";
     })
     .catch((error) => {
       alert("Erro: " + error.message);
     });
+}
+
+// 👁 OLHO DA SENHA
+window.toggleSenha = function (id) {
+  const input = document.getElementById(id);
+  input.type = input.type === "password" ? "text" : "password";
+}
+
+// 🔙 voltar login
+window.voltarLogin = function () {
+  window.location.href = "login.html";
 }
 </script>
 </body>

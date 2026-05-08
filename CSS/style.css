@@ -407,3 +407,60 @@ button:hover {
 .olho:hover {
   color: crimson;
 }
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* inputs lado a lado */
+.login-inputs {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* cada campo */
+.login-inputs input,
+.senha-box {
+  width: 250px;
+}
+
+/* senha continua funcionando com olho */
+.senha-box {
+  position: relative;
+}
+
+.senha-box input {
+  width: 100%;
+}.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* inputs lado a lado */
+.login-inputs {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* cada campo */
+.login-inputs input,
+.senha-box {
+  width: 250px;
+}
+
+/* senha continua funcionando com olho */
+.senha-box {
+  position: relative;
+}
+
+.senha-box input {
+  width: 100%;
+}

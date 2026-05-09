@@ -77,18 +77,38 @@ window.criarConta = function () {
 
     .then(() => {
 
-      alert("Conta criada com sucesso!");
+  const tela = document.getElementById("despertarTela");
 
-      window.location.href = "login.html";
+  const video1 = document.getElementById("video1");
 
-    })
+  const video2 = document.getElementById("video2");
 
-    .catch((error) => {
+  if (!tela || !video1 || !video2) {
 
-      alert("Erro: " + error.message);
+    window.location.href = "home.html";
 
-      console.log(error.code);
+    return;
 
-    });
-};
+  }
 
+  tela.style.display = "flex";
+
+  video1.play();
+
+  video1.onended = () => {
+
+    video1.classList.remove("active");
+
+    video2.classList.add("active");
+
+    video2.play();
+
+  };
+
+  video2.onended = () => {
+
+    window.location.href = "home.html";
+
+  };
+
+})

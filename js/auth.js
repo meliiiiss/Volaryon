@@ -91,3 +91,36 @@ window.criarConta = function () {
 
     });
 };
+.then(() => {
+
+  const tela = document.getElementById("despertarTela");
+
+  const video1 = document.getElementById("video1");
+
+  const video2 = document.getElementById("video2");
+
+  /* 🌑 mostra cinematic */
+  tela.style.display = "flex";
+
+  /* ▶ toca primeiro vídeo */
+  video1.play();
+
+  /* 🌌 transição */
+  video1.onended = () => {
+
+    video1.classList.remove("active");
+
+    video2.classList.add("active");
+
+    video2.play();
+
+  };
+
+  /* ☀️ final */
+  video2.onended = () => {
+
+    window.location.href = "home.html";
+
+  };
+
+})

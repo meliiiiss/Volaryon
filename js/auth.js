@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-import { 
-  getAuth, 
+
+import {
+  getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
@@ -17,10 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
----
-
-# 🔑 LOGIN
-
+// 🔑 LOGIN
 window.entrar = function () {
 
   const email = document.getElementById("email").value;
@@ -32,25 +30,33 @@ window.entrar = function () {
   }
 
   signInWithEmailAndPassword(auth, email, senha)
+
     .then(() => {
+
       alert("Despertar realizado!");
-      window.location.href = "index.html";
+
+      window.location.href = "home.html";
+
     })
+
     .catch((error) => {
+
       alert("Erro: " + error.message);
+
       console.log(error.code);
+
     });
 };
 
----
-
-# 🧬 CADASTRO
-
+// 🧬 CADASTRO
 window.criarConta = function () {
 
   const email = document.getElementById("email").value;
+
   const senha = document.getElementById("senha").value;
-  const confirmar = document.getElementById("confirmarSenha")?.value;
+
+  const confirmar =
+    document.getElementById("confirmarSenha")?.value;
 
   if (!email || !senha) {
     alert("Preencha todos os campos!");
@@ -68,12 +74,20 @@ window.criarConta = function () {
   }
 
   createUserWithEmailAndPassword(auth, email, senha)
+
     .then(() => {
+
       alert("Conta criada com sucesso!");
+
       window.location.href = "login.html";
+
     })
+
     .catch((error) => {
+
       alert("Erro: " + error.message);
+
       console.log(error.code);
+
     });
 };

@@ -99,13 +99,22 @@ window.criarConta = function () {
 
   const video2 = document.getElementById("video2");
 
-  /* 🌑 mostra cinematic */
+  /* se não existir cinematic */
+  if (!tela || !video1 || !video2) {
+
+    window.location.href = "home.html";
+
+    return;
+
+  }
+
+  /* 🌑 mostra tela */
   tela.style.display = "flex";
 
-  /* ▶ toca primeiro vídeo */
+  /* ▶ toca primeiro */
   video1.play();
 
-  /* 🌌 transição */
+  /* 🌌 troca */
   video1.onended = () => {
 
     video1.classList.remove("active");

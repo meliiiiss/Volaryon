@@ -84,46 +84,7 @@
       alert("Sistema de criação de conta ainda não ativado");
     }
   </script>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } 
-from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBhAbXAIDT-W3tmBBSoAMW3aijvbOXUIgk",
-  authDomain: "volaryon-3a9c6.firebaseapp.com",
-  projectId: "volaryon-3a9c6",
-  storageBucket: "volaryon-3a9c6.firebasestorage.app",
-  messagingSenderId: "1039618171619",
-  appId: "1:1039618171619:web:c5924e26a940b2e1a9dbd6"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-// 🔥 LOGIN REAL
-window.entrar = function () {
-
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
-
-  signInWithEmailAndPassword(auth, email, senha)
-    .then(() => {
-      alert("Login realizado com sucesso!");
-      window.location.href = "index.html";
-    })
-    .catch((error) => {
-      alert("Erro: " + error.message);
-    });
-}
-
-// 👁 olho senha
-window.toggleSenha = function () {
-  const senha = document.getElementById("senha");
-
-  senha.type = senha.type === "password" ? "text" : "password";
-}
-</script>
   <script type="module" src="js/auth.js"></script>
 </body>
 </html>

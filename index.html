@@ -59,35 +59,7 @@ window.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", iniciarMusica);
 });
 </script>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-import { getAuth, onAuthStateChanged } 
-from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBhAbXAIDT-W3tmBBSoAMW3aijvbOXUIgk",
-  authDomain: "volaryon-3a9c6.firebaseapp.com",
-  projectId: "volaryon-3a9c6",
-  storageBucket: "volaryon-3a9c6.firebasestorage.app",
-  messagingSenderId: "1039618171619",
-  appId: "1:1039618171619:web:c5924e26a940b2e1a9dbd6"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-// 🔒 PROTEÇÃO DO JOGO
-onAuthStateChanged(auth, (user) => {
-  if (!user) {
-    // se não estiver logado, volta pro login
-    window.location.href = "login.html";
-  } else {
-    // jogador logado
-    console.log("Jogador:", user.email);
-  }
-});
-</script>
-  <!-- SCRIPT (UMA VEZ SÓ) -->
+  
   <script src="js/script.js"></script>
 
 </body>

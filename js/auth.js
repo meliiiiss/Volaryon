@@ -91,6 +91,7 @@ window.criarConta = function () {
 
     });
 };
+
 .then(() => {
 
   const tela = document.getElementById("despertarTela");
@@ -99,7 +100,6 @@ window.criarConta = function () {
 
   const video2 = document.getElementById("video2");
 
-  /* se não existir cinematic */
   if (!tela || !video1 || !video2) {
 
     window.location.href = "home.html";
@@ -108,13 +108,10 @@ window.criarConta = function () {
 
   }
 
-  /* 🌑 mostra tela */
   tela.style.display = "flex";
 
-  /* ▶ toca primeiro */
   video1.play();
 
-  /* 🌌 troca */
   video1.onended = () => {
 
     video1.classList.remove("active");
@@ -125,7 +122,6 @@ window.criarConta = function () {
 
   };
 
-  /* ☀️ final */
   video2.onended = () => {
 
     window.location.href = "home.html";

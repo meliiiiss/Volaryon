@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Login - Volaryon</title>
+
+  <link rel="stylesheet" href="CSS/style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>DESPERTAR</h1>
+
+      <p class="story">
+        Apenas aqueles tocados pelo Véu podem retornar ao mundo.
+      </p>
+
+      <div class="login-box">
+
+        <input type="email" id="email" placeholder="E-mail">
+
+        <input type="password" id="senha" placeholder="Senha">
+
+        <button onclick="entrar()">Entrar</button>
+
+        <a href="cadastro.html" class="link-btn">
+          Criar novo usuário
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <div id="despertarTela" class="despertar-tela"></div>
+
+  <audio id="bgMusic" loop>
+    <source src="assets/audio/musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="js/script.js"></script>
+  <script type="module" src="js/auth.js"></script>
+
+</body>
+
+</html>

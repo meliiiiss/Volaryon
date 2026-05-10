@@ -1,7 +1,7 @@
 let tocou = false;
 
 /* ======================= */
-/* MÚSICA */
+/* MÚSICA (INTERAÇÃO DO USUÁRIO) */
 /* ======================= */
 
 window.addEventListener("click", () => {
@@ -20,10 +20,10 @@ window.addEventListener("click", () => {
 
   tocou = true;
 
-});
+}, { once: true }); // evita listener eterno
 
 /* ======================= */
-/* HISTÓRIA INTRO */
+/* HISTÓRIA INTRO (INDEX) */
 /* ======================= */
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -31,44 +31,38 @@ window.addEventListener("DOMContentLoaded", () => {
   const story = document.getElementById("story");
   const btn = document.getElementById("enterBtn");
 
-  // só roda no index
+  // garante que só roda no index
   if (!story || !btn) return;
 
-  const texto =
-    "O mundo não acabou… ele apenas foi reescrito.\n\n" +
-    "Após o despertar dos Núcleos Primordiais, a realidade se fragmentou.\n\n" +
-    "Criaturas surgiram das sombras entre dimensões esquecidas.\n\n" +
-    "Deuses antigos observam em silêncio… esperando.\n\n" +
-    "Apenas os Despertos podem atravessar o Véu.";
-
-  const palavras = texto.split(" ");
+  const texto = [
+    "O mundo não acabou… ele apenas foi reescrito.",
+    "Após o despertar dos Núcleos Primordiais, a realidade se fragmentou.",
+    "Criaturas surgiram das sombras entre dimensões esquecidas.",
+    "Deuses antigos observam em silêncio… esperando.",
+    "Apenas os Despertos podem atravessar o Véu."
+  ];
 
   let i = 0;
 
-  // limpa texto
   story.innerHTML = "";
-
-  // esconde botão no início
-  btn.classList.remove("show");
+  btn.style.display = "none";
 
   function escrever() {
 
-    if (i < palavras.length) {
+    if (i < texto.length) {
 
-      story.innerHTML += palavras[i] + " ";
-
+      story.innerHTML += texto[i] + "<br><br>";
       i++;
 
-      setTimeout(escrever, 120);
+      setTimeout(escrever, 900);
 
     } else {
 
-      // MOSTRA BOTÃO
       btn.style.display = "inline-block";
 
       setTimeout(() => {
         btn.classList.add("show");
-      }, 500);
+      }, 300);
 
     }
 

@@ -878,3 +878,168 @@ body{
   box-shadow:
     0 15px 35px rgba(255,0,0,0.45);
 }
+
+/* ================================= */
+/* LOGIN AJUSTADO */
+/* ================================= */
+
+.login-box{
+
+  margin-top:35px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  gap:18px;
+}
+
+/* INPUTS */
+
+.login-inputs{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:14px;
+
+  width:320px;
+}
+
+.login-inputs input{
+
+  width:100%;
+
+  padding:16px;
+
+  border:none;
+
+  border-radius:16px;
+
+  background:
+    rgba(0,0,0,0.45);
+
+  backdrop-filter:blur(6px);
+
+  color:white;
+
+  font-size:15px;
+
+  outline:none;
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  transition:0.3s ease;
+}
+
+.login-inputs input:focus{
+
+  border:
+    1px solid rgba(200,155,60,0.5);
+
+  box-shadow:
+    0 0 20px rgba(200,155,60,0.15);
+}
+
+/* SENHA */
+
+.senha-box{
+
+  position:relative;
+
+  width:100%;
+}
+
+.olho{
+
+  position:absolute;
+
+  right:16px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  cursor:pointer;
+
+  opacity:0.7;
+
+  transition:0.3s ease;
+}
+
+.olho:hover{
+
+  opacity:1;
+}
+
+/* BOTÕES */
+
+.login-box button{
+
+  width:320px;
+
+  padding:16px;
+
+  border:none;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #700000,
+      #220000
+    );
+
+  color:white;
+
+  font-size:15px;
+
+  letter-spacing:2px;
+
+  cursor:pointer;
+
+  transition:0.35s ease;
+
+  box-shadow:
+    0 10px 30px rgba(255,0,0,0.18);
+}
+
+.login-box button:hover{
+
+  transform:
+    translateY(-2px)
+    scale(1.02);
+
+  box-shadow:
+    0 15px 35px rgba(255,0,0,0.35);
+}
+
+/* BOTÃO SECUNDÁRIO */
+
+.novo-user{
+
+  background:
+    rgba(255,255,255,0.05) !important;
+
+  border:
+    1px solid rgba(255,255,255,0.08) !important;
+
+  color:
+    rgba(255,255,255,0.85) !important;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:500px){
+
+  .login-inputs,
+  .login-box button{
+
+    width:90vw;
+  }
+
+}

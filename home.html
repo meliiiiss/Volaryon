@@ -17,7 +17,7 @@
 
 <body>
 
-  <!-- FUNDO -->
+  <!-- VIDEO FUNDO -->
 
   <video
     class="bg-video"
@@ -36,30 +36,43 @@
 
   <!-- OVERLAY -->
 
-  <div class="bg-dark"></div>
+  <div class="bg-overlay"></div>
 
   <!-- TOPO -->
 
-  <header class="top-ui">
+  <header class="topbar">
 
-    <div class="player-box">
+    <!-- PERFIL -->
 
-      <div class="player-avatar"></div>
+    <div class="profile-box">
 
-      <div>
+      <div class="profile-avatar"></div>
+
+      <div class="profile-info">
+
         <h3>Melissa</h3>
+
         <span>Desperta • Nível 1</span>
+
       </div>
 
     </div>
 
-    <div class="top-menu">
+    <!-- RECURSOS -->
 
-      <span>✦ 13.880</span>
+    <div class="top-resources">
 
-      <span>⬢ 900</span>
+      <div class="resource">
 
-      <span>⚙</span>
+        <span class="resource-icon">✦</span>
+
+        <span>13.880 Fragmas</span>
+
+      </div>
+
+      <button class="config-btn">
+        ⚙
+      </button>
 
     </div>
 
@@ -67,9 +80,9 @@
 
   <!-- HERO -->
 
-  <section class="hero-home">
+  <main class="hero-section">
 
-    <div class="hero-info">
+    <div class="hero-content">
 
       <span class="subtitle">
         O Véu Desperto
@@ -80,46 +93,53 @@
       </h1>
 
       <p>
-        As fronteiras entre os mundos ruíram.
-        Apenas os Despertos conseguem sobreviver
-        às entidades além do Véu.
+        Após o colapso dos Núcleos Primordiais,
+        entidades ancestrais atravessaram o Véu.
+        Apenas os Despertos podem sobreviver
+        às ruínas do novo mundo.
       </p>
 
-      <button class="play-button">
-        ▶ INICIAR JORNADA
+      <button class="play-btn">
+
+        ▶ CONTINUAR JORNADA
+
       </button>
 
     </div>
 
-  </section>
+  </main>
 
   <!-- MENU INFERIOR -->
 
   <nav class="bottom-menu">
 
-    <button class="active">
-      Home
+    <button class="menu-item active">
+      Manual
     </button>
 
-    <button>
-      Perfil
+    <button class="menu-item">
+      Bestiário
     </button>
 
-    <button>
+    <button class="menu-item">
+      Mapas
+    </button>
+
+    <button class="menu-item">
+      Fichas
+    </button>
+
+    <button class="menu-item">
       Grimório
     </button>
 
-    <button>
+    <button class="menu-item">
       Inventário
-    </button>
-
-    <button>
-      Clãs
     </button>
 
   </nav>
 
-  <!-- ÁUDIO -->
+  <!-- AUDIO -->
 
   <audio id="bgMusic" loop>
 
@@ -133,4 +153,5 @@
   <script src="js/script.js"></script>
 
 </body>
+
 </html>

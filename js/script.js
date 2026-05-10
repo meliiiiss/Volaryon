@@ -46,8 +46,6 @@ window.addEventListener("DOMContentLoaded", () => {
   let i = 0;
 
   story.innerHTML = "";
-  btn.style.opacity = "0";
-  btn.style.pointerEvents = "none";
 
   function escrever() {
 

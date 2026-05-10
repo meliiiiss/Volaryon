@@ -63,8 +63,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
         btn.classList.add("show");
 
-        btn.style.pointerEvents = "auto";
-
       }, 1200);
 
     }

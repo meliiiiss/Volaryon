@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const story = document.getElementById("story");
   const btn = document.getElementById("enterBtn");
 
-  // só executa no index
+  // só roda no index
   if (!story || !btn) return;
 
   const texto =
@@ -45,7 +45,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
   let i = 0;
 
+  // limpa texto
   story.innerHTML = "";
+
+  // esconde botão no início
+  btn.classList.remove("show");
 
   function escrever() {
 
@@ -55,15 +59,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
       i++;
 
-      setTimeout(escrever, 140);
+      setTimeout(escrever, 120);
 
     } else {
 
+      // MOSTRA BOTÃO
+      btn.style.display = "inline-block";
+
       setTimeout(() => {
-
         btn.classList.add("show");
-
-      }, 1200);
+      }, 500);
 
     }
 

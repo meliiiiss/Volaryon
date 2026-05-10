@@ -934,3 +934,296 @@ button:hover{
   }
 
 }
+
+/* ================================= */
+/* HOME AAA */
+/* ================================= */
+
+.bg-dark{
+
+  position:fixed;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(0,0,0,0.92) 15%,
+      rgba(0,0,0,0.35) 55%,
+      rgba(0,0,0,0.7)
+    );
+
+  z-index:-1;
+}
+
+/* ================================= */
+/* TOPO */
+/* ================================= */
+
+.top-ui{
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:100%;
+
+  padding:20px 35px;
+
+  display:flex;
+
+  justify-content:space-between;
+  align-items:center;
+
+  z-index:10;
+}
+
+/* PLAYER */
+
+.player-box{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
+}
+
+.player-avatar{
+
+  width:75px;
+  height:75px;
+
+  border-radius:50%;
+
+  border:3px solid #c89b3c;
+
+  background:
+    url("../assets/imagens/avatar.jpg");
+
+  background-size:cover;
+  background-position:center;
+
+  box-shadow:
+    0 0 25px rgba(200,155,60,0.4);
+}
+
+.player-box h3{
+
+  font-size:1.2rem;
+
+  margin-bottom:4px;
+}
+
+.player-box span{
+
+  opacity:0.7;
+
+  font-size:0.9rem;
+}
+
+/* MENU TOPO */
+
+.top-menu{
+
+  display:flex;
+
+  gap:25px;
+
+  font-size:1rem;
+
+  align-items:center;
+}
+
+/* ================================= */
+/* HERO */
+/* ================================= */
+
+.hero-home{
+
+  width:100%;
+  height:100vh;
+
+  display:flex;
+
+  align-items:center;
+
+  padding-left:6%;
+}
+
+.hero-info{
+
+  max-width:650px;
+
+  animation:surgir 1.5s ease;
+}
+
+.subtitle{
+
+  color:#c89b3c;
+
+  letter-spacing:4px;
+
+  font-size:0.9rem;
+
+  text-transform:uppercase;
+}
+
+.hero-info h1{
+
+  font-size:
+    clamp(4rem, 10vw, 7rem);
+
+  line-height:0.95;
+
+  margin:
+    15px 0 25px;
+
+  text-shadow:
+    0 0 30px rgba(255,255,255,0.08);
+}
+
+.hero-info p{
+
+  font-size:1.1rem;
+
+  line-height:1.8;
+
+  max-width:580px;
+
+  opacity:0.85;
+
+  font-family:'Libre Baskerville', serif;
+}
+
+/* ================================= */
+/* PLAY BUTTON */
+/* ================================= */
+
+.play-button{
+
+  margin-top:35px;
+
+  padding:20px 40px;
+
+  font-size:1rem;
+
+  letter-spacing:2px;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8b0000,
+      #300000
+    );
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 10px 35px rgba(255,0,0,0.25);
+}
+
+.play-button:hover{
+
+  transform:
+    scale(1.05);
+
+}
+
+/* ================================= */
+/* MENU INFERIOR */
+/* ================================= */
+
+.bottom-menu{
+
+  position:fixed;
+
+  bottom:0;
+  left:0;
+
+  width:100%;
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:20px;
+
+  padding:20px;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,0.95),
+      rgba(0,0,0,0.4)
+    );
+
+  backdrop-filter:blur(10px);
+}
+
+.bottom-menu button{
+
+  background:transparent;
+
+  border:none;
+
+  color:white;
+
+  font-size:1rem;
+
+  opacity:0.7;
+
+  transition:0.3s ease;
+}
+
+.bottom-menu button:hover,
+.bottom-menu .active{
+
+  opacity:1;
+
+  color:#c89b3c;
+
+  transform:
+    translateY(-2px);
+}
+
+/* ================================= */
+/* RESPONSIVO */
+/* ================================= */
+
+@media(max-width:900px){
+
+  .hero-home{
+
+    justify-content:center;
+
+    padding:20px;
+
+    text-align:center;
+  }
+
+  .hero-info{
+    max-width:100%;
+  }
+
+  .top-ui{
+
+    padding:15px;
+  }
+
+}
+
+@media(max-width:700px){
+
+  .bottom-menu{
+
+    overflow-x:auto;
+
+    justify-content:flex-start;
+  }
+
+}

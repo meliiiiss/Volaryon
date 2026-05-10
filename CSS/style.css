@@ -13,18 +13,330 @@
 /* ================================= */
 
 body{
-
   font-family:'Cinzel', serif;
-
   color:white;
-
-  overflow:hidden;
-
   background:black;
+  overflow:hidden;
 }
 
 /* ================================= */
-/* VIDEO */
+/* ANIMAÇÃO */
+/* ================================= */
+
+@keyframes surgir{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+/* ================================= */
+/* INDEX + LOGIN */
+/* ================================= */
+
+.hero{
+
+  width:100%;
+  height:100vh;
+
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  padding:20px;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.hero::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.65),
+      rgba(0,0,0,0.92)
+    ),
+    url("../assets/imagens/fundo1.jpg");
+
+  background-size:cover;
+  background-position:center;
+
+  z-index:-1;
+}
+
+/* ================================= */
+/* HERO CONTENT */
+/* ================================= */
+
+.hero-content{
+
+  width:100%;
+  max-width:700px;
+
+  animation:surgir 1.2s ease;
+}
+
+.hero-content h1{
+
+  font-size:
+    clamp(4rem, 10vw, 8rem);
+
+  line-height:0.95;
+
+  margin-bottom:20px;
+
+  text-shadow:
+    0 0 35px rgba(255,255,255,0.12);
+}
+
+/* ================================= */
+/* STORY */
+/* ================================= */
+
+.story{
+
+  font-size:1.15rem;
+
+  line-height:1.8;
+
+  opacity:0.9;
+
+  max-width:750px;
+
+  margin:auto;
+
+  font-family:
+    'Libre Baskerville',
+    serif;
+}
+
+/* ================================= */
+/* BOTÃO ENTRAR */
+/* ================================= */
+
+#enterBtn{
+
+  margin-top:35px;
+
+  padding:18px 40px;
+
+  border:none;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #700000,
+      #220000
+    );
+
+  color:white;
+
+  font-size:1rem;
+
+  cursor:pointer;
+
+  transition:0.35s ease;
+
+  box-shadow:
+    0 10px 30px rgba(255,0,0,0.22);
+}
+
+#enterBtn:hover{
+
+  transform:
+    scale(1.05);
+
+  box-shadow:
+    0 15px 35px rgba(255,0,0,0.45);
+}
+
+/* ================================= */
+/* LOGIN */
+/* ================================= */
+
+.login-box{
+
+  width:100%;
+
+  margin-top:35px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  gap:18px;
+}
+
+/* INPUTS */
+
+.login-inputs{
+
+  width:100%;
+
+  max-width:340px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:15px;
+}
+
+.login-inputs input{
+
+  width:100%;
+
+  padding:18px;
+
+  border:none;
+
+  border-radius:18px;
+
+  background:
+    rgba(0,0,0,0.45);
+
+  backdrop-filter:blur(8px);
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  color:white;
+
+  font-size:15px;
+
+  outline:none;
+
+  transition:0.3s ease;
+}
+
+.login-inputs input::placeholder{
+
+  color:
+    rgba(255,255,255,0.45);
+}
+
+.login-inputs input:focus{
+
+  border:
+    1px solid rgba(200,155,60,0.45);
+
+  box-shadow:
+    0 0 20px rgba(200,155,60,0.15);
+}
+
+/* ================================= */
+/* SENHA */
+/* ================================= */
+
+.senha-box{
+
+  position:relative;
+
+  width:100%;
+}
+
+.olho{
+
+  position:absolute;
+
+  right:18px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  cursor:pointer;
+
+  opacity:0.7;
+
+  transition:0.3s ease;
+}
+
+.olho:hover{
+
+  opacity:1;
+}
+
+/* ================================= */
+/* BOTÕES LOGIN */
+/* ================================= */
+
+.login-box button{
+
+  width:100%;
+
+  max-width:340px;
+
+  padding:18px;
+
+  border:none;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #700000,
+      #220000
+    );
+
+  color:white;
+
+  font-size:15px;
+
+  letter-spacing:2px;
+
+  cursor:pointer;
+
+  transition:0.35s ease;
+
+  box-shadow:
+    0 10px 30px rgba(255,0,0,0.2);
+}
+
+.login-box button:hover{
+
+  transform:
+    translateY(-2px)
+    scale(1.02);
+
+  box-shadow:
+    0 15px 35px rgba(255,0,0,0.4);
+}
+
+/* BOTÃO SECUNDÁRIO */
+
+.novo-user{
+
+  background:
+    rgba(255,255,255,0.05) !important;
+
+  border:
+    1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* ================================= */
+/* HOME */
 /* ================================= */
 
 .bg-video{
@@ -41,10 +353,6 @@ body{
   z-index:-3;
 }
 
-/* ================================= */
-/* OVERLAY */
-/* ================================= */
-
 .bg-overlay{
 
   position:fixed;
@@ -52,7 +360,6 @@ body{
   inset:0;
 
   background:
-
     linear-gradient(
       to right,
       rgba(0,0,0,0.92) 10%,
@@ -86,9 +393,7 @@ body{
   z-index:10;
 }
 
-/* ================================= */
 /* PERFIL */
-/* ================================= */
 
 .profile-box{
 
@@ -121,15 +426,13 @@ body{
 .profile-info h3{
 
   font-size:1.1rem;
-
-  margin-bottom:4px;
 }
 
 .profile-info span{
 
-  font-size:0.85rem;
-
   opacity:0.7;
+
+  font-size:0.85rem;
 }
 
 /* ================================= */
@@ -169,9 +472,11 @@ body{
 .resource-icon{
 
   color:#c89b3c;
-
-  font-size:1.1rem;
 }
+
+/* ================================= */
+/* CONFIG */
+/* ================================= */
 
 .config-btn{
 
@@ -189,8 +494,6 @@ body{
 
   cursor:pointer;
 
-  backdrop-filter:blur(8px);
-
   transition:0.3s ease;
 }
 
@@ -200,7 +503,7 @@ body{
 }
 
 /* ================================= */
-/* HERO */
+/* HERO HOME */
 /* ================================= */
 
 .hero-section{
@@ -215,25 +518,23 @@ body{
   padding-left:7%;
 }
 
-.hero-content{
+.hero-section .hero-content{
 
   max-width:650px;
-
-  animation:surgir 1.5s ease;
 }
 
 .subtitle{
 
   color:#c89b3c;
 
-  text-transform:uppercase;
-
   letter-spacing:4px;
+
+  text-transform:uppercase;
 
   font-size:0.9rem;
 }
 
-.hero-content h1{
+.hero-section h1{
 
   font-size:
     clamp(4rem, 10vw, 8rem);
@@ -242,12 +543,9 @@ body{
 
   margin:
     15px 0 25px;
-
-  text-shadow:
-    0 0 35px rgba(255,255,255,0.08);
 }
 
-.hero-content p{
+.hero-section p{
 
   font-size:1.05rem;
 
@@ -257,11 +555,13 @@ body{
 
   max-width:580px;
 
-  font-family:'Libre Baskerville', serif;
+  font-family:
+    'Libre Baskerville',
+    serif;
 }
 
 /* ================================= */
-/* PLAY */
+/* PLAY BUTTON */
 /* ================================= */
 
 .play-btn{
@@ -297,11 +597,7 @@ body{
 
 .play-btn:hover{
 
-  transform:
-    scale(1.05);
-
-  box-shadow:
-    0 15px 35px rgba(255,0,0,0.4);
+  transform:scale(1.05);
 }
 
 /* ================================= */
@@ -363,26 +659,7 @@ body{
 
   color:#c89b3c;
 
-  transform:
-    translateY(-2px);
-}
-
-/* ================================= */
-/* ANIMAÇÃO */
-/* ================================= */
-
-@keyframes surgir{
-
-  from{
-    opacity:0;
-    transform:translateY(40px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
+  transform:translateY(-2px);
 }
 
 /* ================================= */
@@ -395,13 +672,9 @@ body{
 
     justify-content:center;
 
-    padding:20px;
-
     text-align:center;
-  }
 
-  .hero-content{
-    max-width:100%;
+    padding:20px;
   }
 
   .topbar{
@@ -412,6 +685,10 @@ body{
 }
 
 @media(max-width:700px){
+
+  body{
+    overflow:auto;
+  }
 
   .bottom-menu{
 
@@ -426,620 +703,9 @@ body{
     height:55px;
   }
 
-}
-/* ================================= */
-/* HOME VOLARYON */
-/* ================================= */
+  .hero-content h1{
 
-.bg-video{
-
-  position:fixed;
-
-  inset:0;
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  z-index:-3;
-}
-
-.bg-overlay{
-
-  position:fixed;
-
-  inset:0;
-
-  background:
-    linear-gradient(
-      to right,
-      rgba(0,0,0,0.92) 10%,
-      rgba(0,0,0,0.45) 45%,
-      rgba(0,0,0,0.82)
-    );
-
-  z-index:-2;
-}
-
-/* ================================= */
-/* TOPO */
-/* ================================= */
-
-.topbar{
-
-  position:fixed;
-
-  top:0;
-  left:0;
-
-  width:100%;
-
-  padding:22px 35px;
-
-  display:flex;
-
-  justify-content:space-between;
-  align-items:center;
-
-  z-index:10;
-}
-
-/* PERFIL */
-
-.profile-box{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:15px;
-}
-
-.profile-avatar{
-
-  width:70px;
-  height:70px;
-
-  border-radius:50%;
-
-  border:2px solid #c89b3c;
-
-  background:
-    url("../assets/imagens/avatar.jpg");
-
-  background-size:cover;
-  background-position:center;
-
-  box-shadow:
-    0 0 25px rgba(200,155,60,0.35);
-}
-
-.profile-info h3{
-
-  font-size:1.1rem;
-
-  margin-bottom:4px;
-}
-
-.profile-info span{
-
-  font-size:0.85rem;
-
-  opacity:0.7;
-}
-
-/* ================================= */
-/* RECURSOS */
-/* ================================= */
-
-.top-resources{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:15px;
-}
-
-.resource{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  padding:12px 18px;
-
-  border-radius:16px;
-
-  background:
-    rgba(0,0,0,0.45);
-
-  backdrop-filter:blur(8px);
-
-  border:
-    1px solid rgba(255,255,255,0.05);
-}
-
-.resource-icon{
-
-  color:#c89b3c;
-}
-
-.config-btn{
-
-  width:50px;
-  height:50px;
-
-  border:none;
-
-  border-radius:16px;
-
-  background:
-    rgba(0,0,0,0.45);
-
-  color:white;
-
-  cursor:pointer;
-}
-
-/* ================================= */
-/* HERO */
-/* ================================= */
-
-.hero-section{
-
-  width:100%;
-  height:100vh;
-
-  display:flex;
-
-  align-items:center;
-
-  padding-left:7%;
-}
-
-.hero-content{
-
-  max-width:650px;
-
-  animation:surgir 1.5s ease;
-}
-
-.subtitle{
-
-  color:#c89b3c;
-
-  letter-spacing:4px;
-
-  font-size:0.9rem;
-
-  text-transform:uppercase;
-}
-
-.hero-content h1{
-
-  font-size:
-    clamp(4rem, 10vw, 8rem);
-
-  line-height:0.95;
-
-  margin:
-    15px 0 25px;
-
-  text-shadow:
-    0 0 35px rgba(255,255,255,0.08);
-}
-
-.hero-content p{
-
-  font-size:1.05rem;
-
-  line-height:1.8;
-
-  opacity:0.85;
-
-  max-width:580px;
-
-  font-family:'Libre Baskerville', serif;
-}
-
-/* ================================= */
-/* PLAY */
-/* ================================= */
-
-.play-btn{
-
-  margin-top:35px;
-
-  padding:20px 38px;
-
-  border:none;
-
-  border-radius:18px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #7a0000,
-      #2c0000
-    );
-
-  color:white;
-
-  font-size:1rem;
-
-  letter-spacing:2px;
-
-  cursor:pointer;
-
-  transition:0.35s ease;
-
-  box-shadow:
-    0 10px 30px rgba(255,0,0,0.25);
-}
-
-.play-btn:hover{
-
-  transform:
-    scale(1.05);
-}
-
-/* ================================= */
-/* MENU */
-/* ================================= */
-
-.bottom-menu{
-
-  position:fixed;
-
-  bottom:0;
-  left:0;
-
-  width:100%;
-
-  display:flex;
-
-  justify-content:center;
-
-  gap:20px;
-
-  padding:22px;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,0.92),
-      rgba(0,0,0,0.3)
-    );
-
-  backdrop-filter:blur(10px);
-
-  z-index:20;
-}
-
-.menu-item{
-
-  background:transparent;
-
-  border:none;
-
-  color:white;
-
-  font-size:0.95rem;
-
-  letter-spacing:1px;
-
-  opacity:0.7;
-
-  cursor:pointer;
-
-  transition:0.3s ease;
-}
-
-.menu-item:hover,
-.menu-item.active{
-
-  opacity:1;
-
-  color:#c89b3c;
-
-  transform:
-    translateY(-2px);
-}
-
-/* ================================= */
-/* RESPONSIVO */
-/* ================================= */
-
-@media(max-width:900px){
-
-  .hero-section{
-
-    justify-content:center;
-
-    padding:20px;
-
-    text-align:center;
-  }
-
-  .hero-content{
-    max-width:100%;
-  }
-
-}
-
-@media(max-width:700px){
-
-  .bottom-menu{
-
-    overflow-x:auto;
-
-    justify-content:flex-start;
-  }
-
-}
-
-/* ================================= */
-/* INDEX */
-/* ================================= */
-
-.hero{
-
-  width:100%;
-  height:100vh;
-
-  display:flex;
-
-  justify-content:center;
-  align-items:center;
-
-  text-align:center;
-
-  padding:20px;
-
-  position:relative;
-
-  overflow:hidden;
-}
-
-.hero::before{
-
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:
-    linear-gradient(
-      rgba(0,0,0,0.7),
-      rgba(0,0,0,0.92)
-    ),
-    url("../assets/imagens/fundo1.jpg");
-
-  background-size:cover;
-
-  background-position:center;
-
-  z-index:-1;
-}
-
-.story{
-
-  margin-top:20px;
-
-  font-size:1.1rem;
-
-  line-height:1.8;
-
-  max-width:750px;
-
-  opacity:0.9;
-
-  font-family:'Libre Baskerville', serif;
-}
-
-#enterBtn{
-
-  margin-top:35px;
-
-  padding:18px 40px;
-
-  border:none;
-
-  border-radius:18px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #6b0000,
-      #1c0000
-    );
-
-  color:white;
-
-  font-size:1rem;
-
-  cursor:pointer;
-
-  transition:0.35s ease;
-
-  box-shadow:
-    0 10px 30px rgba(255,0,0,0.25);
-}
-
-#enterBtn:hover{
-
-  transform:scale(1.05);
-
-  box-shadow:
-    0 15px 35px rgba(255,0,0,0.45);
-}
-
-/* ================================= */
-/* LOGIN AJUSTADO */
-/* ================================= */
-
-.login-box{
-
-  margin-top:35px;
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  gap:18px;
-}
-
-/* INPUTS */
-
-.login-inputs{
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:14px;
-
-  width:320px;
-}
-
-.login-inputs input{
-
-  width:100%;
-
-  padding:16px;
-
-  border:none;
-
-  border-radius:16px;
-
-  background:
-    rgba(0,0,0,0.45);
-
-  backdrop-filter:blur(6px);
-
-  color:white;
-
-  font-size:15px;
-
-  outline:none;
-
-  border:
-    1px solid rgba(255,255,255,0.08);
-
-  transition:0.3s ease;
-}
-
-.login-inputs input:focus{
-
-  border:
-    1px solid rgba(200,155,60,0.5);
-
-  box-shadow:
-    0 0 20px rgba(200,155,60,0.15);
-}
-
-/* SENHA */
-
-.senha-box{
-
-  position:relative;
-
-  width:100%;
-}
-
-.olho{
-
-  position:absolute;
-
-  right:16px;
-  top:50%;
-
-  transform:translateY(-50%);
-
-  cursor:pointer;
-
-  opacity:0.7;
-
-  transition:0.3s ease;
-}
-
-.olho:hover{
-
-  opacity:1;
-}
-
-/* BOTÕES */
-
-.login-box button{
-
-  width:320px;
-
-  padding:16px;
-
-  border:none;
-
-  border-radius:18px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #700000,
-      #220000
-    );
-
-  color:white;
-
-  font-size:15px;
-
-  letter-spacing:2px;
-
-  cursor:pointer;
-
-  transition:0.35s ease;
-
-  box-shadow:
-    0 10px 30px rgba(255,0,0,0.18);
-}
-
-.login-box button:hover{
-
-  transform:
-    translateY(-2px)
-    scale(1.02);
-
-  box-shadow:
-    0 15px 35px rgba(255,0,0,0.35);
-}
-
-/* BOTÃO SECUNDÁRIO */
-
-.novo-user{
-
-  background:
-    rgba(255,255,255,0.05) !important;
-
-  border:
-    1px solid rgba(255,255,255,0.08) !important;
-
-  color:
-    rgba(255,255,255,0.85) !important;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:500px){
-
-  .login-inputs,
-  .login-box button{
-
-    width:90vw;
+    font-size:4rem;
   }
 
 }

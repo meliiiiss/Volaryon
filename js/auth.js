@@ -3,7 +3,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/fireba
 import {
   getAuth,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 
 /* ======================= */
@@ -20,8 +21,22 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
+
+/* ======================= */
+/* ESTADO DO USUÁRIO */
+/* ======================= */
+
+function salvarSessao(user) {
+  localStorage.setItem("volaryonUser", JSON.stringify({
+    email: user.email
+  }));
+}
+
+function verificarSessao() {
+  const user = localStorage.getItem("volaryonUser");
+  return !!user;
+}
 
 /* ======================= */
 /* DESPERTAR */
@@ -30,9 +45,7 @@ const auth = getAuth(app);
 function iniciarDespertar() {
 
   const tela = document.getElementById("despertarTela");
-
   const video1 = document.getElementById("video1");
-
   const video2 = document.getElementById("video2");
 
   if (!tela) {
@@ -40,45 +53,31 @@ function iniciarDespertar() {
     return;
   }
 
-  /* MOSTRAR TELA */
   tela.classList.add("mostrar");
 
-  /* TOCAR PRIMEIRO VIDEO */
   if (video1) {
-
     video1.currentTime = 0;
-
     video1.play().catch(() => {});
-
   }
 
-  /* TROCAR VIDEO */
   setTimeout(() => {
 
     if (video1) {
-      video1.classList.remove("active");
       video1.pause();
+      video1.classList.remove("active");
     }
 
     if (video2) {
-
       video2.classList.add("active");
-
       video2.currentTime = 0;
-
       video2.play().catch(() => {});
-
     }
 
   }, 4500);
 
-  /* ENTRAR HOME */
   setTimeout(() => {
-
     window.location.href = "home.html";
-
   }, 9000);
-
 }
 
 /* ======================= */
@@ -87,36 +86,24 @@ function iniciarDespertar() {
 
 window.entrar = function () {
 
-  const email =
-    document.getElementById("email").value;
-
-  const senha =
-    document.getElementById("senha").value;
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
 
   if (!email || !senha) {
-
     alert("Preencha e-mail e senha!");
-
     return;
-
   }
 
   signInWithEmailAndPassword(auth, email, senha)
+    .then((userCredential) => {
 
-    .then(() => {
-
+      salvarSessao(userCredential.user);
       iniciarDespertar();
 
     })
-
     .catch((error) => {
-
-      console.log(error);
-
       alert("Erro: " + error.message);
-
     });
-
 };
 
 /* ======================= */
@@ -125,53 +112,53 @@ window.entrar = function () {
 
 window.criarConta = function () {
 
-  const email =
-    document.getElementById("email").value;
-
-  const senha =
-    document.getElementById("senha").value;
-
-  const confirmar =
-    document.getElementById("confirmarSenha")?.value;
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+  const confirmar = document.getElementById("confirmarSenha")?.value;
 
   if (!email || !senha) {
-
     alert("Preencha todos os campos!");
-
     return;
-
   }
 
   if (confirmar && senha !== confirmar) {
-
     alert("As senhas não coincidem!");
-
     return;
-
   }
 
   if (senha.length < 6) {
-
     alert("A senha precisa ter pelo menos 6 caracteres!");
-
     return;
-
   }
 
   createUserWithEmailAndPassword(auth, email, senha)
+    .then((userCredential) => {
 
-    .then(() => {
-
+      salvarSessao(userCredential.user);
       iniciarDespertar();
 
     })
-
     .catch((error) => {
-
-      console.log(error);
-
       alert("Erro: " + error.message);
-
     });
-
 };
+
+/* ======================= */
+/* PROTEÇÃO DE ROTA (HOME) */
+/* ======================= */
+
+onAuthStateChanged(auth, (user) => {
+
+  const pagina = window.location.pathname;
+
+  const estaNaHome =
+    pagina.includes("home.html");
+
+  const estaLogadoLocal =
+    verificarSessao();
+
+  if (estaNaHome && !user && !estaLogadoLocal) {
+    window.location.href = "login.html";
+  }
+
+});

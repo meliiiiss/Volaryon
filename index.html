@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Volaryon RPG</title>
 
   <link rel="stylesheet" href="CSS/style.css">
@@ -13,54 +14,33 @@
 
 <body>
 
+  <!-- HERO -->
   <section class="hero">
 
     <div class="hero-content">
 
       <h1>VOLARYON</h1>
 
+      <!-- TEXTO DA HISTÓRIA -->
       <div id="story" class="story"></div>
 
-      <button id="enterBtn" class="show" onclick="location.href='login.html'">
+      <!-- BOTÃO -->
+      <button id="enterBtn" onclick="location.href='login.html'">
         🌑 Entrar no Mundo
       </button>
 
     </div>
 
-</section>
+  </section>
 
-  <!-- ÁUDIO -->
-  <!-- seu HTML todo aqui -->
+  <!-- MÚSICA -->
+  <audio id="bgMusic" loop>
+    <source src="assets/audio/musica.mp3" type="audio/mpeg">
+  </audio>
 
-<audio id="bgMusic" loop>
-  <source src="assets/audio/musica.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-let musicaIniciada = false;
-
-window.addEventListener("DOMContentLoaded", () => {
-  const music = document.getElementById("bgMusic");
-
-  if (!music) return;
-
-  music.volume = 0.4;
-  music.loop = true;
-
-  function iniciarMusica() {
-    if (musicaIniciada) return;
-
-    music.play().catch(() => {});
-    musicaIniciada = true;
-
-    document.removeEventListener("click", iniciarMusica);
-  }
-
-  document.addEventListener("click", iniciarMusica);
-});
-</script>
-  
+  <!-- SCRIPT -->
   <script src="js/script.js"></script>
 
 </body>
+
 </html>

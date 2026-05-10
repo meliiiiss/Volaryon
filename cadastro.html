@@ -2,12 +2,17 @@
 <html lang="pt-BR">
 
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Cadastro - Volaryon</title>
 
   <link rel="stylesheet" href="CSS/style.css">
+
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -23,28 +28,76 @@
       </p>
 
       <!-- CADASTRO -->
+
       <div class="login-box">
 
         <div class="login-inputs">
 
-          <input type="text" id="usuario" placeholder="Nome de usuário">
-          <input type="email" id="email" placeholder="E-mail">
+          <!-- USUÁRIO -->
+
+          <input
+            type="text"
+            id="usuario"
+            placeholder="Nome de usuário"
+          >
+
+          <!-- EMAIL -->
+
+          <input
+            type="email"
+            id="email"
+            placeholder="E-mail"
+            autocomplete="email"
+          >
+
+          <!-- SENHA -->
 
           <div class="senha-box">
-            <input type="password" id="senha" placeholder="Senha">
-            <span class="olho" onclick="toggleSenha('senha')">👁</span>
+
+            <input
+              type="password"
+              id="senha"
+              placeholder="Senha"
+              autocomplete="new-password"
+            >
+
+            <span class="olho" onclick="toggleSenha('senha')">
+              👁
+            </span>
+
           </div>
 
+          <!-- CONFIRMAR -->
+
           <div class="senha-box">
-            <input type="password" id="confirmarSenha" placeholder="Confirmar senha">
-            <span class="olho" onclick="toggleSenha('confirmarSenha')">👁</span>
+
+            <input
+              type="password"
+              id="confirmarSenha"
+              placeholder="Confirmar senha"
+              autocomplete="new-password"
+            >
+
+            <span class="olho" onclick="toggleSenha('confirmarSenha')">
+              👁
+            </span>
+
           </div>
 
         </div>
 
-        <button onclick="criarConta()">Criar conta</button>
+        <!-- BOTÃO -->
 
-        <button class="novo-user" onclick="voltarLogin()">
+        <button onclick="criarConta()">
+          Criar conta
+        </button>
+
+        <!-- LOGIN -->
+
+        <button
+          class="novo-user"
+          onclick="window.location.href='login.html'"
+        >
           Já tenho conta
         </button>
 
@@ -54,68 +107,89 @@
 
   </section>
 
-  <!-- 🔥 FIREBASE -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } 
-from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+  <!-- ÁUDIO -->
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBhAbXAIDT-W3tmBBSoAMW3aijvbOXUIgk",
-  authDomain: "volaryon-3a9c6.firebaseapp.com",
-  projectId: "volaryon-3a9c6",
-  storageBucket: "volaryon-3a9c6.firebasestorage.app",
-  messagingSenderId: "1039618171619",
-  appId: "1:1039618171619:web:c5924e26a940b2e1a9dbd6"
-};
+  <audio id="bgMusic" loop>
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+    <source
+      src="assets/audio/musica.mp3"
+      type="audio/mpeg"
+    >
 
-// 🔥 CADASTRO REAL
-window.criarConta = function () {
+  </audio>
 
-  const usuario = document.getElementById("usuario").value;
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
-  const confirmar = document.getElementById("confirmarSenha").value;
+  <!-- DESPERTAR -->
 
-  if (!usuario || !email || !senha || !confirmar) {
-    alert("Preencha todos os campos!");
-    return;
-  }
+  <div id="despertarTela" class="despertar-tela">
 
-  if (senha !== confirmar) {
-    alert("As senhas não coincidem!");
-    return;
-  }
+    <!-- VIDEO 1 -->
 
-  if (senha.length < 6) {
-    alert("Senha precisa ter pelo menos 6 caracteres!");
-    return;
-  }
+    <video
+      id="video1"
+      class="video-portal active"
+      muted
+      playsinline
+    >
 
-  createUserWithEmailAndPassword(auth, email, senha)
-    .then(() => {
-      alert("Conta criada com sucesso!");
-      window.location.href = "login.html";
-    })
-    .catch((error) => {
-      alert("Erro: " + error.message);
-    });
-}
+      <source
+        src="assets/videos/snaptik_7588938927608794399_hd.mp4"
+        type="video/mp4"
+      >
 
-// 👁 OLHO DA SENHA
-window.toggleSenha = function (id) {
-  const input = document.getElementById(id);
-  input.type = input.type === "password" ? "text" : "password";
-}
+    </video>
 
-// 🔙 voltar login
-window.voltarLogin = function () {
-  window.location.href = "login.html";
-}
-</script>
+    <!-- VIDEO 2 -->
+
+    <video
+      id="video2"
+      class="video-portal"
+      muted
+      playsinline
+    >
+
+      <source
+        src="assets/videos/snaptik_7596252726334410006_hd.mp4"
+        type="video/mp4"
+      >
+
+    </video>
+
+    <!-- TEXTO -->
+
+    <div class="despertar-overlay">
+
+      <h1>🌑 DESPERTAR REALIZADO</h1>
+
+      <p>Seu nome ecoou pelo Véu...</p>
+
+    </div>
+
+  </div>
+
+  <!-- SENHA -->
+
+  <script>
+
+    function toggleSenha(id) {
+
+      const input =
+        document.getElementById(id);
+
+      input.type =
+        input.type === "password"
+          ? "text"
+          : "password";
+
+    }
+
+  </script>
+
+  <!-- SCRIPTS -->
+
+  <script src="js/script.js"></script>
+
   <script type="module" src="js/auth.js"></script>
+
 </body>
+
 </html>

@@ -2,32 +2,90 @@
 <html lang="pt-BR">
 
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Volaryon • Home</title>
 
   <link rel="stylesheet" href="CSS/style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-<section class="hero">
+  <!-- FUNDO VIDEO -->
 
-  <div class="hero-content">
+  <video
+    class="bg-video"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
 
-    <h1>🌑 VOLARYON</h1>
+    <source
+      src="assets/videos/snaptik_7588938927608794399_hd.mp4"
+      type="video/mp4"
+    >
 
-    <p class="story">
-      O Véu reconheceu sua existência.
-    </p>
+  </video>
 
-    <button onclick="location.href='lore.html'">
-      📖 Lore
-    </button>
+  <!-- OVERLAY -->
 
-  </div>
+  <div class="bg-overlay"></div>
 
-</section>
+  <!-- CONTEÚDO -->
+
+  <section class="home-container">
+
+    <div class="home-content">
+
+      <h1>🌑 VOLARYON</h1>
+
+      <p>
+        O Véu foi atravessado.
+        Seu despertar começou.
+      </p>
+
+      <div class="home-buttons">
+
+        <button>
+          Continuar Jornada
+        </button>
+
+        <button>
+          Grimório
+        </button>
+
+        <button>
+          Inventário
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ÁUDIO -->
+
+  <audio id="bgMusic" loop>
+
+    <source
+      src="assets/audio/musica.mp3"
+      type="audio/mpeg"
+    >
+
+  </audio>
+
+  <!-- SCRIPT -->
+
+  <script src="js/script.js"></script>
 
 </body>
+
 </html>

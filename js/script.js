@@ -1,33 +1,38 @@
 let tocou = false;
 
-/* ===================== */
-/* MÚSICA AO CLICAR */
-/* ===================== */
+/* ======================= */
+/* MÚSICA */
+/* ======================= */
 
 window.addEventListener("click", () => {
+
   if (tocou) return;
 
   const music = document.getElementById("bgMusic");
 
-  if (music) {
-    music.volume = 0.4;
-    music.play().catch(() => {});
-  }
+  if (!music) return;
+
+  music.volume = 0.4;
+
+  music.play().catch((erro) => {
+    console.log("Autoplay bloqueado:", erro);
+  });
 
   tocou = true;
+
 });
 
-/* ===================== */
-/* NARRAÇÃO (SÓ NO INDEX) */
-/* ===================== */
+/* ======================= */
+/* HISTÓRIA INTRO */
+/* ======================= */
 
 window.addEventListener("DOMContentLoaded", () => {
 
   const story = document.getElementById("story");
   const btn = document.getElementById("enterBtn");
 
-  // só roda no index
-  if (!story) return;
+  // só executa no index
+  if (!story || !btn) return;
 
   const texto =
     "O mundo não acabou… ele apenas foi reescrito.\n\n" +
@@ -37,19 +42,37 @@ window.addEventListener("DOMContentLoaded", () => {
     "Apenas os Despertos podem atravessar o Véu.";
 
   const palavras = texto.split(" ");
+
   let i = 0;
 
+  story.innerHTML = "";
+  btn.style.opacity = "0";
+  btn.style.pointerEvents = "none";
+
   function escrever() {
+
     if (i < palavras.length) {
+
       story.innerHTML += palavras[i] + " ";
+
       i++;
-      setTimeout(escrever, 160);
+
+      setTimeout(escrever, 140);
+
     } else {
+
       setTimeout(() => {
-        if (btn) btn.classList.add("show");
-      }, 1800);
+
+        btn.classList.add("show");
+
+        btn.style.pointerEvents = "auto";
+
+      }, 1200);
+
     }
+
   }
 
   escrever();
+
 });

@@ -21,21 +21,18 @@ body{
     border:1px solid #c9a85d;
 }
 
-/* GRID TOPO */
 .top{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap:10px;
 }
 
-/* PAINÉIS */
 .panel{
     border:1px solid #c9a85d;
     padding:10px;
     background:#111;
 }
 
-/* TITULOS */
 .title{
     text-align:center;
     font-family:'Cinzel';
@@ -43,13 +40,7 @@ body{
     color:#c9a85d;
 }
 
-.subtitle{
-    text-align:center;
-    letter-spacing:3px;
-}
-
-/* INPUTS */
-input, textarea{
+input, textarea, select{
     width:100%;
     background:transparent;
     border:none;
@@ -57,7 +48,6 @@ input, textarea{
     color:white;
 }
 
-/* GRID BAIXO */
 .grid{
     display:grid;
     grid-template-columns: repeat(3,1fr);
@@ -65,7 +55,6 @@ input, textarea{
     margin-top:10px;
 }
 
-/* ATRIBUTOS */
 .stats{
     display:grid;
     gap:5px;
@@ -77,7 +66,6 @@ input, textarea{
     border-bottom:1px solid #c9a85d;
 }
 
-/* RESPONSIVO */
 @media(max-width:900px){
     .top{grid-template-columns:1fr;}
     .grid{grid-template-columns:1fr;}
@@ -89,108 +77,59 @@ input, textarea{
 
 <div class="sheet">
 
-<!-- TOPO -->
 <div class="top">
 
-<!-- ARTE -->
 <div class="panel">
-<p>ARTE DO PERSONAGEM</p>
+<p>ARTE</p>
 </div>
 
-<!-- IDENTIDADE -->
 <div class="panel">
 
 <h1 class="title">NOME</h1>
-<p class="subtitle">— VOLARYON —</p>
 
-<p><b>Raça:</b> <input placeholder="RAÇA"></p>
-<p><b>Classe:</b> <input placeholder="CLASSE"></p>
-<p><b>Origem:</b> <input placeholder="ORIGEM"></p>
+<p><b>Raça:</b>
+<select id="raca" onchange="aplicarRaca()">
+<option value="">Escolher</option>
+<option value="Humano">Humano</option>
+<option value="Lunari">Lunari</option>
+<option value="Ferrun">Ferrun</option>
+<option value="Vulperico">Vulperico</option>
+<option value="Drakyn">Drakyn</option>
+</select>
+</p>
 
-<h3>NÚCLEO</h3>
-<p><b>Tipo:</b> <input placeholder="TIPO"></p>
-<p><b>Rank:</b> <input placeholder="E - SS"></p>
-<p><b>Nível:</b> <input placeholder="1 - 150"></p>
-<p><b>Estado:</b> <input placeholder="Estável / Corrompido"></p>
+<p><b>Classe:</b> <input></p>
 
 </div>
 
-<!-- DESCRIÇÃO -->
 <div class="panel">
-<h3>DESCRIÇÃO</h3>
-<textarea rows="10"></textarea>
+<textarea rows="10" placeholder="Descrição"></textarea>
 </div>
 
 </div>
 
-<!-- PARTE DE BAIXO -->
 <div class="grid">
 
-<!-- ATRIBUTOS -->
 <div class="panel">
 <h3>ATRIBUTOS</h3>
 
 <div class="stats">
-<div class="stat">FOR <input type="number" value="5"></div>
-<div class="stat">AGI <input type="number" value="5"></div>
-<div class="stat">RES <input type="number" value="5"></div>
-<div class="stat">ENE <input type="number" value="5"></div>
-<div class="stat">PER <input type="number" value="5"></div>
+<div class="stat">FOR <input id="for" type="number" value="5"></div>
+<div class="stat">AGI <input id="agi" type="number" value="5"></div>
+<div class="stat">RES <input id="res" type="number" value="5"></div>
+<div class="stat">ENE <input id="ene" type="number" value="5"></div>
+<div class="stat">PER <input id="per" type="number" value="5"></div>
 </div>
+
 <p id="pontos">Pontos restantes: 30</p>
-    
-<p>Teste: d20 + atributo + bônus</p>
+
 </div>
 
-<!-- DEFESAS -->
-<div class="panel">
-<h3>DEFESAS</h3>
-
-<p><b>Vida (PV):</b> <input></p>
-<p><b>Defesa:</b> <input></p>
-<p><b>Resistência:</b> <input></p>
-
-<h3>CONDIÇÕES</h3>
-<textarea rows="5"></textarea>
-</div>
-
-<!-- PERÍCIAS -->
-<div class="panel">
-<h3>PERÍCIAS</h3>
-<textarea rows="10"></textarea>
-</div>
-
-<!-- HABILIDADES -->
 <div class="panel">
 <h3>HABILIDADES</h3>
-
-<textarea rows="12" placeholder="
-Nome — Tipo — Teste — Dano — Efeito — Rank necessário
-"></textarea>
-
-</div>
-
-<!-- ESCALA -->
-<div class="panel">
-<h3>ESCALA DE DANO</h3>
-
-<p>E: 1d4–3d4</p>
-<p>D: 2d4–3d6</p>
-<p>C: 3d6–5d6</p>
-<p>B: 5d6–8d6</p>
-<p>A: 8d6–12d6</p>
-<p>S: 12d6–20d6</p>
-<p>SS: 20d6+</p>
-
-</div>
-
-<!-- INVENTÁRIO -->
-<div class="panel">
-<h3>INVENTÁRIO</h3>
 <textarea rows="10"></textarea>
 </div>
 
-<!-- HISTÓRIA -->
 <div class="panel">
 <h3>HISTÓRIA</h3>
 <textarea rows="10"></textarea>
@@ -199,293 +138,77 @@ Nome — Tipo — Teste — Dano — Efeito — Rank necessário
 </div>
 
 </div>
+
 <script>
 
-// ===== CONFIG =====
-const LIMITE_BASE = 5;
-const PONTOS_TOTAL = 30;
-const MAX_ATRIBUTO = 15;
+// CONFIG
+const BASE = 5;
+const MAX = 15;
+const TOTAL = 30;
 
-// ===== PEGAR INPUTS =====
 const atributos = ["for","agi","res","ene","per"];
 
-// ===== CALCULAR PONTOS =====
-function calcularPontos(){
-    let total = 0;
-
-    atributos.forEach(attr => {
-        total += parseInt(document.getElementById(attr).value) || 0;
-    });
-
-    let usados = total - (LIMITE_BASE * 5);
-    let resto = PONTOS_TOTAL - usados;
-
-    // mostra na tela
-    let display = document.getElementById("pontos");
-    if(display){
-        display.innerText = "Pontos restantes: " + resto;
-    }
-
-    // BLOQUEIO
-    if(resto < 0){
-        alert("Você passou do limite!");
-    }
-
-    // LIMITE MAX
-    atributos.forEach(attr => {
-        let el = document.getElementById(attr);
-        if(el.value > MAX_ATRIBUTO){
-            el.value = MAX_ATRIBUTO;
-        }
-    });
-}
-
-// ===== MODIFICADOR =====
-function calcMod(valor){
-    return Math.floor((valor - 10) / 2);
-}
-
-// ===== ATUALIZAR MODIFICADORES =====
-function atualizarMods(){
-    atributos.forEach(attr => {
-        let val = parseInt(document.getElementById(attr).value) || 0;
-        let mod = calcMod(val);
-
-        let modEl = document.getElementById(attr + "_mod");
-        if(modEl){
-            modEl.innerText = (mod >= 0 ? "+" : "") + mod;
-        }
-    });
-}
-
-// ===== RAÇAS =====
-function aplicarRaca(){
-    let raca = document.getElementById("raca").value;
-
-    if(raca == "Elfo"){
-        agi.value = +agi.value + 2;
-        per.value = +per.value + 1;
-    }
-
-    if(raca == "Orc"){
-        for.value = +for.value + 2;
-        res.value = +res.value + 1;
-    }
-
-    if(raca == "Humano"){
-        atributos.forEach(a => {
-            document.getElementById(a).value =
-                +document.getElementById(a).value + 1;
-        });
-    }
-
-    calcularPontos();
-    atualizarMods();
-}
-
-// ===== CLASSES =====
-function aplicarClasse(){
-    let classe = document.getElementById("classe").value;
-
-    if(classe == "Guerreiro"){
-        res.value = +res.value + 2;
-        for.value = +for.value + 1;
-    }
-
-    if(classe == "Mago"){
-        ene.value = +ene.value + 3;
-    }
-
-    if(classe == "Assassino"){
-        agi.value = +agi.value + 2;
-        per.value = +per.value + 1;
-    }
-
-    calcularPontos();
-    atualizarMods();
-}
-
-// ===== DEUSES =====
-function aplicarDeus(){
-    let deus = document.getElementById("deus").value;
-
-    let passiva = document.getElementById("passiva");
-    let ativa = document.getElementById("habilidade");
-
-    if(deus == "Sol"){
-        passiva.value = "Regenera vida lentamente";
-        ativa.value = "Explosão Solar (dano alto)";
-    }
-
-    if(deus == "Lua"){
-        passiva.value = "Aumenta percepção";
-        ativa.value = "Ilusão Lunar";
-    }
-
-    if(deus == "Caos"){
-        passiva.value = "Dano imprevisível";
-        ativa.value = "Ruptura do Caos";
-    }
-}
-
-// ===== ROLAR D20 =====
-function rolarD20(attr){
-    let valor = parseInt(document.getElementById(attr).value);
-    let mod = calcMod(valor);
-
-    let d20 = Math.floor(Math.random()*20)+1;
-
-    alert("D20: " + d20 + "\nMod: " + mod + "\nTotal: " + (d20 + mod));
-}
-
-// ===== SALVAR PERSONAGEM =====
-function salvar(){
-    let personagem = {
-        nome: document.getElementById("nome").value,
-        raca: document.getElementById("raca").value,
-        classe: document.getElementById("classe").value,
-        atributos: {}
-    };
-
-    atributos.forEach(attr => {
-        personagem.atributos[attr] =
-            document.getElementById(attr).value;
-    });
-
-    let lista = JSON.parse(localStorage.getItem("chars")) || [];
-    lista.push(personagem);
-
-    localStorage.setItem("chars", JSON.stringify(lista));
-
-    alert("Personagem salvo!");
-    carregar();
-}
-
-// ===== CARREGAR PERSONAGENS =====
-function carregar(){
-    let lista = JSON.parse(localStorage.getItem("chars")) || [];
-    let div = document.getElementById("lista");
-
-    if(!div) return;
-
-    div.innerHTML = "";
-
-    lista.forEach(p => {
-        let card = document.createElement("div");
-        card.className = "char";
-        card.innerText = p.nome;
-
-        div.appendChild(card);
-    });
-}
-
-// ===== INIT =====
-window.onload = () => {
-    atributos.forEach(attr => {
-        let el = document.getElementById(attr);
-        if(el){
-            el.addEventListener("input", () => {
-                calcularPontos();
-                atualizarMods();
-            });
-        }
-    });
-
-    carregar();
-}
+// RAÇAS
 const racas = {
 
-Humano: {
- bonus:{for:1, agi:1},
- passiva:"Repetir um teste por combate",
- fraqueza:"Sem afinidade"
-},
-
-Lunari: {
- bonus:{per:2, agi:1},
- passiva:"Visão no escuro",
- fraqueza:"Vulnerável mental"
-},
-
-Ferrun: {
- bonus:{res:2, for:1},
- passiva:"Reduz dano físico",
- fraqueza:"Baixa energia"
-},
-
-Vulperico: {
- bonus:{agi:2, per:1},
- passiva:"Bônus em esquiva",
- fraqueza:"Baixa resistência"
-},
-
-Serphelin: {
- bonus:{per:2, ene:1},
- passiva:"Resistência a veneno",
- fraqueza:"Frio extremo"
-},
-
-Sylvaris: {
- bonus:{ene:2, res:1},
- passiva:"Regenera fora de combate",
- fraqueza:"Fogo"
-},
-
-Thalryn: {
- bonus:{per:2, res:1},
- passiva:"Respira na água",
- fraqueza:"Desidratação"
-},
-
-Drakyn: {
- bonus:{for:2, ene:1},
- passiva:"+1d4 elemental",
- fraqueza:"Corrupção"
-},
-
-Noctari: {
- bonus:{agi:2, ene:1},
- passiva:"Furtividade noturna",
- fraqueza:"Baixa resistência"
-},
-
-Etheris: {
- bonus:{ene:2, per:1},
- passiva:"Detecta energia",
- fraqueza:"Instabilidade mental"
-},
-
-Sintarquio: {
- bonus:{res:2, ene:1},
- passiva:"Resistência física",
- fraqueza:"Baixa regeneração"
-},
-
-Vespiro: {
- bonus:{ene:2, per:1},
- passiva:"Ver espíritos",
- fraqueza:"Sensível emocional"
-},
-
-Nefari: {
- bonus:{ene:2, res:1},
- passiva:"Resistência à corrupção",
- fraqueza:"Perseguidos"
-},
-
-Abyssiano: {
- bonus:{ene:2, agi:1},
- passiva:"Causa medo",
- fraqueza:"Instabilidade"
-},
-
-Corrompido: {
- bonus:{res:2, ene:1},
- passiva:"Aumenta dano temporário",
- fraqueza:"Perda de controle"
-}
+Humano:{bonus:{for:1, agi:1}},
+Lunari:{bonus:{per:2, agi:1}},
+Ferrun:{bonus:{res:2, for:1}},
+Vulperico:{bonus:{agi:2, per:1}},
+Drakyn:{bonus:{for:2, ene:1}}
 
 };
+
+// RESET BASE
+function resetBase(){
+    atributos.forEach(a=>{
+        document.getElementById(a).value = BASE;
+    });
+}
+
+// APLICAR RAÇA
+function aplicarRaca(){
+
+    let r = document.getElementById("raca").value;
+
+    if(!racas[r]) return;
+
+    resetBase();
+
+    let bonus = racas[r].bonus;
+
+    for(let a in bonus){
+        let el = document.getElementById(a);
+        el.value = parseInt(el.value) + bonus[a];
+    }
+
+    calcular();
+}
+
+// CALCULAR PONTOS
+function calcular(){
+
+    let total = 0;
+
+    atributos.forEach(a=>{
+        total += parseInt(document.getElementById(a).value) || 0;
+    });
+
+    let usados = total - (BASE*5);
+    let resto = TOTAL - usados;
+
+    document.getElementById("pontos").innerText = "Pontos restantes: " + resto;
+
+}
+
+// EVENTOS
+window.onload = ()=>{
+    atributos.forEach(a=>{
+        document.getElementById(a).addEventListener("input", calcular);
+    });
+};
+
 </script>
+
 </body>
 </html>

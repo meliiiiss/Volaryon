@@ -4,18 +4,32 @@
 <head>
 
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Volaryon • Home</title>
 
-  <link rel="stylesheet" href=".../CSS/style.css">
+  <link rel="stylesheet" href="CSS/style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-  <video class="bg-video" autoplay muted loop playsinline>
-    <source src="assets/videos/snaptik_7588938927608794399_hd.mp4" type="video/mp4">
+  <video
+    class="bg-video"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+
+    <source
+      src="assets/videos/snaptik_7588938927608794399_hd.mp4"
+      type="video/mp4"
+    >
+
   </video>
 
   <div class="bg-overlay"></div>
@@ -28,9 +42,9 @@
 
       <div class="profile-info">
 
-        <h3 id="userName">Desperto</h3>
+        <h3>Melissa</h3>
 
-        <span>Nível 1</span>
+        <span>Desperta • Nível 1</span>
 
       </div>
 
@@ -39,11 +53,16 @@
     <div class="top-resources">
 
       <div class="resource">
-        <span>✦</span>
-        <span>0 Fragmas</span>
+
+        <span class="resource-icon">✦</span>
+
+        <span>13.880 Fragmas</span>
+
       </div>
 
-      <button class="config-btn">⚙</button>
+      <button class="config-btn">
+        ⚙
+      </button>
 
     </div>
 
@@ -53,15 +72,26 @@
 
     <div class="hero-content">
 
-      <h1>VOLARYON</h1>
+      <span class="subtitle">
+        O Véu Desperto
+      </span>
+
+      <h1>
+        VOLARYON
+      </h1>
 
       <p>
-        O mundo foi reescrito pelas forças do Véu.
+        Após o colapso dos Núcleos Primordiais,
+        entidades ancestrais atravessaram o Véu.
+        Apenas os Despertos podem sobreviver
+        às ruínas do novo mundo.
       </p>
 
-      <a href="ficha.html" class="play-btn">
-        CONTINUAR JORNADA
-      </a>
+      <button class="play-btn">
+
+        ▶ CONTINUAR JORNADA
+
+      </button>
 
     </div>
 
@@ -69,17 +99,39 @@
 
   <nav class="bottom-menu">
 
-    <a href="manual.html" class="menu-item">Manual</a>
-    <a href="#" class="menu-item">Bestiário</a>
-    <a href="#" class="menu-item">Mapas</a>
-    <a href="ficha.html" class="menu-item">Fichas</a>
-    <a href="#" class="menu-item">Grimório</a>
-    <a href="#" class="menu-item">Inventário</a>
+    <button class="menu-item active">
+      Manual
+    </button>
+
+    <button class="menu-item">
+      Bestiário
+    </button>
+
+    <button class="menu-item">
+      Mapas
+    </button>
+
+    <button class="menu-item">
+      Fichas
+    </button>
+
+    <button class="menu-item">
+      Grimório
+    </button>
+
+    <button class="menu-item">
+      Inventário
+    </button>
 
   </nav>
 
   <audio id="bgMusic" loop>
-    <source src="assets/audio/musica.mp3" type="audio/mpeg">
+
+    <source
+      src="assets/audio/musica.mp3"
+      type="audio/mpeg"
+    >
+
   </audio>
 
   <script src="js/script.js"></script>

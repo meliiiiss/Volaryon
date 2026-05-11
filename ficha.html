@@ -18,7 +18,6 @@ body {
     height: 100vh;
 }
 
-/* LADO ESQUERDO */
 .left {
     border-right: 2px solid #c9a85d;
     padding: 10px;
@@ -37,12 +36,10 @@ body {
     margin-bottom: 5px;
 }
 
-/* LADO DIREITO */
 .right {
     padding: 10px;
 }
 
-/* LINHAS */
 .row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -62,11 +59,23 @@ body {
     color: #fff;
 }
 
-/* TÍTULO */
 .title {
     text-align: center;
     border-bottom: 2px solid #c9a85d;
     margin-bottom: 10px;
+}
+
+/* NOVO */
+.atributo {
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.atributo button{
+  background:#c9a85d;
+  border:none;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -99,22 +108,57 @@ body {
 <h2>Ficha de Personagem</h2>
 </div>
 
+<p>Pontos: <span id="pontos">30</span></p>
+
 <!-- ATRIBUTOS -->
 <div class="row">
-<div class="box">FOR<br><input type="number"></div>
-<div class="box">AGI<br><input type="number"></div>
-<div class="box">RES<br><input type="number"></div>
-<div class="box">ENE<br><input type="number"></div>
+
+<div class="box atributo">
+FOR
+<button onclick="diminuir('for')">-</button>
+<input id="for" value="5" readonly>
+<button onclick="aumentar('for')">+</button>
+</div>
+
+<div class="box atributo">
+AGI
+<button onclick="diminuir('agi')">-</button>
+<input id="agi" value="5" readonly>
+<button onclick="aumentar('agi')">+</button>
+</div>
+
+<div class="box atributo">
+RES
+<button onclick="diminuir('res')">-</button>
+<input id="res" value="5" readonly>
+<button onclick="aumentar('res')">+</button>
+</div>
+
+<div class="box atributo">
+ENE
+<button onclick="diminuir('ene')">-</button>
+<input id="ene" value="5" readonly>
+<button onclick="aumentar('ene')">+</button>
+</div>
+
 </div>
 
 <div class="row">
-<div class="box">PER<br><input type="number"></div>
+
+<div class="box atributo">
+PER
+<button onclick="diminuir('per')">-</button>
+<input id="per" value="5" readonly>
+<button onclick="aumentar('per')">+</button>
+</div>
+
 <div class="box">HP<br><input></div>
 <div class="box">DEF<br><input></div>
 <div class="box">VEL<br><input></div>
+
 </div>
 
-<!-- NÚCLEO -->
+<!-- RESTO IGUAL -->
 <div class="row">
 <div class="box">Tipo Núcleo<br><input></div>
 <div class="box">Estado<br><input></div>
@@ -122,7 +166,6 @@ body {
 <div class="box">Rank<br><input></div>
 </div>
 
-<!-- HABILIDADES -->
 <div class="row">
 <div class="box" style="grid-column: span 4;">
 Habilidades<br>
@@ -130,7 +173,6 @@ Habilidades<br>
 </div>
 </div>
 
-<!-- EQUIPAMENTOS -->
 <div class="row">
 <div class="box" style="grid-column: span 4;">
 Equipamentos<br>
@@ -138,7 +180,6 @@ Equipamentos<br>
 </div>
 </div>
 
-<!-- HISTÓRIA -->
 <div class="row">
 <div class="box" style="grid-column: span 4;">
 História<br>
@@ -164,10 +205,42 @@ História<br>
 </div>
 
 </div>
-
 </div>
 
 <script>
+
+// SISTEMA DE ATRIBUTOS
+let pontos = 30;
+let max = 15;
+let min = 5;
+
+function aumentar(id){
+  let el = document.getElementById(id);
+  let val = parseInt(el.value);
+
+  if(pontos > 0 && val < max){
+    el.value = val + 1;
+    pontos--;
+    atualizar();
+  }
+}
+
+function diminuir(id){
+  let el = document.getElementById(id);
+  let val = parseInt(el.value);
+
+  if(val > min){
+    el.value = val - 1;
+    pontos++;
+    atualizar();
+  }
+}
+
+function atualizar(){
+  document.getElementById("pontos").innerText = pontos;
+}
+
+// DADOS
 function rolarD20(){
  let r = Math.floor(Math.random()*20)+1;
  document.getElementById("d20").innerText = r;
@@ -187,6 +260,7 @@ function rolarDano(){
  document.getElementById("dano").innerText =
  rolls.join(", ") + " = " + total;
 }
+
 </script>
 
 </body>

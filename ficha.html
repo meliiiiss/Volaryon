@@ -91,10 +91,17 @@ input, textarea, select{
 <select id="raca" onchange="aplicarRaca()">
 <option value="">Escolher</option>
 <option value="Humano">Humano</option>
-<option value="Lunari">Lunari</option>
-<option value="Ferrun">Ferrun</option>
-<option value="Vulperico">Vulperico</option>
+<option value="Elfyr">Lunari</option>
+<option value="Durkhan">Ferrun</option>
+<option value="Aurion">Vulperico</option>
 <option value="Drakyn">Drakyn</option>
+<option value="Sylvaris">Drakyn</option>
+<p><b>Sub-raça:</b>
+<select id="subracas">
+<option value="">—</option>
+</select>
+</p>
+<option value="">Drakyn</option>
 </select>
 </p>
 
@@ -151,12 +158,42 @@ const atributos = ["for","agi","res","ene","per"];
 // RAÇAS
 const racas = {
 
-Humano:{bonus:{for:1, agi:1}},
-Lunari:{bonus:{per:2, agi:1}},
-Ferrun:{bonus:{res:2, for:1}},
-Vulperico:{bonus:{agi:2, per:1}},
-Drakyn:{bonus:{for:2, ene:1}}
+Humano:{bonus:{x:2, x:2}},
+Elfyr:{bonus:{per:1, agi:1}}
+    subracas:[
+        {nome:"Forestis", bonus:{ene:1}},
+        {nome:"Lunari", bonus:{agi:1}},
+    ]
+Durkhan:{bonus:{res:2, for:1}}
+    subracas:[
+        {nome:{"Ferrun", bonus:{for:1}},
+        {nome:{"Everest", bonus:{res:1}},
+    ]
+Drakyn:{bonus:{for:2, ene:1}},
+Aurion:{bonus:{agi:2, ene:1}},
+Sylvaris:{bonus:{ene:1,res:1}
+    subracas:[
+        {nome:"Bestialis", bonus:{for:2}},
+        {nome:"Aeralis", bonus:{agi:2}},
+        {nome:"Serpentes", bonus:{per:2}},
+        {nome:"Amphira", bonus:{res:2}},
+        {nome:"Thalassyn", bonus:{ene:2}},
+    ]
+Infernyx:{bonus:{ene:2, for:1}}  
+  subracas:[
+    {nome:"Sanguinarch", bonus:{ene:2, per:1}},
+    {nome:"Bansharyn", bonus:{ene:2, per:1}},
+    {nome:"Lichnyx", bonus:{ene:3}},
+    {nome:"Nachryx", bonus:{for:2, res:1}},
+    {nome:"Damazti", bonus:{ene:2, res:1}},
+    {nome:"Diabryn", bonus:{for:2, ene:1}},
+    {nome:"Cyclonyx", bonus:{per:2, res:1}},
+    {nome:"Gargonyx", bonus:{res:3}}
+  ]
+}
 
+    ]
+},
 };
 
 // RESET BASE
@@ -166,25 +203,65 @@ function resetBase(){
     });
 }
 
-// APLICAR RAÇA
-function aplicarRaca(){
+// function aplicarRaca(){
 
-    let r = document.getElementById("raca").value;
+    resetAtributos();
 
-    if(!racas[r]) return;
+    let nome = document.getElementById("raca").value;
+    let r = racas[nome];
 
-    resetBase();
+    let subSelect = document.getElementById("subraca");
+    subSelect.innerHTML = '<option value="">—</option>';
 
-    let bonus = racas[r].bonus;
+    // Se tiver sub-raças
+    if(r && r.subracas){
+        r.subracas.forEach(sub => {
+            let opt = document.createElement("option");
+            opt.value = sub.nome;
+            opt.textContent = sub.nome;
+            subSelect.appendChild(opt);
+        });
 
-    for(let a in bonus){
-        let el = document.getElementById(a);
-        el.value = parseInt(el.value) + bonus[a];
+        subSelect.onchange = () => aplicarSubRaca(nome);
     }
 
-    calcular();
-}
+    if(!r) return;
 
+    for(let attr in r.bonus){
+        let el = document.getElementById(attr);
+        el.value = +el.value + r.bonus[attr];
+    }
+
+    calcularPontos();
+    }
+
+    function aplicarSubRaca(racaNome){
+
+    let subNome = document.getElementById("subraca").value;
+    let r = racas[racaNome];
+
+    if(!r || !r.subracas) return;
+
+    let sub = r.subracas.find(s => s.nome === subNome);
+    if(!sub) return;
+
+    resetAtributos();
+
+    // bônus base da raça
+    for(let attr in r.bonus){
+        document.getElementById(attr).value =
+        +document.getElementById(attr).value + r.bonus[attr];
+    }
+
+    // bônus da sub-raça
+    for(let attr in sub.bonus){
+        document.getElementById(attr).value =
+        +document.getElementById(attr).value + sub.bonus[attr];
+    }
+
+    calcularPontos();
+    }
+    
 // CALCULAR PONTOS
 function calcular(){
 

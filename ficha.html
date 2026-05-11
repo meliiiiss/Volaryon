@@ -28,6 +28,10 @@ body{
 <select id="raca" onchange="aplicarRaca()">
 <option value="">Escolher</option>
 <option value="Humano">Humano</option>
+<option value="Elfyr">Elfyr</option>
+<option value="Durkhan">Durkhan</option>
+<option value="Aurion">Aurion</option>
+<option value="Drakyn">Drakyn</option>
 <option value="Sylvaris">Sylvaris</option>
 <option value="Infernyx">Infernyx</option>
 </select>
@@ -52,14 +56,33 @@ PER <input id="per" type="number" value="5"><br>
 </div>
 
 <script>
-
 const BASE = 5;
 const TOTAL = 30;
 const atributos = ["for","agi","res","ene","per"];
 
 const racas = {
 
-Humano:{bonus:{for:1, agi:1}},
+Humano:{bonus:{for:1,agi:1}},
+
+Elfyr:{
+    bonus:{per:1,agi:1},
+    subracas:[
+        {nome:"Forestis", bonus:{ene:1}},
+        {nome:"Lunari", bonus:{agi:1}}
+    ]
+},
+
+Durkhan:{
+    bonus:{res:2,for:1},
+    subracas:[
+        {nome:"Ferrun", bonus:{for:1}},
+        {nome:"Everest", bonus:{res:1}}
+    ]
+},
+
+Aurion:{bonus:{agi:2,ene:1}},
+
+Drakyn:{bonus:{for:2,ene:1}},
 
 Sylvaris:{
     bonus:{ene:1,res:1},
@@ -73,15 +96,15 @@ Sylvaris:{
 },
 
 Infernyx:{
-    bonus:{ene:2, for:1},
+    bonus:{ene:2,for:1},
     subracas:[
-        {nome:"Sanguinarch", bonus:{ene:2, per:1}},
-        {nome:"Bansharyn", bonus:{ene:2, per:1}},
+        {nome:"Sanguinarch", bonus:{ene:2,per:1}},
+        {nome:"Bansharyn", bonus:{ene:2,per:1}},
         {nome:"Lichnyx", bonus:{ene:3}},
-        {nome:"Nachryx", bonus:{for:2, res:1}},
-        {nome:"Damazti", bonus:{ene:2, res:1}},
-        {nome:"Diabryn", bonus:{for:2, ene:1}},
-        {nome:"Cyclonyx", bonus:{per:2, res:1}},
+        {nome:"Nachryx", bonus:{for:2,res:1}},
+        {nome:"Damazti", bonus:{ene:2,res:1}},
+        {nome:"Diabryn", bonus:{for:2,ene:1}},
+        {nome:"Cyclonyx", bonus:{per:2,res:1}},
         {nome:"Gargonyx", bonus:{res:3}}
     ]
 }
@@ -108,13 +131,13 @@ function aplicarRaca(){
 
     if(!r) return;
 
-    // bônus raça
+    // bônus base
     for(let a in r.bonus){
         document.getElementById(a).value =
         +document.getElementById(a).value + r.bonus[a];
     }
 
-    // criar sub
+    // criar sub-raças
     if(r.subracas){
         r.subracas.forEach(s=>{
             let opt = document.createElement("option");
@@ -157,7 +180,7 @@ function aplicarSubRaca(nome){
     calcular();
 }
 
-// PONTOS
+// CALCULO
 function calcular(){
     let total = 0;
 
@@ -168,7 +191,8 @@ function calcular(){
     let usados = total - (BASE*5);
     let resto = TOTAL - usados;
 
-    document.getElementById("pontos").innerText = "Pontos restantes: " + resto;
+    document.getElementById("pontos").innerText =
+    "Pontos restantes: " + resto;
 }
 
 // INIT
@@ -177,6 +201,8 @@ window.onload = ()=>{
         document.getElementById(a).addEventListener("input", calcular);
     });
 };
+        
+
 
 </script>
 

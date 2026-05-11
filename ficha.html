@@ -4,78 +4,97 @@
 <meta charset="UTF-8">
 <title>Ficha Volaryon</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond&display=swap" rel="stylesheet">
+
 <style>
-body {
-    margin: 0;
-    font-family: 'Times New Roman', serif;
-    background: #0d0f14;
-    color: #e6d3a3;
+body{
+    margin:0;
+    background:#0b0c10;
+    color:#e6d3a3;
+    font-family:'EB Garamond', serif;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    height: 100vh;
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+    border:1px solid #c9a85d;
 }
 
-.left {
-    border-right: 2px solid #c9a85d;
-    padding: 10px;
+/* TOPO */
+.top{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:10px;
 }
 
-.avatar {
-    width: 100%;
-    height: 260px;
-    border: 2px solid #c9a85d;
-    margin-bottom: 10px;
-    background: #222;
+/* PAINEL */
+.panel{
+    border:1px solid #c9a85d;
+    padding:10px;
+    background:#111;
 }
 
-.left input {
-    width: 100%;
-    margin-bottom: 5px;
+/* TITULO */
+.title{
+    text-align:center;
+    font-family:'Cinzel';
+    font-size:40px;
+    color:#c9a85d;
 }
 
-.right {
-    padding: 10px;
+.subtitle{
+    text-align:center;
+    font-size:12px;
+    letter-spacing:3px;
 }
 
-.row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-    margin-bottom: 5px;
+/* INPUT BONITO */
+input, select, textarea{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid #c9a85d;
+    color:white;
 }
 
-.box {
-    border: 1px solid #c9a85d;
-    padding: 5px;
+/* ATRIBUTOS */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:5px;
 }
 
-.box input, .box textarea {
-    width: 100%;
-    background: transparent;
-    border: none;
-    color: #fff;
+.stat{
+    border:1px solid #c9a85d;
+    text-align:center;
+    padding:5px;
 }
 
-.title {
-    text-align: center;
-    border-bottom: 2px solid #c9a85d;
-    margin-bottom: 10px;
+/* BOTÃO */
+.btn{
+    background:#c9a85d;
+    border:none;
+    padding:10px;
+    width:100%;
+    margin-top:10px;
+    cursor:pointer;
 }
 
-/* NOVO */
-.atributo {
-  display:flex;
-  align-items:center;
-  gap:5px;
+/* PERSONAGENS */
+.lista{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
 }
 
-.atributo button{
-  background:#c9a85d;
-  border:none;
-  cursor:pointer;
+.char{
+    width:120px;
+    height:150px;
+    border:1px solid #c9a85d;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 </style>
 </head>
@@ -84,181 +103,125 @@ body {
 
 <div class="container">
 
-<!-- ESQUERDA -->
-<div class="left">
+<div class="title">VOLARYON</div>
+<div class="subtitle">CRIAÇÃO DE PERSONAGEM</div>
 
-<div class="avatar"></div>
+<div class="top">
 
-<input placeholder="Nome">
-<input placeholder="Raça">
-<input placeholder="Classe">
-<input placeholder="Nível">
-<input placeholder="Rank do Núcleo">
+<div class="panel">
+<input id="nome" placeholder="Nome">
+
+<select id="raca" onchange="aplicarRaca()">
+<option>Humano</option>
+<option>Elfo</option>
+<option>Orc</option>
+</select>
+
+<select id="classe" onchange="aplicarClasse()">
+<option>Guerreiro</option>
+<option>Mago</option>
+<option>Assassino</option>
+</select>
+
+<select id="deus" onchange="aplicarDeus()">
+<option>Sol</option>
+<option>Lua</option>
+<option>Caos</option>
+</select>
+</div>
+
+<div class="panel">
+<h3>Atributos</h3>
+
+<div class="stats">
+<div class="stat">FOR<input type="number" id="for" value="5" onchange="calc()"></div>
+<div class="stat">AGI<input type="number" id="agi" value="5" onchange="calc()"></div>
+<div class="stat">RES<input type="number" id="res" value="5" onchange="calc()"></div>
+<div class="stat">PER<input type="number" id="per" value="5" onchange="calc()"></div>
+<div class="stat">ENE<input type="number" id="ene" value="5" onchange="calc()"></div>
+</div>
+
+<p id="resto">Pontos: 30</p>
+
+</div>
+
+<div class="panel">
 
 <h3>Bênção</h3>
-<input placeholder="Deus">
-<textarea placeholder="Descrição"></textarea>
+<textarea id="passiva"></textarea>
 
-</div>
+<h3>Habilidade</h3>
+<textarea id="habilidade"></textarea>
 
-<!-- DIREITA -->
-<div class="right">
-
-<div class="title">
-<h2>Ficha de Personagem</h2>
-</div>
-
-<p>Pontos: <span id="pontos">30</span></p>
-
-<!-- ATRIBUTOS -->
-<div class="row">
-
-<div class="box atributo">
-FOR
-<button onclick="diminuir('for')">-</button>
-<input id="for" value="5" readonly>
-<button onclick="aumentar('for')">+</button>
-</div>
-
-<div class="box atributo">
-AGI
-<button onclick="diminuir('agi')">-</button>
-<input id="agi" value="5" readonly>
-<button onclick="aumentar('agi')">+</button>
-</div>
-
-<div class="box atributo">
-RES
-<button onclick="diminuir('res')">-</button>
-<input id="res" value="5" readonly>
-<button onclick="aumentar('res')">+</button>
-</div>
-
-<div class="box atributo">
-ENE
-<button onclick="diminuir('ene')">-</button>
-<input id="ene" value="5" readonly>
-<button onclick="aumentar('ene')">+</button>
 </div>
 
 </div>
 
-<div class="row">
+<button class="btn" onclick="salvar()">SALVAR PERSONAGEM</button>
 
-<div class="box atributo">
-PER
-<button onclick="diminuir('per')">-</button>
-<input id="per" value="5" readonly>
-<button onclick="aumentar('per')">+</button>
-</div>
+<div class="lista" id="lista"></div>
 
-<div class="box">HP<br><input></div>
-<div class="box">DEF<br><input></div>
-<div class="box">VEL<br><input></div>
-
-</div>
-
-<!-- RESTO IGUAL -->
-<div class="row">
-<div class="box">Tipo Núcleo<br><input></div>
-<div class="box">Estado<br><input></div>
-<div class="box">Energia<br><input></div>
-<div class="box">Rank<br><input></div>
-</div>
-
-<div class="row">
-<div class="box" style="grid-column: span 4;">
-Habilidades<br>
-<textarea rows="3"></textarea>
-</div>
-</div>
-
-<div class="row">
-<div class="box" style="grid-column: span 4;">
-Equipamentos<br>
-<textarea rows="2"></textarea>
-</div>
-</div>
-
-<div class="row">
-<div class="box" style="grid-column: span 4;">
-História<br>
-<textarea rows="3"></textarea>
-</div>
-</div>
-
-<!-- DADOS -->
-<div class="row">
-<div class="box">
-<button onclick="rolarD20()">D20</button>
-<p id="d20"></p>
-</div>
-
-<div class="box">
-<button onclick="rolarDano()">Dano</button>
-<select id="tipo">
-<option value="6">3d6</option>
-<option value="4">3d4</option>
-</select>
-<p id="dano"></p>
-</div>
-</div>
-
-</div>
 </div>
 
 <script>
 
-// SISTEMA DE ATRIBUTOS
-let pontos = 30;
-let max = 15;
-let min = 5;
+// LIMITE DE PONTOS
+function calc(){
+ let total = +for.value + +agi.value + +res.value + +per.value + +ene.value;
+ let resto = 55 - total;
 
-function aumentar(id){
-  let el = document.getElementById(id);
-  let val = parseInt(el.value);
+ document.getElementById("resto").innerText = "Pontos: " + resto;
 
-  if(pontos > 0 && val < max){
-    el.value = val + 1;
-    pontos--;
-    atualizar();
-  }
-}
-
-function diminuir(id){
-  let el = document.getElementById(id);
-  let val = parseInt(el.value);
-
-  if(val > min){
-    el.value = val - 1;
-    pontos++;
-    atualizar();
-  }
-}
-
-function atualizar(){
-  document.getElementById("pontos").innerText = pontos;
-}
-
-// DADOS
-function rolarD20(){
- let r = Math.floor(Math.random()*20)+1;
- document.getElementById("d20").innerText = r;
-}
-
-function rolarDano(){
- let tipo = document.getElementById("tipo").value;
- let total = 0;
- let rolls = [];
-
- for(let i=0;i<3;i++){
-   let r = Math.floor(Math.random()*tipo)+1;
-   rolls.push(r);
-   total += r;
+ if(resto < 0){
+   alert("Passou do limite!");
  }
+}
 
- document.getElementById("dano").innerText =
- rolls.join(", ") + " = " + total;
+// RAÇA
+function aplicarRaca(){
+ if(raca.value == "Elfo"){
+   agi.value = +agi.value + 2;
+ }
+ if(raca.value == "Orc"){
+   for.value = +for.value + 2;
+ }
+}
+
+// CLASSE
+function aplicarClasse(){
+ if(classe.value == "Guerreiro"){
+   res.value = +res.value + 2;
+ }
+ if(classe.value == "Mago"){
+   ene.value = +ene.value + 2;
+ }
+}
+
+// DEUS
+function aplicarDeus(){
+ if(deus.value == "Sol"){
+   passiva.value = "Regeneração leve";
+   habilidade.value = "Explosão Solar";
+ }
+ if(deus.value == "Lua"){
+   passiva.value = "Visão aprimorada";
+   habilidade.value = "Ilusão Lunar";
+ }
+ if(deus.value == "Caos"){
+   passiva.value = "Dano imprevisível";
+   habilidade.value = "Ruptura do Caos";
+ }
+}
+
+// SALVAR
+function salvar(){
+ let nome = document.getElementById("nome").value;
+
+ let div = document.createElement("div");
+ div.className = "char";
+ div.innerText = nome;
+
+ document.getElementById("lista").appendChild(div);
 }
 
 </script>

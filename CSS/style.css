@@ -709,3 +709,24 @@ body{
   }
 
 }
+.xp-container {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.xp-bar {
+  width: 120px;
+  height: 8px;
+  background: #222;
+  border: 1px solid #c9a85d;
+  margin: 3px 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.xp-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #c9a85d, #f1d38b);
+  transition: width 0.5s ease;
+}

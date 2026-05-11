@@ -3,11 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Login - Volaryon</title>
 
-  <link rel="stylesheet" href=".../CSS/style.css">
+  <link rel="stylesheet" href="CSS/style.css">
 
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
 </head>
@@ -26,15 +27,42 @@
 
       <div class="login-box">
 
-        <input type="email" id="email" placeholder="E-mail">
+        <div class="login-inputs">
 
-        <input type="password" id="senha" placeholder="Senha">
+          <input
+            type="email"
+            id="email"
+            placeholder="E-mail"
+            autocomplete="email"
+          >
 
-        <button onclick="entrar()">Entrar</button>
+          <div class="senha-box">
 
-        <a href="cadastro.html" class="link-btn">
+            <input
+              type="password"
+              id="senha"
+              placeholder="Senha"
+              autocomplete="current-password"
+            >
+
+            <span class="olho" onclick="toggleSenha()">
+              👁
+            </span>
+
+          </div>
+
+        </div>
+
+        <button onclick="entrar()">
+          Entrar
+        </button>
+
+        <button
+          class="novo-user"
+          onclick="window.location.href='cadastro.html'"
+        >
           Criar novo usuário
-        </a>
+        </button>
 
       </div>
 
@@ -42,13 +70,39 @@
 
   </section>
 
-  <div id="despertarTela" class="despertar-tela"></div>
-
   <audio id="bgMusic" loop>
     <source src="assets/audio/musica.mp3" type="audio/mpeg">
   </audio>
 
+  <div id="despertarTela" class="despertar-tela">
+
+    <div class="despertar-overlay">
+
+      <h1>🌑 DESPERTAR REALIZADO</h1>
+
+      <p>O Véu respondeu ao seu chamado...</p>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function toggleSenha() {
+
+      const senha = document.getElementById("senha");
+
+      senha.type =
+        senha.type === "password"
+          ? "text"
+          : "password";
+
+    }
+
+  </script>
+
   <script src="js/script.js"></script>
+
   <script type="module" src="js/auth.js"></script>
 
 </body>

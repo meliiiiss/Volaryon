@@ -71,3 +71,19 @@ window.addEventListener("DOMContentLoaded", () => {
   escrever();
 
 });
+let xpAtual = 0;
+let xpMax = 500;
+let nivel = 1;
+
+// simulação (depois você liga com sistema real)
+xpAtual = localStorage.getItem("xpConta") || 0;
+
+function atualizarXP() {
+  let porcentagem = (xpAtual / xpMax) * 100;
+
+  document.getElementById("xpFill").style.width = porcentagem + "%";
+  document.getElementById("xpTexto").innerText = `${xpAtual} / ${xpMax} XP`;
+  document.getElementById("nivelTexto").innerText = `Desperta • Nível ${nivel}`;
+}
+
+atualizarXP();

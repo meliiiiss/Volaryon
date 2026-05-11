@@ -198,6 +198,201 @@ Nome — Tipo — Teste — Dano — Efeito — Rank necessário
 </div>
 
 </div>
+<script>
 
+// ===== CONFIG =====
+const LIMITE_BASE = 5;
+const PONTOS_TOTAL = 30;
+const MAX_ATRIBUTO = 15;
+
+// ===== PEGAR INPUTS =====
+const atributos = ["for","agi","res","ene","per"];
+
+// ===== CALCULAR PONTOS =====
+function calcularPontos(){
+    let total = 0;
+
+    atributos.forEach(attr => {
+        total += parseInt(document.getElementById(attr).value) || 0;
+    });
+
+    let usados = total - (LIMITE_BASE * 5);
+    let resto = PONTOS_TOTAL - usados;
+
+    // mostra na tela
+    let display = document.getElementById("pontos");
+    if(display){
+        display.innerText = "Pontos restantes: " + resto;
+    }
+
+    // BLOQUEIO
+    if(resto < 0){
+        alert("Você passou do limite!");
+    }
+
+    // LIMITE MAX
+    atributos.forEach(attr => {
+        let el = document.getElementById(attr);
+        if(el.value > MAX_ATRIBUTO){
+            el.value = MAX_ATRIBUTO;
+        }
+    });
+}
+
+// ===== MODIFICADOR =====
+function calcMod(valor){
+    return Math.floor((valor - 10) / 2);
+}
+
+// ===== ATUALIZAR MODIFICADORES =====
+function atualizarMods(){
+    atributos.forEach(attr => {
+        let val = parseInt(document.getElementById(attr).value) || 0;
+        let mod = calcMod(val);
+
+        let modEl = document.getElementById(attr + "_mod");
+        if(modEl){
+            modEl.innerText = (mod >= 0 ? "+" : "") + mod;
+        }
+    });
+}
+
+// ===== RAÇAS =====
+function aplicarRaca(){
+    let raca = document.getElementById("raca").value;
+
+    if(raca == "Elfo"){
+        agi.value = +agi.value + 2;
+        per.value = +per.value + 1;
+    }
+
+    if(raca == "Orc"){
+        for.value = +for.value + 2;
+        res.value = +res.value + 1;
+    }
+
+    if(raca == "Humano"){
+        atributos.forEach(a => {
+            document.getElementById(a).value =
+                +document.getElementById(a).value + 1;
+        });
+    }
+
+    calcularPontos();
+    atualizarMods();
+}
+
+// ===== CLASSES =====
+function aplicarClasse(){
+    let classe = document.getElementById("classe").value;
+
+    if(classe == "Guerreiro"){
+        res.value = +res.value + 2;
+        for.value = +for.value + 1;
+    }
+
+    if(classe == "Mago"){
+        ene.value = +ene.value + 3;
+    }
+
+    if(classe == "Assassino"){
+        agi.value = +agi.value + 2;
+        per.value = +per.value + 1;
+    }
+
+    calcularPontos();
+    atualizarMods();
+}
+
+// ===== DEUSES =====
+function aplicarDeus(){
+    let deus = document.getElementById("deus").value;
+
+    let passiva = document.getElementById("passiva");
+    let ativa = document.getElementById("habilidade");
+
+    if(deus == "Sol"){
+        passiva.value = "Regenera vida lentamente";
+        ativa.value = "Explosão Solar (dano alto)";
+    }
+
+    if(deus == "Lua"){
+        passiva.value = "Aumenta percepção";
+        ativa.value = "Ilusão Lunar";
+    }
+
+    if(deus == "Caos"){
+        passiva.value = "Dano imprevisível";
+        ativa.value = "Ruptura do Caos";
+    }
+}
+
+// ===== ROLAR D20 =====
+function rolarD20(attr){
+    let valor = parseInt(document.getElementById(attr).value);
+    let mod = calcMod(valor);
+
+    let d20 = Math.floor(Math.random()*20)+1;
+
+    alert("D20: " + d20 + "\nMod: " + mod + "\nTotal: " + (d20 + mod));
+}
+
+// ===== SALVAR PERSONAGEM =====
+function salvar(){
+    let personagem = {
+        nome: document.getElementById("nome").value,
+        raca: document.getElementById("raca").value,
+        classe: document.getElementById("classe").value,
+        atributos: {}
+    };
+
+    atributos.forEach(attr => {
+        personagem.atributos[attr] =
+            document.getElementById(attr).value;
+    });
+
+    let lista = JSON.parse(localStorage.getItem("chars")) || [];
+    lista.push(personagem);
+
+    localStorage.setItem("chars", JSON.stringify(lista));
+
+    alert("Personagem salvo!");
+    carregar();
+}
+
+// ===== CARREGAR PERSONAGENS =====
+function carregar(){
+    let lista = JSON.parse(localStorage.getItem("chars")) || [];
+    let div = document.getElementById("lista");
+
+    if(!div) return;
+
+    div.innerHTML = "";
+
+    lista.forEach(p => {
+        let card = document.createElement("div");
+        card.className = "char";
+        card.innerText = p.nome;
+
+        div.appendChild(card);
+    });
+}
+
+// ===== INIT =====
+window.onload = () => {
+    atributos.forEach(attr => {
+        let el = document.getElementById(attr);
+        if(el){
+            el.addEventListener("input", () => {
+                calcularPontos();
+                atualizarMods();
+            });
+        }
+    });
+
+    carregar();
+}
+
+</script>
 </body>
 </html>

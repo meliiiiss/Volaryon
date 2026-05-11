@@ -87,3 +87,96 @@ function atualizarXP() {
 }
 
 atualizarXP();
+const racas = {
+
+Humano: {
+ bonus:{for:1, agi:1},
+ passiva:"Repetir um teste por combate",
+ fraqueza:"Sem afinidade"
+},
+
+Lunari: {
+ bonus:{per:2, agi:1},
+ passiva:"Visão no escuro",
+ fraqueza:"Vulnerável mental"
+},
+
+Ferrun: {
+ bonus:{res:2, for:1},
+ passiva:"Reduz dano físico",
+ fraqueza:"Baixa energia"
+},
+
+Vulperico: {
+ bonus:{agi:2, per:1},
+ passiva:"Bônus em esquiva",
+ fraqueza:"Baixa resistência"
+},
+
+Serphelin: {
+ bonus:{per:2, ene:1},
+ passiva:"Resistência a veneno",
+ fraqueza:"Frio extremo"
+},
+
+Sylvaris: {
+ bonus:{ene:2, res:1},
+ passiva:"Regenera fora de combate",
+ fraqueza:"Fogo"
+},
+
+Thalryn: {
+ bonus:{per:2, res:1},
+ passiva:"Respira na água",
+ fraqueza:"Desidratação"
+},
+
+Drakyn: {
+ bonus:{for:2, ene:1},
+ passiva:"+1d4 elemental",
+ fraqueza:"Corrupção"
+},
+
+Noctari: {
+ bonus:{agi:2, ene:1},
+ passiva:"Furtividade noturna",
+ fraqueza:"Baixa resistência"
+},
+
+Etheris: {
+ bonus:{ene:2, per:1},
+ passiva:"Detecta energia",
+ fraqueza:"Instabilidade mental"
+},
+
+Sintarquio: {
+ bonus:{res:2, ene:1},
+ passiva:"Resistência física",
+ fraqueza:"Baixa regeneração"
+},
+
+Vespiro: {
+ bonus:{ene:2, per:1},
+ passiva:"Ver espíritos",
+ fraqueza:"Sensível emocional"
+},
+
+Nefari: {
+ bonus:{ene:2, res:1},
+ passiva:"Resistência à corrupção",
+ fraqueza:"Perseguidos"
+},
+
+Abyssiano: {
+ bonus:{ene:2, agi:1},
+ passiva:"Causa medo",
+ fraqueza:"Instabilidade"
+},
+
+Corrompido: {
+ bonus:{res:2, ene:1},
+ passiva:"Aumenta dano temporário",
+ fraqueza:"Perda de controle"
+}
+
+};

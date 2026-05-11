@@ -1,25 +1,190 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Ficha - Volaryon</title>
-  <link rel="stylesheet" href="CSS/style.css">
+<meta charset="UTF-8">
+<title>Ficha Volaryon</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: #0b0f1a;
+    color: #e6d3a3;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* CARD */
+.card {
+    background: #111827;
+    border: 1px solid #c9a85d;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* TITULOS */
+h1, h2 {
+    color: #f1d38b;
+    margin-bottom: 10px;
+}
+
+/* INPUTS */
+input, textarea {
+    width: 100%;
+    background: #0b0f1a;
+    border: 1px solid #c9a85d;
+    color: #e6d3a3;
+    padding: 5px;
+    margin-bottom: 8px;
+}
+
+/* GRID DIREITA */
+.right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* ATRIBUTOS */
+.attr {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* FOTO */
+.avatar {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #c9a85d;
+}
+</style>
 </head>
 
 <body>
 
-<nav>
-  <h2>🌑 VOLARYON</h2>
-</nav>
+<div class="container">
 
-<section class="sobre">
-  <h2>⚔️ Criar Personagem</h2>
+<!-- ESQUERDA -->
+<div class="card">
+    <img class="avatar" src="https://i.imgur.com/3ZQ3Z9X.jpg">
 
-  <p>
-    Em breve sistema de ficha do jogador.
-  </p>
+    <h1><input placeholder="Nome do Personagem"></h1>
 
-</section>
+    <label>Idade</label>
+    <input placeholder="">
 
+    <label>Raça</label>
+    <input placeholder="">
+
+    <label>Classe</label>
+    <input placeholder="">
+
+    <label>Nível</label>
+    <input placeholder="">
+
+    <label>Rank do Núcleo</label>
+    <input placeholder="E → SS">
+
+    <h2>👑 Bênção</h2>
+    <input placeholder="Deus">
+    <textarea placeholder="Efeito da bênção"></textarea>
+</div>
+
+<!-- DIREITA -->
+<div class="right">
+
+<div class="card">
+    <h2>📊 Atributos</h2>
+
+    <div class="attr">Força <input type="number"></div>
+    <div class="attr">Agilidade <input type="number"></div>
+    <div class="attr">Resistência <input type="number"></div>
+    <div class="attr">Energia <input type="number"></div>
+    <div class="attr">Percepção <input type="number"></div>
+</div>
+
+<div class="card">
+    <h2>❤️ Status</h2>
+
+    <label>HP</label>
+    <input>
+
+    <label>Energia</label>
+    <input>
+
+    <label>Defesa</label>
+    <input>
+
+    <label>Velocidade</label>
+    <input>
+</div>
+
+<div class="card">
+    <h2>⚔️ Habilidades</h2>
+
+    <textarea placeholder="Habilidade 1"></textarea>
+    <textarea placeholder="Habilidade 2"></textarea>
+    <textarea placeholder="Habilidade 3"></textarea>
+</div>
+
+<div class="card">
+    <h2>📖 História</h2>
+    <textarea></textarea>
+</div>
+
+<div class="card">
+    <h2>🎒 Equipamentos</h2>
+    <textarea></textarea>
+</div>
+
+<div class="card">
+    <h2>⚠️ Estado</h2>
+    <textarea placeholder="Ferimentos / Buffs / Corrupção"></textarea>
+</div>
+
+</div>
+
+</div>
+<div class="card">
+    <h2>🎲 Rolagem de Dados</h2>
+
+    <button onclick="rolarD20()">Rolar D20</button>
+    <p id="resultadoD20"></p>
+
+    <button onclick="rolarDano()">Rolar Dano</button>
+    <select id="tipoDano">
+        <option value="d6">3d6</option>
+        <option value="d4">3d4</option>
+    </select>
+    <p id="resultadoDano"></p>
+</div>
+
+<script>
+function rolarD20() {
+    let roll = Math.floor(Math.random() * 20) + 1;
+    document.getElementById("resultadoD20").innerText = "Resultado: " + roll;
+}
+
+function rolarDano() {
+    let tipo = document.getElementById("tipoDano").value;
+    let total = 0;
+    let rolls = [];
+
+    for (let i = 0; i < 3; i++) {
+        let max = (tipo === "d6") ? 6 : 4;
+        let r = Math.floor(Math.random() * max) + 1;
+        rolls.push(r);
+        total += r;
+    }
+
+    document.getElementById("resultadoDano").innerText =
+        "Rolagens: " + rolls.join(", ") + " | Total: " + total;
+}
+</script>
 </body>
 </html>

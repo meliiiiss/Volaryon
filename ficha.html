@@ -4,267 +4,161 @@
 <meta charset="UTF-8">
 <title>Ficha Volaryon</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond&display=swap" rel="stylesheet">
-
 <style>
 body{
-    margin:0;
     background:#0b0c10;
     color:#e6d3a3;
-    font-family:'EB Garamond', serif;
+    font-family:serif;
 }
-
-.sheet{
-    max-width:1200px;
-    margin:auto;
-    padding:20px;
-    border:1px solid #c9a85d;
-}
-
-.top{
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap:10px;
-}
-
 .panel{
     border:1px solid #c9a85d;
     padding:10px;
-    background:#111;
-}
-
-.title{
-    text-align:center;
-    font-family:'Cinzel';
-    font-size:40px;
-    color:#c9a85d;
-}
-
-input, textarea, select{
-    width:100%;
-    background:transparent;
-    border:none;
-    border-bottom:1px solid #c9a85d;
-    color:white;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns: repeat(3,1fr);
-    gap:10px;
-    margin-top:10px;
-}
-
-.stats{
-    display:grid;
-    gap:5px;
-}
-
-.stat{
-    display:flex;
-    justify-content:space-between;
-    border-bottom:1px solid #c9a85d;
-}
-
-@media(max-width:900px){
-    .top{grid-template-columns:1fr;}
-    .grid{grid-template-columns:1fr;}
+    margin:10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="sheet">
-
-<div class="top">
-
-<div class="panel">
-<p>ARTE</p>
-</div>
-
 <div class="panel">
 
-<h1 class="title">NOME</h1>
+<h2>Ficha</h2>
 
 <p><b>Raça:</b>
 <select id="raca" onchange="aplicarRaca()">
 <option value="">Escolher</option>
 <option value="Humano">Humano</option>
-<option value="Elfyr">Lunari</option>
-<option value="Durkhan">Ferrun</option>
-<option value="Aurion">Vulperico</option>
-<option value="Drakyn">Drakyn</option>
-<option value="Sylvaris">Drakyn</option>
+<option value="Sylvaris">Sylvaris</option>
+<option value="Infernyx">Infernyx</option>
+</select>
+</p>
+
 <p><b>Sub-raça:</b>
-<select id="subracas">
+<select id="subraca">
 <option value="">—</option>
 </select>
 </p>
-<option value="">Drakyn</option>
-</select>
-</p>
 
-<p><b>Classe:</b> <input></p>
+<h3>Atributos</h3>
 
-</div>
+FOR <input id="for" type="number" value="5"><br>
+AGI <input id="agi" type="number" value="5"><br>
+RES <input id="res" type="number" value="5"><br>
+ENE <input id="ene" type="number" value="5"><br>
+PER <input id="per" type="number" value="5"><br>
 
-<div class="panel">
-<textarea rows="10" placeholder="Descrição"></textarea>
-</div>
-
-</div>
-
-<div class="grid">
-
-<div class="panel">
-<h3>ATRIBUTOS</h3>
-
-<div class="stats">
-<div class="stat">FOR <input id="for" type="number" value="5"></div>
-<div class="stat">AGI <input id="agi" type="number" value="5"></div>
-<div class="stat">RES <input id="res" type="number" value="5"></div>
-<div class="stat">ENE <input id="ene" type="number" value="5"></div>
-<div class="stat">PER <input id="per" type="number" value="5"></div>
-</div>
-
-<p id="pontos">Pontos restantes: 30</p>
-
-</div>
-
-<div class="panel">
-<h3>HABILIDADES</h3>
-<textarea rows="10"></textarea>
-</div>
-
-<div class="panel">
-<h3>HISTÓRIA</h3>
-<textarea rows="10"></textarea>
-</div>
-
-</div>
+<p id="pontos">Pontos: 30</p>
 
 </div>
 
 <script>
 
-// CONFIG
 const BASE = 5;
-const MAX = 15;
 const TOTAL = 30;
-
 const atributos = ["for","agi","res","ene","per"];
 
-// RAÇAS
 const racas = {
 
-Humano:{bonus:{x:2, x:2}},
-Elfyr:{bonus:{per:1, agi:1}}
-    subracas:[
-        {nome:"Forestis", bonus:{ene:1}},
-        {nome:"Lunari", bonus:{agi:1}},
-    ]
-Durkhan:{bonus:{res:2, for:1}}
-    subracas:[
-        {nome:{"Ferrun", bonus:{for:1}},
-        {nome:{"Everest", bonus:{res:1}},
-    ]
-Drakyn:{bonus:{for:2, ene:1}},
-Aurion:{bonus:{agi:2, ene:1}},
-Sylvaris:{bonus:{ene:1,res:1}
+Humano:{bonus:{for:1, agi:1}},
+
+Sylvaris:{
+    bonus:{ene:1,res:1},
     subracas:[
         {nome:"Bestialis", bonus:{for:2}},
         {nome:"Aeralis", bonus:{agi:2}},
         {nome:"Serpentes", bonus:{per:2}},
         {nome:"Amphira", bonus:{res:2}},
-        {nome:"Thalassyn", bonus:{ene:2}},
-    ]
-Infernyx:{bonus:{ene:2, for:1}}  
-  subracas:[
-    {nome:"Sanguinarch", bonus:{ene:2, per:1}},
-    {nome:"Bansharyn", bonus:{ene:2, per:1}},
-    {nome:"Lichnyx", bonus:{ene:3}},
-    {nome:"Nachryx", bonus:{for:2, res:1}},
-    {nome:"Damazti", bonus:{ene:2, res:1}},
-    {nome:"Diabryn", bonus:{for:2, ene:1}},
-    {nome:"Cyclonyx", bonus:{per:2, res:1}},
-    {nome:"Gargonyx", bonus:{res:3}}
-  ]
-}
-
+        {nome:"Thalassyn", bonus:{ene:2}}
     ]
 },
+
+Infernyx:{
+    bonus:{ene:2, for:1},
+    subracas:[
+        {nome:"Sanguinarch", bonus:{ene:2, per:1}},
+        {nome:"Bansharyn", bonus:{ene:2, per:1}},
+        {nome:"Lichnyx", bonus:{ene:3}},
+        {nome:"Nachryx", bonus:{for:2, res:1}},
+        {nome:"Damazti", bonus:{ene:2, res:1}},
+        {nome:"Diabryn", bonus:{for:2, ene:1}},
+        {nome:"Cyclonyx", bonus:{per:2, res:1}},
+        {nome:"Gargonyx", bonus:{res:3}}
+    ]
+}
+
 };
 
-// RESET BASE
+// RESET
 function resetBase(){
     atributos.forEach(a=>{
         document.getElementById(a).value = BASE;
     });
 }
 
-// function aplicarRaca(){
+// RAÇA
+function aplicarRaca(){
 
-    resetAtributos();
+    resetBase();
 
     let nome = document.getElementById("raca").value;
     let r = racas[nome];
 
-    let subSelect = document.getElementById("subraca");
-    subSelect.innerHTML = '<option value="">—</option>';
-
-    // Se tiver sub-raças
-    if(r && r.subracas){
-        r.subracas.forEach(sub => {
-            let opt = document.createElement("option");
-            opt.value = sub.nome;
-            opt.textContent = sub.nome;
-            subSelect.appendChild(opt);
-        });
-
-        subSelect.onchange = () => aplicarSubRaca(nome);
-    }
+    let sub = document.getElementById("subraca");
+    sub.innerHTML = '<option value="">—</option>';
 
     if(!r) return;
 
-    for(let attr in r.bonus){
-        let el = document.getElementById(attr);
-        el.value = +el.value + r.bonus[attr];
+    // bônus raça
+    for(let a in r.bonus){
+        document.getElementById(a).value =
+        +document.getElementById(a).value + r.bonus[a];
     }
 
-    calcularPontos();
+    // criar sub
+    if(r.subracas){
+        r.subracas.forEach(s=>{
+            let opt = document.createElement("option");
+            opt.value = s.nome;
+            opt.textContent = s.nome;
+            sub.appendChild(opt);
+        });
+
+        sub.onchange = ()=> aplicarSubRaca(nome);
     }
 
-    function aplicarSubRaca(racaNome){
+    calcular();
+}
+
+// SUB-RAÇA
+function aplicarSubRaca(nome){
 
     let subNome = document.getElementById("subraca").value;
-    let r = racas[racaNome];
+    let r = racas[nome];
 
     if(!r || !r.subracas) return;
 
-    let sub = r.subracas.find(s => s.nome === subNome);
-    if(!sub) return;
+    resetBase();
 
-    resetAtributos();
-
-    // bônus base da raça
-    for(let attr in r.bonus){
-        document.getElementById(attr).value =
-        +document.getElementById(attr).value + r.bonus[attr];
+    // bônus raça
+    for(let a in r.bonus){
+        document.getElementById(a).value =
+        +document.getElementById(a).value + r.bonus[a];
     }
 
-    // bônus da sub-raça
-    for(let attr in sub.bonus){
-        document.getElementById(attr).value =
-        +document.getElementById(attr).value + sub.bonus[attr];
+    let s = r.subracas.find(x=>x.nome==subNome);
+    if(!s) return;
+
+    // bônus sub
+    for(let a in s.bonus){
+        document.getElementById(a).value =
+        +document.getElementById(a).value + s.bonus[a];
     }
 
-    calcularPontos();
-    }
-    
-// CALCULAR PONTOS
+    calcular();
+}
+
+// PONTOS
 function calcular(){
-
     let total = 0;
 
     atributos.forEach(a=>{
@@ -275,10 +169,9 @@ function calcular(){
     let resto = TOTAL - usados;
 
     document.getElementById("pontos").innerText = "Pontos restantes: " + resto;
-
 }
 
-// EVENTOS
+// INIT
 window.onload = ()=>{
     atributos.forEach(a=>{
         document.getElementById(a).addEventListener("input", calcular);

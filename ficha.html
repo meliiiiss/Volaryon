@@ -7,31 +7,29 @@
 <style>
 body {
     margin: 0;
-    font-family: 'Georgia', serif;
-    background: #0e111a;
-    color: #e8d8a8;
+    font-family: 'Times New Roman', serif;
+    background: #0d0f14;
+    color: #e6d3a3;
 }
 
-/* LAYOUT PRINCIPAL */
 .container {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 320px 1fr;
     height: 100vh;
 }
 
-/* ESQUERDA */
+/* LADO ESQUERDO */
 .left {
-    background: #111;
-    padding: 15px;
     border-right: 2px solid #c9a85d;
+    padding: 10px;
 }
 
 .avatar {
     width: 100%;
-    height: 250px;
-    background: #222;
+    height: 260px;
     border: 2px solid #c9a85d;
     margin-bottom: 10px;
+    background: #222;
 }
 
 .left input {
@@ -39,37 +37,36 @@ body {
     margin-bottom: 5px;
 }
 
-/* DIREITA */
+/* LADO DIREITO */
 .right {
-    padding: 15px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    padding: 10px;
 }
 
-/* BOXES */
+/* LINHAS */
+.row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
 .box {
     border: 1px solid #c9a85d;
-    padding: 10px;
-    background: #151a25;
+    padding: 5px;
 }
 
-.box h3 {
-    margin-top: 0;
-    border-bottom: 1px solid #c9a85d;
-}
-
-/* INPUTS */
-input, textarea {
+.box input, .box textarea {
     width: 100%;
-    background: #0e111a;
-    border: 1px solid #c9a85d;
+    background: transparent;
+    border: none;
     color: #fff;
-    margin-top: 3px;
 }
 
-textarea {
-    resize: none;
+/* TÍTULO */
+.title {
+    text-align: center;
+    border-bottom: 2px solid #c9a85d;
+    margin-bottom: 10px;
 }
 </style>
 </head>
@@ -91,67 +88,79 @@ textarea {
 
 <h3>Bênção</h3>
 <input placeholder="Deus">
-<textarea placeholder="Efeito"></textarea>
+<textarea placeholder="Descrição"></textarea>
 
 </div>
 
 <!-- DIREITA -->
 <div class="right">
 
-<div class="box">
-<h3>Atributos</h3>
-Força <input type="number">
-Agilidade <input type="number">
-Resistência <input type="number">
-Energia <input type="number">
-Percepção <input type="number">
+<div class="title">
+<h2>Ficha de Personagem</h2>
 </div>
 
-<div class="box">
-<h3>Status</h3>
-HP <input>
-Energia <input>
-Defesa <input>
-Velocidade <input>
+<!-- ATRIBUTOS -->
+<div class="row">
+<div class="box">FOR<br><input type="number"></div>
+<div class="box">AGI<br><input type="number"></div>
+<div class="box">RES<br><input type="number"></div>
+<div class="box">ENE<br><input type="number"></div>
 </div>
 
-<div class="box">
-<h3>Núcleo</h3>
-Tipo <input>
-Estado <input>
-<textarea placeholder="Efeito"></textarea>
+<div class="row">
+<div class="box">PER<br><input type="number"></div>
+<div class="box">HP<br><input></div>
+<div class="box">DEF<br><input></div>
+<div class="box">VEL<br><input></div>
 </div>
 
-<div class="box">
-<h3>Habilidades</h3>
-<textarea placeholder="Habilidade 1"></textarea>
-<textarea placeholder="Habilidade 2"></textarea>
+<!-- NÚCLEO -->
+<div class="row">
+<div class="box">Tipo Núcleo<br><input></div>
+<div class="box">Estado<br><input></div>
+<div class="box">Energia<br><input></div>
+<div class="box">Rank<br><input></div>
 </div>
 
-<div class="box">
-<h3>Equipamentos</h3>
-<textarea></textarea>
+<!-- HABILIDADES -->
+<div class="row">
+<div class="box" style="grid-column: span 4;">
+Habilidades<br>
+<textarea rows="3"></textarea>
+</div>
 </div>
 
-<div class="box">
-<h3>História</h3>
-<textarea></textarea>
+<!-- EQUIPAMENTOS -->
+<div class="row">
+<div class="box" style="grid-column: span 4;">
+Equipamentos<br>
+<textarea rows="2"></textarea>
+</div>
 </div>
 
-<!-- ROLAGEM -->
-<div class="box">
-<h3>🎲 Dados</h3>
+<!-- HISTÓRIA -->
+<div class="row">
+<div class="box" style="grid-column: span 4;">
+História<br>
+<textarea rows="3"></textarea>
+</div>
+</div>
 
+<!-- DADOS -->
+<div class="row">
+<div class="box">
 <button onclick="rolarD20()">D20</button>
 <p id="d20"></p>
+</div>
 
+<div class="box">
 <button onclick="rolarDano()">Dano</button>
 <select id="tipo">
 <option value="6">3d6</option>
 <option value="4">3d4</option>
 </select>
 <p id="dano"></p>
-
+</div>
 </div>
 
 </div>
@@ -161,7 +170,7 @@ Estado <input>
 <script>
 function rolarD20(){
  let r = Math.floor(Math.random()*20)+1;
- document.getElementById("d20").innerText = "Resultado: " + r;
+ document.getElementById("d20").innerText = r;
 }
 
 function rolarDano(){
@@ -176,7 +185,7 @@ function rolarDano(){
  }
 
  document.getElementById("dano").innerText =
- "Rolagens: " + rolls.join(", ") + " | Total: " + total;
+ rolls.join(", ") + " = " + total;
 }
 </script>
 

@@ -152,7 +152,7 @@ onAuthStateChanged(auth, (user) => {
   const pagina = window.location.pathname;
 
   const estaNaHome =
-    pagina.includes("home.html");
+    pagina.includes("pages/home.html");
 
   const estaLogadoLocal =
     verificarSessao();

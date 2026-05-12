@@ -2,49 +2,50 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volaryon | Ficha do Desperto</title>
+    <title>Ficha Volaryon</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/deuses.css">
 </head>
-<body class="page-ficha">
-    <div class="overlay-vignette"></div>
 
-    <main class="ficha-container">
+<body>
 
-    <!-- COLUNA ESQUERDA (ARTE + FRASE) -->
+<main class="ficha-container">
+
+    <!-- ESQUERDA -->
     <section class="col esquerda">
         <div class="arte-box">
             <input type="file" id="upload-img">
-            <img id="preview" src="" alt="">
+            <img id="preview">
         </div>
 
         <div class="frase-box">
-            <p>"Sua frase aqui..."</p>
+            <p contenteditable>"Sua frase aqui..."</p>
         </div>
     </section>
 
-    <!-- COLUNA CENTRAL -->
+    <!-- CENTRO -->
     <section class="col centro">
 
         <h1 class="nome">NOME DO PERSONAGEM</h1>
         <h3 class="sub">— VOLARYON —</h3>
 
         <div class="info-grid">
-            <div><b>Raça:</b> <select id="select-raca"></select></div>
-            <div><b>Classe:</b> <select id="select-classe"></select></div>
+            <div><b>Raça:</b> <select></select></div>
+            <div><b>Classe:</b> <select></select></div>
             <div><b>Nível:</b> <input type="number"></div>
             <div><b>Rank:</b> <input></div>
         </div>
 
-        <div class="nucleo-box">
+        <!-- NÚCLEO -->
+        <div class="box">
             <h3>NÚCLEO</h3>
             <p>Tipo: <input></p>
             <p>Estado: <input></p>
         </div>
 
         <!-- ATRIBUTOS -->
-        <div class="atributos">
+        <div class="box">
             <h3>ATRIBUTOS</h3>
 
             <div class="attr">FOR <input id="for" type="number" value="10"> <span id="mod-for">+0</span></div>
@@ -55,7 +56,7 @@
         </div>
 
         <!-- CA -->
-        <div class="ca-box">
+        <div class="box ca-box">
             <h3>CA</h3>
             <p id="ca">10</p>
             <small>10 + 1d20 + Mod AGI</small>
@@ -63,70 +64,53 @@
 
     </section>
 
-    <!-- COLUNA DIREITA -->
+    <!-- DIREITA -->
     <section class="col direita">
 
-        <div class="desc-box">
+        <div class="box">
             <h3>APARÊNCIA</h3>
             <textarea></textarea>
         </div>
 
-        <div class="desc-box">
+        <div class="box">
             <h3>PERSONALIDADE</h3>
             <textarea></textarea>
         </div>
 
-        <div class="desc-box">
+        <div class="box">
             <h3>HISTÓRIA</h3>
             <textarea></textarea>
         </div>
 
         <!-- HABILIDADES -->
-        <div class="habilidades">
+        <div class="box">
             <h3>HABILIDADES</h3>
 
-            <div class="tier">
-                <h4>Comuns</h4>
-                <div class="grid-hab">
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                </div>
+            <h4>Comuns</h4>
+            <div class="grid-hab">
+                <div class="slot"></div><div class="slot"></div><div class="slot"></div>
+                <div class="slot"></div><div class="slot"></div><div class="slot"></div>
             </div>
 
-            <div class="tier">
-                <h4>Épicas</h4>
-                <div class="grid-hab">
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                </div>
+            <h4>Épicas</h4>
+            <div class="grid-hab epico">
+                <div class="slot"></div><div class="slot"></div><div class="slot"></div>
+                <div class="slot"></div><div class="slot"></div><div class="slot"></div>
             </div>
 
-            <div class="tier">
-                <h4>Lendárias</h4>
-                <div class="grid-hab">
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                    <div class="slot"></div>
-                </div>
+            <h4>Lendárias</h4>
+            <div class="grid-hab lendario">
+                <div class="slot"></div><div class="slot"></div><div class="slot"></div>
+                <div class="slot"></div><div class="slot"></div><div class="slot"></div>
             </div>
-
         </div>
 
     </section>
 
-    </main>
-    <script src="js/ficha_logica.js"></script>
+</main>
+
+<!-- JS -->
+<script src="js/ficha_logica.js"></script>
+
 </body>
 </html>
-

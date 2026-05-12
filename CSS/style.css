@@ -751,3 +751,22 @@ body {
     min-height: 100vh;
     background-attachment: fixed;
 }
+.panteao-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px auto;
+    max-width: 800px; /* Limita a largura para os ícones ficarem agrupados */
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4); /* Fundo semi-transparente para destacar */
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.2); /* Borda dourada sutil */
+}
+
+/* Redimensionar os ícones para caberem bem na Hero */
+.icon-deus {
+    width: 60px;  /* Tamanho menor para a página inicial */
+    height: 80px; 
+    background-size: 500% 500%;
+}

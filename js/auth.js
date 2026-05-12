@@ -162,3 +162,10 @@ onAuthStateChanged(auth, (user) => {
   }
 
 });
+
+
+// Adicione esta importação no seu auth.js ou arquivo de configuração
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+const db = getFirestore(app);
+export { db };

@@ -770,3 +770,59 @@ body {
     height: 80px; 
     background-size: 500% 500%;
 }
+.page-ficha {
+    background: url('../ativos/img/fundo_eclipse.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+    font-family: 'Cinzel', serif; /* Fonte épica */
+}
+
+.ficha-wrapper {
+    display: grid;
+    grid-template-columns: 200px 1fr 300px;
+    gap: 30px;
+    width: 95%;
+    max-width: 1400px;
+    z-index: 2;
+}
+
+.panel-stats, .panel-info {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+}
+
+.character-frame {
+    background: rgba(0, 0, 0, 0.4);
+    height: 500px;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Barras de Status conforme o Manual */
+.bar-bg { width: 100%; height: 10px; background: #222; margin: 5px 0; border-radius: 5px; overflow: hidden; }
+.bar-fill.hp { background: linear-gradient(90deg, #8b0000, #ff0000); width: 100%; transition: 0.5s; }
+.bar-fill.ene { background: linear-gradient(90deg, #00008b, #00bfff); width: 100%; transition: 0.5s; }
+.bar-fill.corrup { background: linear-gradient(90deg, #4b0082, #9400d3); width: 0%; transition: 0.5s; }
+
+.btn-invocar {
+    background: #d4af37;
+    color: black;
+    border: none;
+    padding: 15px 30px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+}

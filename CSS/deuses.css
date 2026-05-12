@@ -1,1 +1,53 @@
+/* Container base do ícone */
+.icon-deus {
+    width: 150px; /* Ajuste conforme o tamanho que desejar na tela */
+    height: 180px; 
+    background-image: url('../img/panteao_sprites.png');
+    background-size: 500% 500%; /* Define a grade 5x5 */
+    background-repeat: no-repeat;
+    display: inline-block;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.icon-deus:hover {
+    transform: scale(1.1);
+    filter: brightness(1.3) drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+    cursor: pointer;
+}
+
+/* Coordenadas X e Y (Grade 5x5) */
+/* Linha 1 */
+.solariun    { background-position: 0% 0%; }
+.lunaris     { background-position: 25% 0%; }
+.aethelos    { background-position: 50% 0%; }
+.moiraios    { background-position: 75% 0%; }
+.astraea     { background-position: 100% 0%; }
+
+/* Linha 2 */
+.thalassos   { background-position: 0% 25%; }
+.ignis-vahl  { background-position: 25% 25%; }
+.zephyros    { background-position: 50% 25%; }
+.gaios       { background-position: 75% 25%; }
+.raijin-ka   { background-position: 100% 25%; }
+
+/* Linha 3 */
+.vulcanos    { background-position: 0% 50%; }
+.kratos-tyr  { background-position: 25% 50%; }
+.skadi-fen   { background-position: 50% 50%; }
+.palamedes   { background-position: 75% 50%; }
+.aegis-oak   { background-position: 100% 50%; }
+
+/* Linha 4 */
+.thanatos-ra { background-position: 0% 75%; }
+.eris-ouro   { background-position: 25% 75%; }
+.nox-nyx     { background-position: 50% 75%; }
+.phobetor    { background-position: 75% 75%; }
+.enigma      { background-position: 100% 75%; }
+
+/* Linha 5 */
+.eir-soma    { background-position: 0% 100%; }
+.terpsicore  { background-position: 25% 100%; }
+.thoth-logos { background-position: 50% 100%; }
+.demeter-koa { background-position: 75% 100%; }
+.aphros-cupis { background-position: 100% 100%; }
 

@@ -826,3 +826,44 @@ body {
     margin-top: 20px;
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
 }
+.ficha-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:15px;
+    padding:20px;
+    color:#e6d3a3;
+}
+
+.col{
+    background:#0f1115;
+    border:1px solid #c9a85d;
+    padding:10px;
+}
+
+.nome{
+    text-align:center;
+    font-size:32px;
+    color:#c9a85d;
+}
+
+.attr{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #c9a85d;
+}
+
+.ca-box{
+    text-align:center;
+    margin-top:10px;
+}
+
+.grid-hab{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:5px;
+}
+
+.slot{
+    height:40px;
+    border:1px solid #c9a85d;
+}

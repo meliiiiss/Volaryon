@@ -1,167 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Cadastro - Volaryon</title>
-
   <link rel="stylesheet" href="CSS/style.css">
-
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
-
 </head>
-
 <body>
 
   <section class="hero">
-
     <div class="hero-content">
-
-      <h1>DESPERTAR</h1>
-
-      <p class="story">
-        Crie sua existência no mundo de Volaryon.
-      </p>
+      <h1>INSCRIÇÃO</h1>
+      <p class="story">Molde sua existência antes de atravessar o Véu.</p>
 
       <div class="login-box">
-
         <div class="login-inputs">
-
-          <input
-            type="text"
-            id="usuario"
-            placeholder="Nome de usuário"
-          >
-
-          <input
-            type="email"
-            id="email"
-            placeholder="E-mail"
-            autocomplete="email"
-          >
-
+          <input type="text" id="usuario" placeholder="Nome de Usuário">
+          <input type="email" id="email" placeholder="E-mail Arcano">
+          
           <div class="senha-box">
-
-            <input
-              type="password"
-              id="senha"
-              placeholder="Senha"
-              autocomplete="new-password"
-            >
-
-            <span class="olho" onclick="toggleSenha('senha')">
-              👁
-            </span>
-
+            <input type="password" id="senha" placeholder="Escolha sua Senha">
+            <span class="olho" onclick="toggleSenha('senha')">👁</span>
           </div>
 
           <div class="senha-box">
-
-            <input
-              type="password"
-              id="confirmarSenha"
-              placeholder="Confirmar senha"
-              autocomplete="new-password"
-            >
-
-            <span class="olho" onclick="toggleSenha('confirmarSenha')">
-              👁
-            </span>
-
+            <input type="password" id="confirmarSenha" placeholder="Confirme a Senha">
+            <span class="olho" onclick="toggleSenha('confirmarSenha')">👁</span>
           </div>
-
         </div>
 
-        <button onclick="criarConta()">
-          Criar conta
-        </button>
-
-        <button
-          class="novo-user"
-          onclick="window.location.href='login.html'"
-        >
-          Já tenho conta
-        </button>
-
+        <button onclick="criarConta()">Despertar Agora</button>
+        <button class="novo-user" onclick="window.location.href='login.html'">Já possui essência? Entrar</button>
       </div>
-
     </div>
-
   </section>
 
-  <audio id="bgMusic" loop>
-
-    <source
-      src="assets/audio/musica.mp3"
-      type="audio/mpeg"
-    >
-
-  </audio>
+  <audio id="bgMusic" loop><source src="ativos/áudio/musica.mp3" type="audio/mpeg"></audio>
 
   <div id="despertarTela" class="despertar-tela">
-
-    <video
-      id="video1"
-      class="video-portal active"
-      muted
-      playsinline
-    >
-
-      <source
-        src="assets/videos/snaptik_7588938927608794399_hd.mp4"
-        type="video/mp4"
-      >
-
+    <video id="video1" class="video-portal active" muted playsinline>
+        <source src="ativos/vídeos/snaptik_7588938927608794399_hd.mp4" type="video/mp4">
     </video>
-
-    <video
-      id="video2"
-      class="video-portal"
-      muted
-      playsinline
-    >
-
-      <source
-        src="assets/videos/snaptik_7596252726334410006_hd.mp4"
-        type="video/mp4"
-      >
-
-    </video>
-
     <div class="despertar-overlay">
-
       <h1>🌑 DESPERTAR REALIZADO</h1>
-
-      <p>Seu nome ecoou pelo Véu...</p>
-
+      <p>Seu nome ecoou através das dimensões...</p>
     </div>
-
   </div>
 
-  <script>
-
-    function toggleSenha(id) {
-
-      const input =
-        document.getElementById(id);
-
-      input.type =
-        input.type === "password"
-          ? "text"
-          : "password";
-
-    }
-
-  </script>
-
   <script src="js/script.js"></script>
-
   <script type="module" src="js/auth.js"></script>
-
+  <script>
+    function toggleSenha(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === "password" ? "text" : "password";
+    }
+  </script>
 </body>
-
 </html>

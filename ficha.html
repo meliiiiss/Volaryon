@@ -84,7 +84,11 @@ input, textarea, select{
 <p><b>Raça:</b>
 <select id="raca" onchange="aplicarRaca()">
 <option value="">Escolher</option>
+<option value="Humano">Humano</option>
+<option value="Elfyr">Elfyr</option>
+<option value="Durkhan">Durkhan</option>
 <option value="Sylvaris">Sylvaris</option>
+<option value="Aurion">Aurion</option>
 <option value="Infernyx">Infernyx</option>
 </select>
 </p>
@@ -158,6 +162,7 @@ const atributos = ["for","agi","res","ene","per"];
 
 const racas = {
 
+
 Sylvaris:{
 bonus:{ene:1,res:1},
 subracas:[
@@ -181,7 +186,24 @@ subracas:[
 {nome:"Cyclonyx", bonus:{per:2}},
 {nome:"Gargonyx", bonus:{res:3}}
 ]
+},
+    
+Elfyr:{
+bonus:{ene:1,res:1},
+subracas:[
+{nome:"Forestis", bonus:{ene:1}},
+{nome:"Lunaris", bonus:{agi:2}},
+]
+},
+
+Durkhan:{
+bonus:{for:2,res:1},
+subracas:[
+{nome:"Ferrun", bonus:{for:2}},
+{nome:"Everest", bonus:{res:2}},
+]
 }
+
 
 };
 

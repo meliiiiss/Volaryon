@@ -730,3 +730,24 @@ body{
   background: linear-gradient(90deg, #c9a85d, #f1d38b);
   transition: width 0.5s ease;
 }
+/* Isso faz com que no telemóvel as colunas fiquem uma debaixo da outra */
+@media (max-width: 768px) {
+    .main-grid {
+        grid-template-columns: 1fr !important; /* Força uma coluna única */
+    }
+    
+    .char-header {
+        grid-template-columns: 1fr !important; /* Stack do cabeçalho */
+        text-align: center;
+    }
+
+    .char-portrait {
+        margin: 0 auto;
+    }
+}
+
+/* Garante que o fundo cubra a tela toda */
+body {
+    min-height: 100vh;
+    background-attachment: fixed;
+}

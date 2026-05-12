@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volaryon RPG | O Despertar</title>
+    <!-- CSS original e o novo CSS dos deuses -->
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/deuses.css">
 </head>
 <body class="page-index">
     <main class="hero">
         <div class="hero-content">
             <h1 class="logo-main">VOLARYON</h1>
-            <div id="story" class="story-container">
-                </div>
+            
+            <div id="story" class="story-container"></div>
+
+            <!-- CONTAINER DO PANTEÃO ADICIONADO AQUI -->
+            <div class="panteao-container" id="panteao">
+                <!-- O main.js vai injetar os 25 deuses aqui -->
+            </div>
+
             <nav class="auth-nav">
                 <button id="enterBtn" class="btn-primary" onclick="location.href='login.html'">
                     🌑 Atravessar o Véu
@@ -26,5 +34,7 @@
 
     <script src="js/ui.js"></script>
     <script src="js/script.js"></script>
+    <!-- Adicione o main.js para carregar os deuses -->
+    <script src="js/main.js"></script>
 </body>
 </html>

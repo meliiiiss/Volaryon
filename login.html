@@ -1,110 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Login - Volaryon</title>
-
   <link rel="stylesheet" href="CSS/style.css">
-
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
   <section class="hero">
-
     <div class="hero-content">
-
-      <h1>DESPERTAR</h1>
-
-      <p class="story">
-        Apenas aqueles tocados pelo Véu podem retornar ao mundo.
-      </p>
+      <h1>RETORNAR</h1>
+      <p class="story">O Véu aguarda a sua assinatura energética.</p>
 
       <div class="login-box">
-
         <div class="login-inputs">
-
-          <input
-            type="email"
-            id="email"
-            placeholder="E-mail"
-            autocomplete="email"
-          >
-
+          <input type="email" id="email" placeholder="E-mail Arcano" autocomplete="email">
+          
           <div class="senha-box">
-
-            <input
-              type="password"
-              id="senha"
-              placeholder="Senha"
-              autocomplete="current-password"
-            >
-
-            <span class="olho" onclick="toggleSenha()">
-              👁
-            </span>
-
+            <input type="password" id="senha" placeholder="Palavra-passe" autocomplete="current-password">
+            <span class="olho" onclick="toggleSenha('senha')">👁</span>
           </div>
-
         </div>
 
-        <button onclick="entrar()">
-          Entrar
-        </button>
-
-        <button
-          class="novo-user"
-          onclick="window.location.href='cadastro.html'"
-        >
-          Criar novo usuário
-        </button>
-
+        <button onclick="entrar()">Entrar no Mundo</button>
+        <button class="novo-user" onclick="window.location.href='cadastro.html'">Novo Desperto? Criar Existência</button>
       </div>
-
     </div>
-
   </section>
 
-  <audio id="bgMusic" loop>
-    <source src="assets/audio/musica.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="bgMusic" loop><source src="ativos/áudio/musica.mp3" type="audio/mpeg"></audio>
 
   <div id="despertarTela" class="despertar-tela">
-
+    <video id="video1" class="video-portal active" muted playsinline>
+        <source src="ativos/vídeos/snaptik_7588938927608794399_hd.mp4" type="video/mp4">
+    </video>
     <div class="despertar-overlay">
-
-      <h1>🌑 DESPERTAR REALIZADO</h1>
-
-      <p>O Véu respondeu ao seu chamado...</p>
-
+      <h1>🌑 CONEXÃO ESTABELECIDA</h1>
+      <p>Sincronizando com a Chama do Lar...</p>
     </div>
-
   </div>
 
-  <script>
-
-    function toggleSenha() {
-
-      const senha = document.getElementById("senha");
-
-      senha.type =
-        senha.type === "password"
-          ? "text"
-          : "password";
-
-    }
-
-  </script>
-
   <script src="js/script.js"></script>
-
   <script type="module" src="js/auth.js"></script>
-
+  <script>
+    function toggleSenha(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === "password" ? "text" : "password";
+    }
+  </script>
 </body>
-
 </html>

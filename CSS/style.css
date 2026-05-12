@@ -867,3 +867,82 @@ body {
     height:40px;
     border:1px solid #c9a85d;
 }
+body{
+    margin:0;
+    background:#0b0d10;
+    color:#e8edf5;
+    font-family: serif;
+}
+
+/* GRID */
+.ficha-container{
+    display:grid;
+    grid-template-columns:1fr 1.2fr 1fr;
+    gap:20px;
+    padding:20px;
+}
+
+/* COLUNAS */
+.col{
+    background:#10141a;
+    border:1px solid rgba(215,179,90,.3);
+    border-radius:12px;
+    padding:15px;
+}
+
+/* TÍTULOS */
+h1,h2,h3{
+    color:#d7b35a;
+}
+
+/* IMAGEM */
+.arte-box img{
+    width:100%;
+    border:2px solid gold;
+}
+
+/* CAIXAS */
+.box{
+    margin-top:10px;
+    padding:10px;
+    border:1px solid rgba(215,179,90,.2);
+}
+
+/* ATRIBUTOS */
+.attr{
+    display:flex;
+    justify-content:space-between;
+    margin:5px 0;
+}
+
+.attr span{
+    color:gold;
+}
+
+/* CA */
+.ca-box{
+    text-align:center;
+    color:gold;
+}
+
+/* HABILIDADES */
+.grid-hab{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.slot{
+    height:60px;
+    border:1px solid gold;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.epico .slot{
+    border-color:purple;
+}
+
+.lendario .slot{
+    border-color:red;
+}

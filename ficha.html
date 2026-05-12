@@ -10,66 +10,122 @@
 <body class="page-ficha">
     <div class="overlay-vignette"></div>
 
-    <main class="ficha-wrapper">
-        <aside class="panel-stats">
-            <div class="panel-header">ATRIBUTOS</div>
-            <div class="stat-item"><span>FOR</span><input type="number" id="for" value="10" onchange="atualizarFicha()"><b id="mod-for">+0</b></div>
-            <div class="stat-item"><span>AGI</span><input type="number" id="agi" value="10" onchange="atualizarFicha()"><b id="mod-agi">+0</b></div>
-            <div class="stat-item"><span>RES</span><input type="number" id="res" value="10" onchange="atualizarFicha()"><b id="mod-res">+0</b></div>
-            <div class="stat-item"><span>ENE</span><input type="number" id="ene" value="10" onchange="atualizarFicha()"><b id="mod-ene">+0</b></div>
-            <div class="stat-item"><span>PER</span><input type="number" id="per" value="10" onchange="atualizarFicha()"><b id="mod-per">+0</b></div>
-        </aside>
+    <main class="ficha-container">
 
-        <section class="panel-center">
-            <h1 class="logo-ficha">VOLARYON</h1>
-            
-            <div class="character-frame">
-                <div class="roleta-container">
-                    <div class="roleta-wrapper">
-                        <div id="roleta-track" class="roleta-track"></div>
-                        <div class="marcador-divino"></div>
-                    </div>
+    <!-- COLUNA ESQUERDA (ARTE + FRASE) -->
+    <section class="col esquerda">
+        <div class="arte-box">
+            <input type="file" id="upload-img">
+            <img id="preview" src="" alt="">
+        </div>
+
+        <div class="frase-box">
+            <p>"Sua frase aqui..."</p>
+        </div>
+    </section>
+
+    <!-- COLUNA CENTRAL -->
+    <section class="col centro">
+
+        <h1 class="nome">NOME DO PERSONAGEM</h1>
+        <h3 class="sub">— VOLARYON —</h3>
+
+        <div class="info-grid">
+            <div><b>Raça:</b> <select id="select-raca"></select></div>
+            <div><b>Classe:</b> <select id="select-classe"></select></div>
+            <div><b>Nível:</b> <input type="number"></div>
+            <div><b>Rank:</b> <input></div>
+        </div>
+
+        <div class="nucleo-box">
+            <h3>NÚCLEO</h3>
+            <p>Tipo: <input></p>
+            <p>Estado: <input></p>
+        </div>
+
+        <!-- ATRIBUTOS -->
+        <div class="atributos">
+            <h3>ATRIBUTOS</h3>
+
+            <div class="attr">FOR <input id="for" type="number" value="10"> <span id="mod-for">+0</span></div>
+            <div class="attr">AGI <input id="agi" type="number" value="10"> <span id="mod-agi">+0</span></div>
+            <div class="attr">RES <input id="res" type="number" value="10"> <span id="mod-res">+0</span></div>
+            <div class="attr">ENE <input id="ene" type="number" value="10"> <span id="mod-ene">+0</span></div>
+            <div class="attr">PER <input id="per" type="number" value="10"> <span id="mod-per">+0</span></div>
+        </div>
+
+        <!-- CA -->
+        <div class="ca-box">
+            <h3>CA</h3>
+            <p id="ca">10</p>
+            <small>10 + 1d20 + Mod AGI</small>
+        </div>
+
+    </section>
+
+    <!-- COLUNA DIREITA -->
+    <section class="col direita">
+
+        <div class="desc-box">
+            <h3>APARÊNCIA</h3>
+            <textarea></textarea>
+        </div>
+
+        <div class="desc-box">
+            <h3>PERSONALIDADE</h3>
+            <textarea></textarea>
+        </div>
+
+        <div class="desc-box">
+            <h3>HISTÓRIA</h3>
+            <textarea></textarea>
+        </div>
+
+        <!-- HABILIDADES -->
+        <div class="habilidades">
+            <h3>HABILIDADES</h3>
+
+            <div class="tier">
+                <h4>Comuns</h4>
+                <div class="grid-hab">
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
                 </div>
-                <div id="resultado-deus" class="nome-deus-anim">Aguardando Invocação...</div>
             </div>
 
-            <div class="action-bar">
-                <button id="btn-sortear" class="btn-invocar">INVOCAR DIVINDADE</button>
-            </div>
-        </section>
-
-        <aside class="panel-info">
-            <div class="status-box">
-                <div class="bar-group">
-                    <label>VITALIDADE (PV)</label>
-                    <div class="bar-bg"><div id="bar-hp" class="bar-fill hp"></div></div>
-                    <span id="txt-hp">100/100</span>
-                </div>
-                <div class="bar-group">
-                    <label>NÚCLEO (ENERGIA)</label>
-                    <div class="bar-bg"><div id="bar-ene" class="bar-fill ene"></div></div>
-                    <span id="txt-ene">50/50</span>
-                </div>
-                <div class="bar-group">
-                    <label>CORRUPÇÃO</label>
-                    <div class="bar-bg"><div id="bar-corrup" class="bar-fill corrup"></div></div>
-                    <span id="txt-corrup">0%</span>
+            <div class="tier">
+                <h4>Épicas</h4>
+                <div class="grid-hab">
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
                 </div>
             </div>
 
-            <div class="select-box">
-                <select id="select-raca" onchange="atualizarFicha()">
-                    <option value="">RAÇA</option>
-                </select>
-                <select id="select-classe" onchange="atualizarFicha()">
-                    <option value="">CLASSE</option>
-                </select>
+            <div class="tier">
+                <h4>Lendárias</h4>
+                <div class="grid-hab">
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                </div>
             </div>
-            
-            <div id="habilidade-raca" class="desc-box">Selecione uma linhagem...</div>
-        </aside>
+
+        </div>
+
+    </section>
+
     </main>
-
     <script src="js/ficha_logica.js"></script>
 </body>
 </html>

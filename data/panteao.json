@@ -1,1 +1,28 @@
 
+[
+  { "nome": "Solariun", "classe": "solariun", "dominio": "Sol e Alvorada" },
+  { "nome": "Lunatess", "classe": "lunatess", "dominio": "Lua e Noite" },
+  { "nome": "Aethelos", "classe": "aethelos", "dominio": "Tempo e Eras" },
+  { "nome": "Moiraios", "classe": "moiraios", "dominio": "Destino e Fios" },
+  { "nome": "Astraea", "classe": "astraea", "dominio": "Justiça e Ordem" },
+  { "nome": "Thalassos", "classe": "thalassos", "dominio": "Oceanos e Abismos" },
+  { "nome": "Ignis-Vahl", "classe": "ignis-vahl", "dominio": "Vulcões e Fogo" },
+  { "nome": "Phyzeros", "classe": "phyzeros", "dominio": "Ventos e Ar" },
+  { "nome": "Gaios", "classe": "gaios", "dominio": "Terra e Runas" },
+  { "nome": "Raijin-Ka", "classe": "raijin-ka", "dominio": "Tempestade e Som" },
+  { "nome": "Vulcanos", "classe": "vulcanos", "dominio": "Forja e Metal" },
+  { "nome": "Tratos-Tyr", "classe": "tratos-tyr", "dominio": "Guerra e Honra" },
+  { "nome": "Skadi-Fen", "classe": "skadi-fen", "dominio": "Caça e Gelo" },
+  { "nome": "Palamedes", "classe": "palamedes", "dominio": "Estratégia e Mente" },
+  { "nome": "Aegis-Oak", "classe": "aegis-oak", "dominio": "Proteção e Natureza" },
+  { "nome": "Thanatos-Ra", "classe": "thanatos-ra", "dominio": "Morte e Passagem" },
+  { "nome": "Eris-Ouro", "classe": "eris-ouro", "dominio": "Caos e Mudança" },
+  { "nome": "Nox-Nyx", "classe": "nox-nyx", "dominio": "Noite e Sabedoria" },
+  { "nome": "Phobetor", "classe": "phobetor", "dominio": "Medo e Pesadelos" },
+  { "nome": "Enigma", "classe": "enigma", "dominio": "Segredos e Chaves" },
+  { "nome": "Eir-Soma", "classe": "eir-soma", "dominio": "Cura e Vida" },
+  { "nome": "Terpsicore", "classe": "terpsicore", "dominio": "Dança e Infinito" },
+  { "nome": "Thoth-Logos", "classe": "thoth-logos", "dominio": "Conhecimento" },
+  { "nome": "Dathermes-Koa", "classe": "dathermes-koa", "dominio": "Colheita e Ciclos" },
+  { "nome": "Aphros-Cupis", "classe": "aphros-cupis", "dominio": "Amor e União" }
+]

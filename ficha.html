@@ -3,275 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ficha Volaryon — Oficial</title>
+    <title>Volaryon Builder — Legacy of Gods</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
         :root {
-            --bg: #0b0c10;
-            --panel: #111418;
-            --panel-inner: #0a0b0d;
-            --gold: #d7b35a;
-            --gold-dark: #9c7a2e;
-            --gold-low: rgba(215, 179, 90, 0.15);
-            --line: rgba(215, 179, 90, 0.3);
-            --text: #e6d3a3;
-            --muted: #aab3c3;
-            --radius: 12px;
-            --shadow: 0 10px 30px rgba(0,0,0,0.6);
+            --bg: #05070a;
+            --panel: rgba(13, 17, 23, 0.95);
+            --gold: #c2a35d;
+            --gold-low: rgba(194, 163, 93, 0.2);
+            --text: #e0e0e0;
+            --accent: #1a2433;
         }
 
         body {
             background: var(--bg);
-            background-image: radial-gradient(circle at top right, rgba(215, 179, 90, 0.05), transparent 60%);
+            background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
             color: var(--text);
-            font-family: 'Cinzel', serif, system-ui;
+            font-family: 'Cormorant Garamond', serif;
             margin: 0;
-            padding: 20px;
             display: flex;
             justify-content: center;
+            padding: 20px;
         }
 
-        .sheet {
+        .builder-container {
             max-width: 1200px;
             width: 100%;
-            border: 1px solid var(--line);
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 20px;
+        }
+
+        /* PAINÉIS ESTILO PATHBUILDER */
+        .card {
             background: var(--panel);
-            padding: 25px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        h2, h3 {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
-            margin: 0 0 15px 0;
-            border-bottom: 1px solid var(--gold-low);
-            padding-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* GRID LAYOUT */
-        .top-row {
-            display: grid;
-            grid-template-columns: 320px 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .bottom-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 20px;
-        }
-
-        .panel {
-            background: var(--panel-inner);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 15px;
+            border: 1px solid var(--gold);
+            border-radius: 4px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             position: relative;
         }
 
-        /* INPUTS */
-        label {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: var(--gold-dark);
-            display: block;
-            margin-top: 10px;
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 2px; left: 2px; right: 2px; bottom: 2px;
+            border: 1px solid var(--gold-low);
+            pointer-events: none;
         }
 
+        h2, h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0;
+            border-bottom: 1px solid var(--gold-low);
+            padding-bottom: 8px;
+        }
+
+        /* INPUTS ESTILIZADOS */
+        .input-group { margin-bottom: 15px; }
+        label { font-size: 12px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 5px; }
+        
         input, select, textarea {
             width: 100%;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid var(--line);
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--gold-low);
             color: white;
             padding: 8px;
-            border-radius: 4px;
-            margin-top: 4px;
-            box-sizing: border-box;
             font-family: inherit;
+            font-size: 16px;
         }
 
-        input:focus, select:focus {
-            border-color: var(--gold);
-            outline: none;
-        }
+        input:focus { border-color: var(--gold); outline: none; }
 
-        /* ATRIBUTOS */
-        .stat-row {
+        /* SIDEBAR DE ATRIBUTOS */
+        .stat-block {
             display: grid;
-            grid-template-columns: 80px 1fr 60px;
-            align-items: center;
+            grid-template-columns: 1fr 60px 60px;
             gap: 10px;
+            align-items: center;
             margin-bottom: 10px;
-            background: rgba(215, 179, 90, 0.03);
-            padding: 5px 10px;
-            border-radius: 6px;
+            background: var(--accent);
+            padding: 10px;
+            border-left: 3px solid var(--gold);
         }
 
-        .mod-box {
-            color: var(--gold);
-            font-weight: bold;
-            text-align: center;
-            font-size: 1.1em;
+        .stat-label { font-family: 'Cinzel', serif; font-weight: bold; }
+        .stat-mod { color: var(--gold); font-weight: bold; text-align: center; font-size: 20px; }
+
+        /* GRADE DE HABILIDADES */
+        .abilities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
 
-        /* IMAGEM */
-        .img-box {
-            width: 100%;
-            height: 320px;
-            border: 1px dashed var(--line);
-            border-radius: 6px;
+        .hab-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--gold-low);
+            padding: 10px;
+            transition: 0.3s;
+        }
+
+        .hab-item:hover { border-color: var(--gold); }
+
+        /* HEADER DO PERSONAGEM */
+        .char-header {
+            grid-column: 1 / -1;
             display: flex;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: #000;
+            gap: 20px;
             margin-bottom: 10px;
         }
-        #preview { width: 100%; height: 100%; object-fit: cover; display: none; }
 
-        /* BÊNÇÃO */
-        .blessing-box {
-            background: linear-gradient(135deg, rgba(215, 179, 90, 0.1), transparent);
-            border: 1px solid var(--gold-dark);
-            padding: 15px;
-            text-align: center;
-            border-radius: 8px;
+        .char-portrait {
+            width: 120px; height: 120px;
+            border: 2px solid var(--gold);
+            object-fit: cover;
+            border-radius: 50%;
         }
+
+        .header-info { flex: 1; }
+        .resource-bar {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        .resource { flex: 1; background: #000; border: 1px solid var(--gold-low); padding: 5px 10px; }
 
         .btn-roll {
             background: var(--gold);
             color: black;
+            font-family: 'Cinzel', serif;
             border: none;
-            padding: 10px 15px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-            text-transform: uppercase;
-            transition: 0.3s;
-            width: 100%;
-        }
-
-        .btn-roll:hover {
-            background: #fff;
-            box-shadow: 0 0 15px var(--gold);
-        }
-
-        /* HABILIDADES */
-        .hab-box {
-            border: 1px solid var(--line);
-            background: rgba(0,0,0,0.3);
             padding: 10px;
-            margin-bottom: 10px;
-            border-left: 4px solid var(--gold);
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
         }
 
         @media (max-width: 900px) {
-            .top-row, .bottom-grid { grid-template-columns: 1fr; }
+            .builder-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<div class="sheet">
-    <!-- CABEÇALHO / TOPO -->
-    <section class="top-row">
-        <!-- ARTE -->
-        <article class="panel">
-            <h3>Arte</h3>
-            <div class="img-box" id="img-display">
-                <span id="placeholder-text" style="color:var(--line); font-size: 12px;">Selecione uma imagem</span>
-                <img id="preview">
+<div class="builder-container">
+    <header class="card char-header">
+        <img id="preview" src="https://i.pinimg.com/736x/8e/3c/0c/8e3c0c538a7c293630f576e8284643c1.jpg" class="char-portrait">
+        <div class="header-info">
+            <input type="text" placeholder="NOME DO PERSONAGEM" style="font-family: 'Cinzel'; font-size: 24px; border: none; background: transparent; padding: 0;">
+            <div class="resource-bar">
+                <div class="resource"><label>Vida (PV)</label><input type="text" value="25/25" style="border:none; text-align:center;"></div>
+                <div class="resource"><label>Energia</label><input type="text" value="40/40" style="border:none; text-align:center;"></div>
+                <div class="resource"><label>Defesa (CA)</label><div id="ca" style="text-align:center; font-size:20px; color:var(--gold);">10</div></div>
             </div>
-            <input type="file" accept="image/*" onchange="carregarImagem(event)">
-        </article>
+        </div>
+        <div style="text-align:right">
+            <input type="file" id="img-input" onchange="carregarImagem(event)" style="display:none">
+            <button onclick="document.getElementById('img-input').click()" class="btn-roll" style="width:auto; padding:5px 15px;">Alterar Foto</button>
+        </div>
+    </header>
 
-        <!-- INFO BÁSICA -->
-        <article class="panel">
-            <h3>Identidade</h3>
-            <label>Nome do Personagem</label>
-            <input type="text" placeholder="Ex: Selene">
-            
+    <aside class="card">
+        <h3>Construção</h3>
+        
+        <div class="input-group">
             <label>Raça</label>
             <select id="raca" onchange="aplicarRaca()">
-                <option value="">Escolher...</option>
+                <option value="">Selecione...</option>
                 <option value="Humano">Humano</option>
                 <option value="Elfyr">Elfyr</option>
                 <option value="Durkhan">Durkhan</option>
                 <option value="Sylvaris">Sylvaris</option>
                 <option value="Infernyx">Infernyx</option>
-                <option value="Aurion">Aurion</option>
             </select>
+        </div>
 
-            <label>Sub-raça</label>
-            <select id="subraca" onchange="aplicarSubRaca()">
-                <option value="">—</option>
-            </select>
-            
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-                <div>
-                    <label>Classe</label>
-                    <input type="text">
+        <div class="input-group">
+            <label>Sub-Raça</label>
+            <select id="subraca" onchange="aplicarSubRaca()"><option value="">—</option></select>
+        </div>
+
+        <div class="divider" style="margin: 20px 0;"></div>
+
+        <h3>Atributos <span id="pontos" style="float:right; font-size:12px">30 pts</span></h3>
+        
+        <div id="stat-area">
+            </div>
+
+        <div class="card" style="margin-top:20px; background: rgba(0,0,0,0.4);">
+            <h3 style="font-size:14px">Bênção Divina</h3>
+            <div id="deus-nome" style="color:var(--gold); font-weight:bold; text-align:center; margin-bottom:10px;">? ? ?</div>
+            <button class="btn-roll" onclick="sortearDeus()">Sortear D25</button>
+        </div>
+    </aside>
+
+    <main style="display: flex; flex-direction: column; gap: 20px;">
+        <section class="card">
+            <h3>Habilidades de Classe</h3>
+            <div class="abilities-grid" id="habilidades-container">
                 </div>
-                <div>
-                    <label>Defesa (CA)</label>
-                    <div class="mod-box" style="font-size:24px; border:1px solid var(--gold-low); padding:5px; margin-top:4px;" id="ca">10</div>
-                </div>
+        </section>
+
+        <section class="card">
+            <h3>Equipamento & Biografia</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <textarea rows="10" placeholder="Inventário..."></textarea>
+                <textarea rows="10" placeholder="História do personagem..."></textarea>
             </div>
-        </article>
-
-        <!-- SORTEIO DO DEUS -->
-        <article class="panel">
-            <h3>Bênção Divina</h3>
-            <div class="blessing-box">
-                <div id="deus-nome" style="font-weight:bold; font-size:18px; color:var(--gold); margin-bottom:10px;">Toque no Destino</div>
-                <button class="btn-roll" onclick="sortearDeus()">Sortear (1d25)</button>
-                <p id="deus-efeito" style="font-size:12px; margin-top:10px; opacity:0.8;">Role para descobrir qual entidade marcou seu núcleo.</p>
-            </div>
-            <label>Notas Rápidas</label>
-            <textarea rows="4" placeholder="Alguma bênção adicional ou característica..."></textarea>
-        </article>
-    </section>
-
-    <!-- MEIO / GRID PRINCIPAL -->
-    <section class="bottom-grid">
-        <!-- ATRIBUTOS -->
-        <article class="panel">
-            <h3>Atributos <span id="pontos" style="font-size:10px; color:var(--gold)">Pontos: 30</span></h3>
-            <div class="stat-row"><span>FOR</span><input id="for" type="number" value="5"><span class="mod-box" id="mfor">+0</span></div>
-            <div class="stat-row"><span>AGI</span><input id="agi" type="number" value="5"><span class="mod-box" id="magi">+0</span></div>
-            <div class="stat-row"><span>RES</span><input id="res" type="number" value="5"><span class="mod-box" id="mres">+0</span></div>
-            <div class="stat-row"><span>ENE</span><input id="ene" type="number" value="5"><span class="mod-box" id="mene">+0</span></div>
-            <div class="stat-row"><span>PER</span><input id="per" type="number" value="5"><span class="mod-box" id="mper">+0</span></div>
-            <p style="font-size:10px; opacity:0.6; margin-top:15px;">* Atributos iniciais: base 5 + 30 pontos para distribuir.</p>
-        </article>
-
-        <!-- HABILIDADES -->
-        <article class="panel">
-            <h3>Habilidades</h3>
-            <div id="habilidades-lista" style="height:400px; overflow-y:auto; padding-right:5px;">
-                <!-- Gerado por JS -->
-            </div>
-        </article>
-
-        <!-- HISTÓRIA -->
-        <article class="panel">
-            <h3>Biografia</h3>
-            <textarea rows="22" placeholder="Descreva seu passado, objetivos e conexões com o mundo de Volaryon..."></textarea>
-        </article>
-    </section>
+        </section>
+    </main>
 </div>
 
 <script>
     const BASE = 5;
     const TOTAL_PONTOS = 30;
-    const atributos = ["for", "agi", "res", "ene", "per"];
+    const atributos = ["FOR", "AGI", "RES", "ENE", "PER"];
 
-    // NOVOS DEUSES ORIGINAIS
     const listaDeuses = [
         "Vorg-Xath (Gravidade)", "Khyllos (Portais)", "Zyn-Turok (Combate)", 
         "Oevari (Claridade)", "Xur-Ghaal (Decomposição)", "Myr-Vonn (Ressonância)", 
@@ -285,37 +239,34 @@
     ];
 
     const racas = {
-        Sylvaris: { bonus:{ene:1,res:1}, sub:[{nome:"Bestialis", b:{for:2}}, {nome:"Aeralis", b:{agi:2}}, {nome:"Serphetes", b:{per:2}}, {nome:"Amphiras", b:{res:2}}, {nome:"Thalassyn", b:{ene:2}}] },
-        Infernyx: { bonus:{ene:2,for:1}, sub:[{nome:"Sanguinarch", b:{ene:2}}, {nome:"Nachryx", b:{for:2}}, {nome:"Damazti", b:{res:2}}, {nome:"Bansharyn", b:{per:2}},  {nome:"Linchnyx", b:{ene:2}},
-        {nome:"Dyabrin", b:{for:2}}, {nome:"Cyclonyx", b:{ene:2}}, {nome:"Gargonyx", b:{res:2}}] },                                     
-        Elfyr: { bonus:{ene:1,res:1}, sub:[{nome:"Forestis", b:{ene:1}}, {nome:"Lunaris", b:{agi:2}}] },
-        Durkhan: { bonus:{for:2,res:1}, sub:[{nome:"Ferrun", b:{for:2}}, {nome:"Everest", b:{res:2}}] },
-        Humano: { bonus:{for:1,agi:1,res:1}, sub:[{nome:"Versátil", b:{}}] }
+        Sylvaris: { bonus:{ENE:1,RES:1}, sub:[{nome:"Bestialis", b:{FOR:2}}, {nome:"Aeralis", b:{AGI:2}}, {nome:"Serphetes", b:{PER:2}}, {nome:"Amphiras", b:{RES:2}}, {nome:"Thalassyn", b:{ENE:2}}] },
+        Infernyx: { bonus:{ENE:2,FOR:1}, sub:[{nome:"Sanguinarch", b:{ENE:2}}, {nome:"Nachryx", b:{FOR:2}}, {nome:"Damazti", b:{RES:2}}, {nome:"Bansharyn", b:{PER:2}},  {nome:"Linchnyx", b:{ENE:2}}] },                                     
+        Elfyr: { bonus:{ENE:1,RES:1}, sub:[{nome:"Forestis", b:{ENE:1}}, {nome:"Lunaris", b:{AGI:2}}] },
+        Durkhan: { bonus:{FOR:2,RES:1}, sub:[{nome:"Ferrun", b:{FOR:2}}, {nome:"Everest", b:{RES:2}}] },
+        Humano: { bonus:{FOR:1,AGI:1,RES:1}, sub:[{nome:"Versátil", b:{}}] }
     };
 
     function carregarImagem(e) {
         const preview = document.getElementById('preview');
         preview.src = URL.createObjectURL(e.target.files[0]);
-        preview.style.display = 'block';
-        document.getElementById('placeholder-text').style.display = 'none';
     }
 
     function sortearDeus() {
         const r = Math.floor(Math.random() * 25);
-        document.getElementById("deus-nome").innerText = `D25: ${r + 1} - ${listaDeuses[r]}`;
-        document.getElementById("deus-efeito").innerText = "Sua alma foi marcada. Os bônus desta entidade devem ser consultados com o Mestre.";
+        document.getElementById("deus-nome").innerText = listaDeuses[r];
     }
 
     function aplicarRaca() {
         let r = racas[document.getElementById("raca").value];
         let sub = document.getElementById("subraca");
         sub.innerHTML = '<option value="">—</option>';
-        if(!r) return;
-        r.sub.forEach(s => {
-            let o = document.createElement("option");
-            o.value = s.nome; o.textContent = s.nome;
-            sub.appendChild(o);
-        });
+        if(r) {
+            r.sub.forEach(s => {
+                let o = document.createElement("option");
+                o.value = s.nome; o.textContent = s.nome;
+                sub.appendChild(o);
+            });
+        }
         calc();
     }
 
@@ -329,26 +280,33 @@
             let m = mod(v);
             document.getElementById("m" + a).innerText = (m >= 0 ? "+" : "") + m;
         });
-        document.getElementById("pontos").innerText = "Pontos: " + (TOTAL_PONTOS - gasto);
-        document.getElementById("ca").innerText = 10 + mod(+document.getElementById("agi").value);
+        document.getElementById("pontos").innerText = (TOTAL_PONTOS - gasto) + " pts";
+        document.getElementById("ca").innerText = 10 + mod(+document.getElementById("AGI").value);
     }
 
-    function criarHabs() {
-        const lista = document.getElementById("habilidades-lista");
-        for(let i=1; i<=6; i++) {
-            let div = document.createElement("div");
-            div.className = "hab-box";
-            div.innerHTML = `
-                <input placeholder="Habilidade ${i}" style="border:none; padding:0; background:transparent; font-weight:bold; color:var(--gold);">
-                <textarea placeholder="Descrição do efeito..." style="border:none; padding:0; background:transparent; font-size:12px; height:40px; margin-top:5px;"></textarea>
-            `;
-            lista.appendChild(div);
-        }
+    // Inicializar Atributos
+    const statArea = document.getElementById("stat-area");
+    atributos.forEach(a => {
+        statArea.innerHTML += `
+            <div class="stat-block">
+                <span class="stat-label">${a}</span>
+                <input id="${a}" type="number" value="5" oninput="calc()">
+                <span class="stat-mod" id="m${a}">+0</span>
+            </div>
+        `;
+    });
+
+    // Inicializar Habilidades (8 slots)
+    const habContainer = document.getElementById("habilidades-container");
+    for(let i=1; i<=8; i++) {
+        habContainer.innerHTML += `
+            <div class="hab-item">
+                <input placeholder="Habilidade ${i}" style="border:none; background:transparent; color:var(--gold); font-weight:bold; padding:0;">
+                <textarea placeholder="Efeito..." style="border:none; background:transparent; font-size:13px; height:35px; width:100%; margin-top:5px; color:#bbb;"></textarea>
+            </div>
+        `;
     }
 
-    // Init
-    atributos.forEach(a => document.getElementById(a).addEventListener("input", calc));
-    criarHabs();
     calc();
 </script>
 

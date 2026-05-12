@@ -4,103 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volaryon | Ficha do Desperto</title>
-    <!-- CSS Geral e o específico dos Deuses/Roleta -->
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/deuses.css">
-    <style>
-        /* Estilos rápidos para layout da ficha */
-        .ficha-body {
-            background: radial-gradient(circle, #1a0f0f 0%, #050505 100%);
-            color: #e0e0e0;
-            padding: 20px;
-        }
-        .ficha-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .grid-ficha {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .secao-stats, .origem-divina {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .stat-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #333;
-        }
-        .input-dark {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #d4af37;
-            color: #d4af37;
-            text-align: center;
-            font-size: 1.2rem;
-        }
-        .hidden { display: none; }
-    </style>
 </head>
-<body class="ficha-body">
+<body class="page-ficha">
+    <div class="overlay-vignette"></div>
 
-    <header class="ficha-header">
-        <h1 class="logo-main">FICHA DO DESPERTO</h1>
-        <input type="text" class="input-dark" placeholder="Nome do Personagem">
-    </header>
+    <main class="ficha-wrapper">
+        <aside class="panel-stats">
+            <div class="panel-header">ATRIBUTOS</div>
+            <div class="stat-item"><span>FOR</span><input type="number" id="for" value="10" onchange="atualizarFicha()"><b id="mod-for">+0</b></div>
+            <div class="stat-item"><span>AGI</span><input type="number" id="agi" value="10" onchange="atualizarFicha()"><b id="mod-agi">+0</b></div>
+            <div class="stat-item"><span>RES</span><input type="number" id="res" value="10" onchange="atualizarFicha()"><b id="mod-res">+0</b></div>
+            <div class="stat-item"><span>ENE</span><input type="number" id="ene" value="10" onchange="atualizarFicha()"><b id="mod-ene">+0</b></div>
+            <div class="stat-item"><span>PER</span><input type="number" id="per" value="10" onchange="atualizarFicha()"><b id="mod-per">+0</b></div>
+        </aside>
 
-    <main class="grid-ficha">
-        
-        <!-- ATRIBUTOS -->
-        <section class="secao-stats">
-            <h3>Atributos Primordiais</h3>
-            <div class="stat-row"><span>FORÇA</span><input type="number" value="10"></div>
-            <div class="stat-row"><span>DESTREZA</span><input type="number" value="10"></div>
-            <div class="stat-row"><span>INTELIGÊNCIA</span><input type="number" value="10"></div>
-            <div class="stat-row"><span>CONSTITUIÇÃO</span><input type="number" value="10"></div>
-            <div class="stat-row"><span>SABEDORIA</span><input type="number" value="10"></div>
-        </section>
-
-        <!-- O GACHA/ROLETA -->
-        <section class="origem-divina">
-            <h3>Vínculo Divino</h3>
+        <section class="panel-center">
+            <h1 class="logo-ficha">VOLARYON</h1>
             
-            <div class="roleta-container">
-                <div class="roleta-wrapper">
-                    <div id="roleta-track" class="roleta-track">
-                        <!-- Ícones injetados pelo main.js -->
+            <div class="character-frame">
+                <div class="roleta-container">
+                    <div class="roleta-wrapper">
+                        <div id="roleta-track" class="roleta-track"></div>
+                        <div class="marcador-divino"></div>
                     </div>
-                    <div class="marcador"></div>
                 </div>
-                
-                <button id="btn-sortear" class="btn-primary">
-                    ✨ Clamar Divindade
-                </button>
+                <div id="resultado-deus" class="nome-deus-anim">Aguardando Invocação...</div>
             </div>
 
-            <!-- RESULTADO DO SORTEIO -->
-            <div id="display-deus" class="display-deus hidden">
-                <h2 id="nome-deus" style="color:#d4af37; margin-top:15px;"></h2>
-                <p id="dominio-deus" style="font-style: italic; color:#aaa;"></p>
+            <div class="action-bar">
+                <button id="btn-sortear" class="btn-invocar">INVOCAR DIVINDADE</button>
             </div>
         </section>
 
+        <aside class="panel-info">
+            <div class="status-box">
+                <div class="bar-group">
+                    <label>VITALIDADE (PV)</label>
+                    <div class="bar-bg"><div id="bar-hp" class="bar-fill hp"></div></div>
+                    <span id="txt-hp">100/100</span>
+                </div>
+                <div class="bar-group">
+                    <label>NÚCLEO (ENERGIA)</label>
+                    <div class="bar-bg"><div id="bar-ene" class="bar-fill ene"></div></div>
+                    <span id="txt-ene">50/50</span>
+                </div>
+                <div class="bar-group">
+                    <label>CORRUPÇÃO</label>
+                    <div class="bar-bg"><div id="bar-corrup" class="bar-fill corrup"></div></div>
+                    <span id="txt-corrup">0%</span>
+                </div>
+            </div>
+
+            <div class="select-box">
+                <select id="select-raca" onchange="atualizarFicha()">
+                    <option value="">RAÇA</option>
+                </select>
+                <select id="select-classe" onchange="atualizarFicha()">
+                    <option value="">CLASSE</option>
+                </select>
+            </div>
+            
+            <div id="habilidade-raca" class="desc-box">Selecione uma linhagem...</div>
+        </aside>
     </main>
 
-    <!-- Navegação de volta -->
-    <div style="text-align:center; margin-top:40px;">
-        <button class="btn-primary" onclick="location.href='index.html'">🌑 Voltar ao Portal</button>
-    </div>
-
-    <!-- Scripts necessários -->
-    <script src="js/ui.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/ficha_logica.js"></script>
 </body>
 </html>
 
